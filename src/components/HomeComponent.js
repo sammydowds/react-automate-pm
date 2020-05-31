@@ -33,7 +33,7 @@ render () {
 
     return(
       <Container className="container-spacing" fluid={true}>
-        <Row className="h-100 justify-content-left">
+        <Row className="h-100 justify-content-center">
 
           <Col lg="2">
             <LeftMenu numProjects={this.props.projects.projects.length} />
@@ -44,7 +44,7 @@ render () {
             <ProjectSearch projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
           </Col>
 
-          <Col lg="5">
+          <Col lg="6">
             {this.state.projectClicked
               ? <ProjectDetails project={this.state.projectSelected} handleCloseDetails={this.handleCloseDetails}></ProjectDetails>
               : <div></div>

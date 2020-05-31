@@ -65,22 +65,19 @@ const ProjectDetails = (props) => {
           <CardBody className="text-left">
             <CardTitle className="pl-2">
               <h4 lead>
+              {props.project.name}
+              &nbsp;
               { props.project.status
                 ? <span className="align-middle">
-                    <svg class="bi bi-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="#33ff00" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="4" cy="4" r="4"/>
-                  </svg>
                   </span>
-                : <span className="align-middle">
-                    <svg class="bi bi-circle-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="#ff0033" xmlns="http://www.w3.org/2000/svg">
-                      <circle cx="4" cy="4" r="4"/>
-                    </svg>
+                : <span>
+                    <Badge className="off-badge ml-1">Off Track</Badge>
                   </span>
               }
-              {props.project.name}
-              &nbsp; 
+              &nbsp;  
               <Button size="sm" className="align-end" outline color="dark" onClick={()=>{props.handleCloseDetails();}}>Close Details</Button>
               </h4>
+              <hr></hr>
             </CardTitle>
             <CardSubtitle className="pl-2 normal-text">
               <h5>

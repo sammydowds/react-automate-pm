@@ -29,10 +29,9 @@ class Header extends Component {
   render() {
     return(
       <div>
-        <Navbar color="light" dark className="shadow-sm bg-dark" fixed="top" expand="lg">
-          <NavbarBrand className="mr-auto lead" href="/">
-              <img className="rotate" src="assets/images/profile.png" height="50" width="50" alt="Ristorante Con Fusion"/>
-              &nbsp; Projectile
+        <Navbar className="navbar-style" fixed="top" expand="lg">
+          <NavbarBrand className="navbar-style">
+              Projectile
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNav} />
             <Collapse isOpen={this.state.isNavOpen} navbar>

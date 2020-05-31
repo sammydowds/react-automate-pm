@@ -10,7 +10,7 @@ import {
 const LeftMenu = (props) => {
     return(
         <Card className="mt-3 font-weight-bold card-border">
-            <ListGroup vertical className="text-center w-100">
+            <ListGroup vertical className="text-center w-100" flush>
                 <ListGroupItem className="text-center" tag="button" action>
                     <div>
                         <svg class="bi bi-plus-circle" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
