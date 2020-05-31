@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment'; 
 import {  
   Badge, 
   Card,
@@ -18,10 +19,14 @@ import {
 import { Loading } from './LoadingComponent'; 
 
 function RenderPhase({phase}) {
+  const phase_end = moment(phase.end, "YYYY-MM-DD");
+  const phase_start = moment(phase.start, "YYYY-MM-DD")
   return(
     <React.Fragment>
       <ListGroup horizontal className="mb-2 shadow-sm">
-        <ListGroupItem id={phase.name} className="w-25 text-center font-weight-bold" tag="button" action>{phase.start}</ListGroupItem>
+        <ListGroupItem id={phase.name} className="w-25 date-details text-center font-weight-bold " tag="button" action>
+          <p>Start: {phase_start.fromNow()}</p>
+        </ListGroupItem>
         <ListGroupItem id={phase.name} className="flex-fill font-weight-bold text-center" tag="button" action>
           {phase.name}
           { phase.active
@@ -29,7 +34,9 @@ function RenderPhase({phase}) {
             : <div></div>
           } 
         </ListGroupItem>
-        <ListGroupItem id={phase.name} className="w-25 font-weight-bold" tag="button" action>{phase.end}</ListGroupItem>
+        <ListGroupItem id={phase.name} className="w-25 date-details text-center font-weight-bold" tag="button" action>
+          <p>Due: {phase_end.fromNow()}</p>
+        </ListGroupItem>
     </ListGroup>
     <UncontrolledCollapse className="mb-2" toggler={"#" + phase.name}>
       <Card>
@@ -44,8 +51,6 @@ function RenderPhase({phase}) {
 }
 
 const ProjectDetails = (props) => {
-  console.log("PROPS HERE");
-  console.log(props); 
   if (props.projectsLoading) {
     return(
       <Loading />
@@ -75,6 +80,8 @@ const ProjectDetails = (props) => {
                   </span>
               }
               &nbsp;  
+              <Button size="sm" className="align-end" outline color="dark"> Update </Button>
+              &nbsp; 
               <Button size="sm" className="align-end" outline color="dark" onClick={()=>{props.handleCloseDetails();}}>Close Details</Button>
               </h4>
               <hr></hr>
