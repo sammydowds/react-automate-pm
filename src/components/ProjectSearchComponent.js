@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
+import moment from 'moment'; 
 import {  
   Col, 
   Badge, 
@@ -22,10 +23,11 @@ class ProjectSearch extends Component {
 
   renderPhases(active_phases) {
     const active_phases_lst = active_phases.map((phase) => {
+      const phase_end = moment(phase.end); 
       return(
         <span className="px-1">
-          <Badge className="secondary">
-            {phase.name} {phase.end}
+          <Badge color="dark">
+            {phase.name} {phase_end.fromNow()}
           </Badge>
         </span>
       ); 

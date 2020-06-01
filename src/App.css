@@ -161,7 +161,7 @@
 }
 
 .badge-subtext { 
-  font-size: 12px;
+  font-size: 15px;
   color: #ffa41b; 
 }
 
@@ -172,5 +172,6 @@
 
 .date-details {
   font-size: 12px;
+  font-weight: bold; 
 }
 

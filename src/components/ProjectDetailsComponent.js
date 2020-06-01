@@ -9,12 +9,8 @@ import {
   CardTitle, 
   CardText, 
   Button,
-  Breadcrumb, 
-  BreadcrumbItem, 
   ListGroupItem,
   ListGroup,
-  CustomInput, 
-  UncontrolledCollapse
  } from 'reactstrap';
 import { Loading } from './LoadingComponent'; 
 
@@ -24,27 +20,46 @@ function RenderPhase({phase}) {
   return(
     <React.Fragment>
       <ListGroup horizontal className="mb-2 shadow-sm">
-        <ListGroupItem id={phase.name} className="w-25 date-details text-center font-weight-bold " tag="button" action>
-          <p>Start: {phase_start.fromNow()}</p>
-        </ListGroupItem>
-        <ListGroupItem id={phase.name} className="flex-fill font-weight-bold text-center" tag="button" action>
-          {phase.name}
-          { phase.active
-            ? <span className="text-danger font-weight-light"> <Badge color="warning"> In Progress</Badge></span>
+        <ListGroupItem id={phase.name} className="flex-fill font-weight-bold text-left">
+          <h4>
+            {phase.name}
+            { phase.active
+            ? <span className="text-danger font-weight-light"> <Badge color="warning"> WIP </Badge></span>
             : <div></div>
           } 
+          </h4>
+          <p className="blockquote-footer">{phase.description}</p>
         </ListGroupItem>
-        <ListGroupItem id={phase.name} className="w-25 date-details text-center font-weight-bold" tag="button" action>
-          <p>Due: {phase_end.fromNow()}</p>
+        <ListGroupItem id={phase.name} className="w-25 date-details text-center font-weight-bold">
+          <p>
+            <h6>Start</h6>
+            <hr></hr>
+            {phase_start.format("dddd")}
+            ,&nbsp; 
+            {phase_start.month()}/{phase_start.date()}
+            <br></br>
+            <span className="font-small">({phase_start.fromNow()})</span>
+          </p>
+        </ListGroupItem>
+        <ListGroupItem id={phase.name} className="w-25 date-details text-center font-weight-bold">
+          <p>
+              <h6>Completion</h6>
+              <hr></hr>
+              {phase_end.format("dddd")}
+              ,&nbsp; 
+              {phase_end.month()}/{phase_end.date()}
+              <br></br>
+              ({phase_end.fromNow()})
+            </p>
+        </ListGroupItem>
+        <ListGroupItem id={phase.name} className="w-15 date-details text-center font-weight-bold">
+          <p>
+            <h6>Duration</h6>
+            <hr></hr>
+            {phase_end.diff(phase_start, "days")} days
+          </p>
         </ListGroupItem>
     </ListGroup>
-    <UncontrolledCollapse className="mb-2" toggler={"#" + phase.name}>
-      <Card>
-        <CardBody>
-          {phase.description}
-        </CardBody>
-      </Card>
-    </UncontrolledCollapse>
     </React.Fragment>
     
   ); 
@@ -69,7 +84,7 @@ const ProjectDetails = (props) => {
         <Card className="my-3 card-border">
           <CardBody className="text-left">
             <CardTitle className="pl-2">
-              <h4 lead>
+              <h3 lead>
               {props.project.name}
               &nbsp;
               { props.project.status
@@ -83,7 +98,7 @@ const ProjectDetails = (props) => {
               <Button size="sm" className="align-end" outline color="dark"> Update </Button>
               &nbsp; 
               <Button size="sm" className="align-end" outline color="dark" onClick={()=>{props.handleCloseDetails();}}>Close Details</Button>
-              </h4>
+              </h3>
               <hr></hr>
             </CardTitle>
             <CardSubtitle className="pl-2 normal-text">
