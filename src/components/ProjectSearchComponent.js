@@ -93,7 +93,7 @@ class ProjectSearch extends Component {
               <CardBody className="text-left">
                 <CardTitle className="pl-2">
                   <h4 lead>
-                    Projects
+                    Open Projects
                   </h4>
                 </CardTitle>
                 <CardSubtitle className="pl-2">

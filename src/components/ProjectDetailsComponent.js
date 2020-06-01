@@ -43,14 +43,14 @@ function RenderPhase({phase}) {
         </ListGroupItem>
         <ListGroupItem id={phase.name} className="w-25 date-details text-center font-weight-bold">
           <p>
-              <h6>Completion</h6>
-              <hr></hr>
-              {phase_end.format("dddd")}
-              ,&nbsp; 
-              {phase_end.month()}/{phase_end.date()}
-              <br></br>
-              ({phase_end.fromNow()})
-            </p>
+            <h6>Completion</h6>
+            <hr></hr>
+            {phase_end.format("dddd")}
+            ,&nbsp; 
+            {phase_end.month()}/{phase_end.date()}
+            <br></br>
+            ({phase_end.fromNow()})
+          </p>
         </ListGroupItem>
         <ListGroupItem id={phase.name} className="w-15 date-details text-center font-weight-bold">
           <p>
@@ -96,6 +96,8 @@ const ProjectDetails = (props) => {
               }
               &nbsp;  
               <Button size="sm" className="align-end" outline color="dark"> Update </Button>
+              &nbsp;  
+              <Button size="sm" className="align-end" outline color="danger"> Project Complete </Button>
               &nbsp; 
               <Button size="sm" className="align-end" outline color="dark" onClick={()=>{props.handleCloseDetails();}}>Close Details</Button>
               </h3>

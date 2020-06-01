@@ -40,11 +40,11 @@ render () {
             <ProjectSummary projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
           </Col>
 
-          <Col lg="4">
+          <Col lg="3">
             <ProjectSearch projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
           </Col>
 
-          <Col lg="6">
+          <Col lg="5">
             {this.state.projectClicked
               ? <ProjectDetails project={this.state.projectSelected} handleCloseDetails={this.handleCloseDetails}></ProjectDetails>
               : <div></div>
