@@ -1,7 +1,12 @@
 ## Automating Project Management - React App (Front End)
-This is a follow up project to the repository here: https://github.com/sammydowds/projectautomation
 
-The purpose of this project is to separate the front end into its own app and reduce the amount of requests back to the server, while having it operate independently of Django.
+Today's project management apps have tried to incorporate messaging, task management, and resource management into their platforms - and I propose that this loses sight of easily viewing and sharing project info. This is an attempt to create a happy medium where you can copy/past information into emails and store all project data in one place.  
+
+This is a follow up project to a previous version completed in Django. This React app is designed to separate the front end as its own app, which will ideally be integrated with a Django REST API as the second part of the project. 
+
+Live (without json-server): https://sammydowds.github.io/react-automate-pm/
+
+![Image of Design](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/Sample_Screen.png)
 
 ## Getting Started
 
