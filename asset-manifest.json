@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-automate-pm/static/css/main.35835747.chunk.css",
-    "main.js": "/react-automate-pm/static/js/main.d0195125.chunk.js",
-    "main.js.map": "/react-automate-pm/static/js/main.d0195125.chunk.js.map",
+    "main.js": "/react-automate-pm/static/js/main.596b3ddf.chunk.js",
+    "main.js.map": "/react-automate-pm/static/js/main.596b3ddf.chunk.js.map",
     "runtime-main.js": "/react-automate-pm/static/js/runtime-main.c13328a9.js",
     "runtime-main.js.map": "/react-automate-pm/static/js/runtime-main.c13328a9.js.map",
     "static/js/2.0c236bb1.chunk.js": "/react-automate-pm/static/js/2.0c236bb1.chunk.js",
     "static/js/2.0c236bb1.chunk.js.map": "/react-automate-pm/static/js/2.0c236bb1.chunk.js.map",
     "index.html": "/react-automate-pm/index.html",
-    "precache-manifest.5baa7ad769d326b6146e9507c79f81f1.js": "/react-automate-pm/precache-manifest.5baa7ad769d326b6146e9507c79f81f1.js",
+    "precache-manifest.06419aaaa18f90fed8c12aaa1ce1be19.js": "/react-automate-pm/precache-manifest.06419aaaa18f90fed8c12aaa1ce1be19.js",
     "service-worker.js": "/react-automate-pm/service-worker.js",
     "static/css/main.35835747.chunk.css.map": "/react-automate-pm/static/css/main.35835747.chunk.css.map",
     "static/js/2.0c236bb1.chunk.js.LICENSE.txt": "/react-automate-pm/static/js/2.0c236bb1.chunk.js.LICENSE.txt",
@@ -18,6 +18,6 @@
     "static/js/runtime-main.c13328a9.js",
     "static/js/2.0c236bb1.chunk.js",
     "static/css/main.35835747.chunk.css",
-    "static/js/main.d0195125.chunk.js"
+    "static/js/main.596b3ddf.chunk.js"
   ]
 }
