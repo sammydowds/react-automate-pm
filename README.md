@@ -8,6 +8,31 @@ Live (without json-server): https://sammydowds.github.io/react-automate-pm/
 
 ![Image of Design](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/Sample_Screen.png)
 
+## Data Structure 
+### Projects
+    {
+        "id": 0,
+        "name": "Custom Web App: Fortune 100",
+        "description": "First Project at AfterHours rebuilding components of ___ web app.",
+        "phases": [],
+        "company": 0,
+        "complete": false,
+        "status": false,
+        "lastupdated": "2020-05-29"
+    }
+### Phases
+    {
+        "id": 5,
+        "name": "Integration",
+        "description": "Engineering testing",
+        "start": "2020-04-29",
+        "end": "2020-04-29",
+        "people": null,
+        "project": 0,
+        "active": false,
+        "complete": false
+    }
+
 ## Getting Started
 
 *In Progress*
