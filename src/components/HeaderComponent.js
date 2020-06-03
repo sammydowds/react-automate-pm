@@ -30,7 +30,7 @@ class Header extends Component {
       <div>
         <Navbar className="navbar-style" fixed="top" expand="lg">
           <NavbarBrand className="navbar-style">
-            <img src="assets/images/profile.png" height="55" width="55" alt=""/>
+            <img src="assets/images/profileprojectile.png" height="55" width="55" alt=""/>
             Projectile
           </NavbarBrand>
           <NavbarToggler onClick={this.toggleNav} />
