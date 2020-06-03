@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment'; 
 import {  
@@ -9,9 +9,55 @@ import {
   CardTitle, 
   CardText, 
   Button,
-  Table
+  Table, 
+  Modal, 
+  ModalHeader, 
+  ModalBody
  } from 'reactstrap';
+import { Control, LocalForm, Errors } from 'react-redux-form';
 import { Loading } from './LoadingComponent'; 
+
+
+class UpdateProjectForm extends Component {
+
+  constructor(props) {
+      super(props);
+      this.state = {
+          isModalOpen: false
+      };
+      this.toggleModal = this.toggleModal.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  toggleModal() {
+      this.setState({
+      isModalOpen: !this.state.isModalOpen
+      });
+  }
+
+  handleSubmit(values) {
+      this.toggleModal();
+      this.props.updateProject(this.props.project.id, values.name, values.description, values.phases, values.company, values.complete, values.status);
+  }
+
+  render() {
+
+      return (
+      <React.Fragment>
+          <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+          <ModalHeader toggle={this.toggleModal}>Update {this.props.project.name}</ModalHeader>
+          <ModalBody>
+              <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+              </LocalForm>
+          </ModalBody>
+          </Modal>
+          <Button outline className="secondary" onClick={this.toggleModal}>
+            Update
+          </Button>
+      </React.Fragment>
+      );
+  }
+}
 
 function RenderPhase({phase}) {
   const phase_end = moment(phase.end, "YYYY-MM-DD");
@@ -91,7 +137,7 @@ const ProjectDetails = (props) => {
               </Table>
             </CardText>
             <div className="text-right">
-              <Button size="md" className="align-end" outline color="secondary"> Update </Button>
+              <UpdateProjectForm project={props.project} updateProject={props.updateProject} />
             </div>
           </CardBody>
         </Card>

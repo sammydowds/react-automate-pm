@@ -4,6 +4,7 @@ import Home from './HomeComponent';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchProjects } from '../redux/ActionCreators';
+import { updateProject } from '../redux/ActionCreators'; 
 
 const mapStateToProps = state => {
   return {
@@ -12,7 +13,8 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchProjects: () => {dispatch(fetchProjects())}
+  fetchProjects: () => {dispatch(fetchProjects())}, 
+  updateProject: (id, name, description, phases, company, complete, status) => {dispatch(updateProject(id, name, description, phases, company, complete, status))}
 });
 
 class Main extends Component {
@@ -30,7 +32,7 @@ class Main extends Component {
 
       const HomePage = () => {
         return(
-          <Home projects={this.props.projects} projectsLoading={this.props.projects.isLoading}/>
+          <Home projects={this.props.projects} projectsLoading={this.props.projects.isLoading} updateProject={this.props.updateProject}/>
         ); 
       }
 
@@ -38,7 +40,7 @@ class Main extends Component {
         <div className="main-container">
           <Header />
           <Switch>
-            <Route path="/home" component={HomePage} />
+            <Route path="/" component={HomePage} />
           </Switch>
         </div>
       );

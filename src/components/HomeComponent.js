@@ -11,6 +11,7 @@ import ProjectDetails from './ProjectDetailsComponent';
 import LeftMenu from './LeftMenuComponent'; 
 
 
+
 class HomeComponent extends Component {
 
 constructor(props) {
@@ -48,12 +49,14 @@ render () {
 
           <Col lg="6">
             {this.state.projectClicked
-              ? <ProjectDetails project={this.state.projectSelected} handleCloseDetails={this.handleCloseDetails}></ProjectDetails>
+              ? <ProjectDetails project={this.state.projectSelected} handleCloseDetails={this.handleCloseDetails} updateProject={this.props.updateProject}></ProjectDetails>
               : <div></div>
             }
           </Col>
 
         </Row>
+
+
       </Container>
       
     );

@@ -58,7 +58,7 @@ class ProjectOff extends Component {
               <CardBody>
                 <CardTitle className="pl-2 normal-text">
                   <h6 lead>
-                    Off Track Projects <Badge className="off-badge">{offtrack_projects.length}</Badge>
+                    Off Track <Badge className="off-badge">{offtrack_projects.length}</Badge>
                   </h6>
                 </CardTitle>
                 <CardSubtitle>

@@ -59,7 +59,7 @@ class ProjectRecent extends Component {
               <CardBody>
                 <CardTitle className="pl-2 normal-text">
                   <h6 lead>
-                    Recently Updated <Badge className="off-badge">{recent_projects.length}</Badge>
+                    Recent Change <Badge className="off-badge">{recent_projects.length}</Badge>
                   </h6>
                 </CardTitle>
                 <CardSubtitle>
