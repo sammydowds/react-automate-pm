@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Header from './HeaderComponent';
 import Home from './HomeComponent';
-import Footer from './FooterComponent'; 
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchProjects } from '../redux/ActionCreators';

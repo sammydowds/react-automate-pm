@@ -5,7 +5,8 @@ import {
   Col
  } from 'reactstrap';
 import ProjectSearch from './ProjectSearchComponent'; 
-import ProjectSummary from './ProjectSummaryComponent'; 
+import ProjectOff from './ProjectOffTrackComponent'; 
+import ProjectRecent from './ProjectRecentUpdateComponent'; 
 import ProjectDetails from './ProjectDetailsComponent'; 
 import LeftMenu from './LeftMenuComponent'; 
 
@@ -37,7 +38,8 @@ render () {
 
           <Col lg="2">
             <LeftMenu numProjects={this.props.projects.projects.length} />
-            <ProjectSummary projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
+            <ProjectOff projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
+            <ProjectRecent projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
           </Col>
 
           <Col lg="4">

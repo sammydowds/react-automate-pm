@@ -9,9 +9,6 @@ import {
   CardSubtitle, 
   CardTitle, 
   CardText, 
-  Button,
-  Breadcrumb, 
-  BreadcrumbItem, 
   Row
  } from 'reactstrap';
 import { Loading } from './LoadingComponent'; 

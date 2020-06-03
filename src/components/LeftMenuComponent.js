@@ -3,7 +3,6 @@ import {
     Card, 
     ListGroup, 
     ListGroupItem, 
-    Col, 
     Badge
 } from 'reactstrap'; 
 

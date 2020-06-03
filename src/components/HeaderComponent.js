@@ -6,8 +6,7 @@ import {
   NavbarBrand,
   Nav,
   NavbarText,
-  Button, 
-  Media
+  Button
 } from 'reactstrap';
 import logo from '../shared/default.svg'; 
 

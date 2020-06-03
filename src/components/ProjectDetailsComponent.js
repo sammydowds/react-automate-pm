@@ -9,8 +9,6 @@ import {
   CardTitle, 
   CardText, 
   Button,
-  ListGroupItem,
-  ListGroup,
   Table
  } from 'reactstrap';
 import { Loading } from './LoadingComponent'; 
@@ -30,8 +28,8 @@ function RenderPhase({phase}) {
         <td>{phase.name}</td>
         <td>{phase_start.month()}/{phase_start.day()} ({phase_start.format("ddd")})</td>
         <td>{phase_end.month()}/{phase_end.day()} ({phase_end.format("ddd")})</td>
-        <td>{phase_end.diff(phase_start, "days")}</td>
         <td>{phase_end.fromNow()}</td>
+        <td>{phase_end.diff(phase_start, "days")}</td>
       </tr>
     </React.Fragment>
     
@@ -76,15 +74,15 @@ const ProjectDetails = (props) => {
               Project Phases
             </CardSubtitle>
             <CardText className="pl-3 pb-3">
-              <Table className="text-center" hover>
+              <Table size="sm" className="text-center" hover>
                 <thead>
                   <tr>
                     <th>Status</th>
                     <th>Phase</th>
                     <th>Start</th>
                     <th>End</th>
-                    <th>Duration (Days)</th>
                     <th>Relative End</th>
+                    <th>Duration (Days)</th>
                   </tr>
                 </thead>
                 <tbody>
