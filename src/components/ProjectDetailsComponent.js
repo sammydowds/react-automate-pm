@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState } from 'react';
 import moment from 'moment'; 
 import {  
   Badge, 
@@ -10,54 +9,9 @@ import {
   CardText, 
   Button,
   Table, 
-  Modal, 
-  ModalHeader, 
-  ModalBody
  } from 'reactstrap';
-import { Control, LocalForm, Errors } from 'react-redux-form';
-import { Loading } from './LoadingComponent'; 
-
-
-class UpdateProjectForm extends Component {
-
-  constructor(props) {
-      super(props);
-      this.state = {
-          isModalOpen: false
-      };
-      this.toggleModal = this.toggleModal.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  toggleModal() {
-      this.setState({
-      isModalOpen: !this.state.isModalOpen
-      });
-  }
-
-  handleSubmit(values) {
-      this.toggleModal();
-      this.props.updateProject(this.props.project.id, values.name, values.description, values.phases, values.company, values.complete, values.status);
-  }
-
-  render() {
-
-      return (
-      <React.Fragment>
-          <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
-          <ModalHeader toggle={this.toggleModal}>Update {this.props.project.name}</ModalHeader>
-          <ModalBody>
-              <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-              </LocalForm>
-          </ModalBody>
-          </Modal>
-          <Button outline className="secondary" onClick={this.toggleModal}>
-            Update
-          </Button>
-      </React.Fragment>
-      );
-  }
-}
+import { Loading } from './LoadingComponent';
+import UpdateProjectForm from './UpdateProjectFormComponent'; 
 
 function RenderPhase({phase}) {
   const phase_end = moment(phase.end, "YYYY-MM-DD");
@@ -120,7 +74,7 @@ const ProjectDetails = (props) => {
               Project Phases
             </CardSubtitle>
             <CardText className="pl-3 pb-3">
-              <Table size="sm" className="text-center" hover>
+              <Table size="sm" className="text-center overflow-auto" hover responsive>
                 <thead>
                   <tr>
                     <th>Status</th>
