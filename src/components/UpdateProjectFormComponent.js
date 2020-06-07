@@ -171,7 +171,7 @@ class UpdateProjectForm extends Component {
             </LocalForm>
           </ModalBody>
         </Modal>
-        <Button outline onClick={this.toggleModal}>
+        <Button outline>
            Update Project
         </Button>
       </React.Fragment>
