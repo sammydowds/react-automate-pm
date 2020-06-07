@@ -81,7 +81,7 @@ class ProjectDetails extends Component {
     if (this.state.phaseModal) {
       const phase = this.state.phaseSelected; 
       return(
-        <Modal size="lg" isOpen={this.state.phaseModal} toggle={this.closePhaseModal}>
+        <Modal isOpen={this.state.phaseModal} toggle={this.closePhaseModal}>
           <ModalHeader toggle={this.closePhaseModal} className="off-badge">Update Phase: {phase.name}</ModalHeader>
           <ModalBody>
             <UpdatePhaseForm phase={phase}/>

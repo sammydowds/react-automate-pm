@@ -47,7 +47,7 @@ class UpdateProjectForm extends Component {
               />
           </Col>
         </Row>
-        <Row className="text-center">
+        <Row className="ml-4">
             <Col>
               <div className="form-check">
                   <Label check>
@@ -56,12 +56,12 @@ class UpdateProjectForm extends Component {
                       name="agree"
                       className="form-check-input"
                           /> {' '}
-                      <strong>Mark Project as Off Track</strong>
+                      <strong>Project is Off Track</strong>
                   </Label>
               </div>
           </Col>
         </Row>
-        <Row className="text-center">
+        <Row className="ml-4">
           <Col>
             <div className="form-check">
                 <Label check>
@@ -70,7 +70,7 @@ class UpdateProjectForm extends Component {
                     name="agree"
                     className="form-check-input"
                         /> {' '}
-                    <strong>Mark Project as Complete</strong>
+                    <strong>Project is Complete</strong>
                 </Label>
             </div>
           </Col>

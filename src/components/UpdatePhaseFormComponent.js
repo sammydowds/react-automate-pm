@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import {  
-  Button,
-  Row, 
-  Col,
+  Row,
+  Col,  
   Label, 
   Table
  } from 'reactstrap';
@@ -30,67 +29,69 @@ class UpdateProjectForm extends Component {
   render() {
     return (
       <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
-        <Row>
-          <Table size="sm" className="text-center overflow-auto" hover responsive>
-            <thead>
-              <tr>
-                  <th>Status</th>
-                  <th>Phase</th>
-                  <th>Start</th>
-                  <th>End</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th className="text-left" scope="row">
-                    <div className="form-check ml-3">
-                        <Label check>
-                            <Control.checkbox 
-                            model=".phases.active" 
-                            name="agree"
-                            className="form-check-input"
-                                /> {' '}
-                            <strong>WIP</strong>
+        <Row className="m-2">
+          <Col>
+            <Label>Start Date:</Label>
+          </Col>
+          <Col>
+            <Control.input 
+                type="date" 
+                defaultValue={this.props.phase.start}
+                model=".phases.start"
+                id="idk"
+                name="idk"
+                className="form-control"
+            >
+          </Control.input>
+          </Col>
+        </Row>
+        <Row className="m-2">
+          <Col>
+            <Label>End Date:</Label>
+          </Col>
+          <Col>
+            <Control.input 
+                type="date" 
+                defaultValue={this.props.phase.start}
+                model=".phases.start"
+                id="idk"
+                name="idk"
+                className="form-control"
+            >
+          </Control.input>
+          </Col>
+        </Row>
+        <Row className="m-2">
+          <Col>
+            <div className="form-check ml-3">
+              <Label check>
+                  <Control.checkbox 
+                  model=".phases.active" 
+                  name="agree"
+                  className="form-check-input"
+                      /> {' '}
+                  <strong>Phase is in Progress</strong>
 
-                        </Label>
-                    </div>
-                    <div className="form-check ml-3">
-                        <Label check>
-                            <Control.checkbox 
-                            model=".phases.complete" 
-                            name="agree"
-                            className="form-check-input"
-                                /> {' '}
-                            <strong>Done</strong>
-                        </Label>
-                    </div>
-                </th>
-                <td><strong>{this.props.phase.name}</strong></td>
-                <td>
-                    <Control.input 
-                        type="date" 
-                        defaultValue={this.props.phase.start}
-                        model=".phases.start"
-                        id="idk"
-                        name="idk"
-                        className="form-control"
-                    >
-                  </Control.input>
-                </td>
-                <td>
-                    <Control.input 
-                        type="date" 
-                        defaultValue={this.props.phase.end}
-                        model=".phases.end" 
-                        id="phaseend"
-                        name="phaseend"
-                        className="form-control"
-                        >
-                    </Control.input>
-                </td>
-              </tr>
-            </tbody>
-          </Table>
+              </Label>
+            </div>
+          </Col>
+        </Row>
+        <Row className="m-2">
+          <Col>
+            <div className="form-check ml-3">
+              <Label check>
+                  <Control.checkbox 
+                  model=".phases.active" 
+                  name="agree"
+                  className="form-check-input"
+                      /> {' '}
+                  <strong>Phase is complete</strong>
+
+              </Label>
+            </div>
+          </Col>
+        </Row>
+        <Row>
         </Row>
       </LocalForm>
     );
