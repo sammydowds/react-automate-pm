@@ -16,6 +16,7 @@ import {
  } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import UpdateProjectForm from './UpdateProjectFormComponent'; 
+import UpdatePhaseForm from './UpdatePhaseFormComponent'; 
 
 class ProjectDetails extends Component {
   constructor(props) {
@@ -80,14 +81,14 @@ class ProjectDetails extends Component {
     if (this.state.phaseModal) {
       const phase = this.state.phaseSelected; 
       return(
-        <Modal isOpen={this.state.phaseModal} toggle={this.closePhaseModal}>
+        <Modal size="lg" isOpen={this.state.phaseModal} toggle={this.closePhaseModal}>
           <ModalHeader toggle={this.closePhaseModal} className="off-badge">Update Phase: {phase.name}</ModalHeader>
           <ModalBody>
-            {phase.name} - Phase Form enter here 
+            <UpdatePhaseForm phase={phase}/>
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={this.closeProjectModal}>Cancel</Button>
-            <Button color="primary" onClick={this.closeProjectModal}>Submit Changes</Button>{' '}
+            <Button color="secondary" onClick={this.closePhaseModal}>Cancel</Button>
+            <Button color="primary" onClick={this.closePhaseModal}>Submit Changes</Button>{' '}
           </ModalFooter>
         </Modal>
       ); 
@@ -104,7 +105,7 @@ class ProjectDetails extends Component {
       <Modal isOpen={this.state.projectModal} toggle={this.closeProjectModal}>
         <ModalHeader toggle={this.closeProjectModal} className="off-badge">Update {project.name}</ModalHeader>
         <ModalBody>
-          {project.name}
+          <UpdateProjectForm project={project}/>
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={this.closeProjectModal}>Cancel</Button>
