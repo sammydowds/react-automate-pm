@@ -46,10 +46,10 @@ class UpdateProjectForm extends Component {
           <Col>
             <Control.input 
                 type="date" 
-                defaultValue={this.props.phase.start}
-                model=".phases.start"
-                id="idk"
-                name="idk"
+                defaultValue={this.props.phase.end}
+                model=".phases.end"
+                id="phaseEnd"
+                name="phaseEnd"
                 className="form-control"
             >
           </Control.input>

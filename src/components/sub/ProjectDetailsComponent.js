@@ -38,6 +38,7 @@ class ProjectDetails extends Component {
   }
 
   openPhaseModal(phase) {
+    alert(JSON.stringify(phase)); 
     this.setState({phaseModal: true, phaseSelected: phase}); 
   }
 
@@ -61,8 +62,8 @@ class ProjectDetails extends Component {
             } 
           </th>
           <td className="text-left"><strong>{phase.name}</strong></td>
-          <td>{phase_start.month()}/{phase_start.day()} ({phase_start.format("ddd")})</td>
-          <td>{phase_end.month()}/{phase_end.day()} ({phase_end.format("ddd")})</td>
+          <td>{phase_start.format("M")}/{phase_start.date()} ({phase_start.format("ddd")})</td>
+          <td>{phase_end.format("M")}/{phase_end.date()} ({phase_end.format("ddd")})</td>
           <td><strong>{phase_end.fromNow()}</strong></td>
           <td>{phase_end.diff(phase_start, "days")}</td>
           <td>

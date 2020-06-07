@@ -90,7 +90,7 @@ class ProjectWorkInProgress extends Component {
               <CardBody className="text-left">
                 <CardTitle className="pl-2">
                   <h4 lead>
-                    Open Projects - Work in Progress
+                    Open Projects: Work In Progress
                   </h4>
                 </CardTitle>
                 <CardSubtitle className="pl-2">
