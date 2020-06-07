@@ -4,7 +4,7 @@ import {
   Row, 
   Col
  } from 'reactstrap';
-import ProjectSearch from './sub/ProjectSearchComponent'; 
+import ProjectworkInProgress from './sub/ProjectWorkInProgressComponent'; 
 import ProjectOff from './sub/ProjectOffTrackComponent'; 
 import ProjectRecent from './sub/ProjectRecentUpdateComponent'; 
 import ProjectDetails from './sub/ProjectDetailsComponent'; 
@@ -44,7 +44,7 @@ render () {
           </Col>
 
           <Col lg="4">
-            <ProjectSearch projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
+            <ProjectWorkInProgress projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
           </Col>
 
           <Col lg="6">

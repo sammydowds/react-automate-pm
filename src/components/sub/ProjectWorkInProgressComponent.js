@@ -13,7 +13,7 @@ import {
  } from 'reactstrap';
 import { Loading } from './LoadingComponent'; 
 
-class ProjectSearch extends Component {
+class ProjectWorkInProgress extends Component {
   constructor(props) {
     super(props); 
   }
@@ -106,5 +106,5 @@ class ProjectSearch extends Component {
   }
 }
 
-export default ProjectSearch; 
+export default ProjectWorkInProgress; 
 
