@@ -65,8 +65,8 @@ class ProjectSearch extends Component {
                   </span>
               }
             </span>
-            <p className="badge-subtext">
-              WIP: 
+            <p>
+              <span className="text-danger font-weight-light"> <Badge color="warning"> WIP </Badge></span> |
               {phases_rend} 
             </p>
           </p>  
