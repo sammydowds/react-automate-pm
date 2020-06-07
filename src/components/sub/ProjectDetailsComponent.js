@@ -15,8 +15,8 @@ import {
   ModalFooter
  } from 'reactstrap';
 import { Loading } from './LoadingComponent';
-import UpdateProjectForm from './UpdateProjectFormComponent'; 
-import UpdatePhaseForm from './UpdatePhaseFormComponent'; 
+import UpdateProjectForm from '../forms/UpdateProjectFormComponent'; 
+import UpdatePhaseForm from '../forms/UpdatePhaseFormComponent'; 
 
 class ProjectDetails extends Component {
   constructor(props) {

@@ -4,11 +4,11 @@ import {
   Row, 
   Col
  } from 'reactstrap';
-import ProjectSearch from './ProjectSearchComponent'; 
-import ProjectOff from './ProjectOffTrackComponent'; 
-import ProjectRecent from './ProjectRecentUpdateComponent'; 
-import ProjectDetails from './ProjectDetailsComponent'; 
-import LeftMenu from './LeftMenuComponent'; 
+import ProjectSearch from './sub/ProjectSearchComponent'; 
+import ProjectOff from './sub/ProjectOffTrackComponent'; 
+import ProjectRecent from './sub/ProjectRecentUpdateComponent'; 
+import ProjectDetails from './sub/ProjectDetailsComponent'; 
+import LeftMenu from './sub/LeftMenuComponent'; 
 
 
 
