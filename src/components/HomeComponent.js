@@ -4,7 +4,7 @@ import {
   Row, 
   Col
  } from 'reactstrap';
-import ProjectworkInProgress from './sub/ProjectWorkInProgressComponent'; 
+import ProjectWorkInProgress from './sub/ProjectWorkInProgressComponent'; 
 import ProjectOff from './sub/ProjectOffTrackComponent'; 
 import ProjectRecent from './sub/ProjectRecentUpdateComponent'; 
 import ProjectDetails from './sub/ProjectDetailsComponent'; 

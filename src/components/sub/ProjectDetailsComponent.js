@@ -60,10 +60,10 @@ class ProjectDetails extends Component {
               : <div></div>
             } 
           </th>
-          <td className="text-left">{phase.name}</td>
+          <td className="text-left"><strong>{phase.name}</strong></td>
           <td>{phase_start.month()}/{phase_start.day()} ({phase_start.format("ddd")})</td>
           <td>{phase_end.month()}/{phase_end.day()} ({phase_end.format("ddd")})</td>
-          <td>{phase_end.fromNow()}</td>
+          <td><strong>{phase_end.fromNow()}</strong></td>
           <td>{phase_end.diff(phase_start, "days")}</td>
           <td>
             <div onClick={() => {this.openPhaseModal(phase)}}>
@@ -174,7 +174,7 @@ class ProjectDetails extends Component {
                       <th>Phase</th>
                       <th>Start</th>
                       <th>End</th>
-                      <th>Relative End</th>
+                      <th>Rel. End</th>
                       <th>Duration (Days)</th>
                       <th></th>
                     </tr>
