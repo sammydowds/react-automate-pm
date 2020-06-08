@@ -17,7 +17,6 @@ class UpdateProjectForm extends Component {
   handleSubmit(values) {
     this.toggleModal();
     // this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
-    alert(JSON.stringify(values)); 
   }
 
   render() {

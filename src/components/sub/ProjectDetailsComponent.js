@@ -38,7 +38,6 @@ class ProjectDetails extends Component {
   }
 
   openPhaseModal(phase) {
-    alert(JSON.stringify(phase)); 
     this.setState({phaseModal: true, phaseSelected: phase}); 
   }
 

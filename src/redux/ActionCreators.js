@@ -27,16 +27,13 @@ export const fetchProjects = () => (dispatch) => {
   }
 
 // THUNK
-export const updateProject = (id, name, description, phases, company, complete, status) => (dispatch) => {
+export const updateProject = (id, name, status, complete) => (dispatch) => {
   const newProject = {
     // TODO: Put form data here and as vars 
     id: id,
     name: name, 
-    description: description, 
-    phases: phases, 
-    company: company, 
-    complete: complete, 
     status: status, 
+    complete: complete, 
   }
   newProject.lastupdated = new Date().toISOString();
   return fetch(baseUrl + 'projects', {
@@ -63,7 +60,7 @@ export const updateProject = (id, name, description, phases, company, complete, 
     })
     .then(response => response.json())
     // Updating the redux store
-    .then(response => dispatch(addProjects(response)))
+    .then(response => dispatch(updateProject(response)))
     .catch(error => {
       console.log('Update project ', error.message);
       alert('Your updates could not be posted\nError: ' + error.message);
