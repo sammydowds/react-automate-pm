@@ -44,12 +44,21 @@ render () {
           </Col>
 
           <Col lg="4">
-            <ProjectWorkInProgress projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
+            <ProjectWorkInProgress 
+              projects={this.props.projects.projects} 
+              projectsLoading={this.props.projects.isLoading} 
+              handleProjectClicked={this.handleProjectClicked}
+              phases={this.props.phases}
+             />
           </Col>
 
           <Col lg="6">
             {this.state.projectClicked
-              ? <ProjectDetails project={this.state.projectSelected} handleCloseDetails={this.handleCloseDetails} updateProject={this.props.updateProject}></ProjectDetails>
+              ? <ProjectDetails 
+                  project={this.state.projectSelected} 
+                  phases={this.props.phases.phases.filter((phase) => phase.projectId === this.state.projectSelected.id)}
+                  handleCloseDetails={this.handleCloseDetails} 
+                  updateProject={this.props.updateProject}></ProjectDetails>
               : <div></div>
             }
           </Col>

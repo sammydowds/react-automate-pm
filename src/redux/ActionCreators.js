@@ -26,19 +26,42 @@ export const fetchProjects = () => (dispatch) => {
   
   }
 
-// THUNK
+  // THUNK to fetch phases 
+export const fetchPhases = () => (dispatch) => {
+  dispatch(phasesLoading(true));
+
+  return fetch(baseUrl + 'phases')
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
+    })
+    .then(response => response.json())
+    .then(phases => dispatch(addPhases(phases)))
+    .catch(error => dispatch(phasesFailed(error.message)));
+
+}
+
+// THUNK - Patch to update project details 
 export const updateProject = (id, name, status, complete) => (dispatch) => {
-  const newProject = {
-    // TODO: Put form data here and as vars 
-    id: id,
+  const projectUpdates = {
     name: name, 
     status: status, 
     complete: complete, 
   }
-  newProject.lastupdated = new Date().toISOString();
-  return fetch(baseUrl + 'projects', {
-    method: 'POST',
-    body: JSON.stringify(newProject),
+  updateProject.lastupdated = new Date().toISOString();
+  return fetch(baseUrl + 'projects/', {
+    method: 'PATCH',
+    body: JSON.stringify(projectUpdates),
     headers: {
       'Content-Type': 'application/json'
     },
@@ -81,4 +104,19 @@ export const projectsFailed = (errmess) => ({
 export const addProjects = (projects) => ({
   type: ActionTypes.ADD_PROJECTS,
   payload: projects
+});
+
+// More Actions for phases 
+export const phasesLoading = () => ({
+  type: ActionTypes.PHASES_LOADING
+});
+
+export const phasesFailed = (errmess) => ({
+  type: ActionTypes.PHASES_FAILED,
+  payload: errmess
+});
+
+export const addPhases = (phases) => ({
+  type: ActionTypes.ADD_PHASES,
+  payload: phases
 });

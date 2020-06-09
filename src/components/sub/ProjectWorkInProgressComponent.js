@@ -34,10 +34,12 @@ class ProjectWorkInProgress extends Component {
     ); 
   }
 
-  renderProj(projects) {
+  renderProj(projects, phases) {
     const projects_rend = projects.map((project) => {
-      const on_schedule = project.status; 
-      const active_phases = project.phases.filter((phase) => phase.active);
+      const on_schedule = project.status;
+      // filtering for phases related to this project
+      const proj_phases = phases.phases.filter((phase) => project.id === phase.projectId); 
+      const active_phases = proj_phases.filter((phase) => phase.active);
       const phases_rend = this.renderPhases(active_phases); 
       return(
         <span>
@@ -78,7 +80,7 @@ class ProjectWorkInProgress extends Component {
   }
 
   render () {
-    if (this.props.projectsLoading) {
+    if (this.props.projectsLoading && this.props.phasesLoading) {
       return(
         <Loading />
       );
@@ -96,7 +98,7 @@ class ProjectWorkInProgress extends Component {
                 <CardSubtitle className="pl-2">
                   <hr></hr>
                 </CardSubtitle>
-                <CardText className="pt-2 pl-4 font-weight-bold">{this.renderProj(this.props.projects)}</CardText>
+                <CardText className="pt-2 pl-4 font-weight-bold">{this.renderProj(this.props.projects, this.props.phases)}</CardText>
               </CardBody>
             </Card>
           </Col>

@@ -123,7 +123,7 @@ class ProjectDetails extends Component {
     } else {
       console.log('PROPS');
       console.log(this.props); 
-      const proj_phases = this.props.project.phases.map((phase)=> {
+      const proj_phases = this.props.phases.map((phase)=> {
         return(
           <tr>
             {this.renderPhase(phase)}
