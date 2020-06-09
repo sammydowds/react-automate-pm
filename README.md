@@ -1,6 +1,6 @@
 ## Automating Project Management - React App (Front End)
 
-Today's project management apps have tried to incorporate messaging, task management, and resource management into their platforms - and I propose that this loses sight of easily viewing and sharing project info. This is an attempt to create a happy medium where you can copy/past information into emails and store all project data in one place.  
+Today's project management apps have tried to incorporate messaging, task management, and resource management into their platforms - and I propose that this loses sight of easily viewing and sharing project info. This is an attempt to create a happy medium where you can copy/paste information into emails and store all project data in one place.  
 
 This is a follow up project to a previous version completed in Django. This React app is designed to separate the front end as its own app, which will ideally be integrated with a Django REST API as the second part of the project. 
 
