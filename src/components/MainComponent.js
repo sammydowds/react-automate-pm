@@ -36,10 +36,10 @@ class Main extends Component {
       const HomePage = () => {
         return(
           <Home 
-            projects={this.props.projects} 
+            projects={Object.values(this.props.projects.projects)} 
             projectsLoading={this.props.projects.isLoading} 
             updateProject={this.props.updateProject}
-            phases={this.props.phases}
+            phases={Object.values(this.props.phases.phases)}
             phasesLoading={this.props.phases.isLoading}
             />
         ); 

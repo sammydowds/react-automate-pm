@@ -2,11 +2,11 @@ import * as ActionTypes from './ActionTypes';
 import { baseUrl } from '../shared/baseUrl';
 import { normalize, schema } from 'normalizr'; 
 
-//function to normalize an array of objects, and add key with supplied parameter
+//function to normalize an array of objects, returns normalized list of objects 
 const normalizeResponse = (response) => {
   const new_schema = new schema.Entity('schema', {attributeId: 'id'});  
   const norm_data = normalize(response, [new_schema]);
-  return norm_data.entities.schema;  
+  return norm_data.entities.schema;   
 }
 
 // THUNK
@@ -29,7 +29,7 @@ export const fetchProjects = () => (dispatch) => {
         throw errmess;
       })
       .then(response => response.json())
-      //adding normalization
+      //normalizing response 
       .then(notNrmResp => normalizeResponse(notNrmResp))
       .then(projects=> dispatch(addProjects(projects))) 
       .catch(error => dispatch(projectsFailed(error.message)));
@@ -56,6 +56,7 @@ export const fetchPhases = () => (dispatch) => {
       throw errmess;
     })
     .then(response => response.json())
+    // normalizing response 
     .then(notNrmResp => normalizeResponse(notNrmResp))
     .then(phases => dispatch(addPhases(phases)))
     .catch(error => dispatch(phasesFailed(error.message)));

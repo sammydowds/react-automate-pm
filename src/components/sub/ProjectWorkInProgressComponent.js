@@ -39,7 +39,7 @@ class ProjectWorkInProgress extends Component {
       const projects_rend = projects.map((project) => {
         const on_schedule = project.status;
         // filtering for phases related to this project
-        const proj_phases = phases.phases.filter((phase) => project.id === phase.projectId); 
+        const proj_phases = phases.filter((phase) => project.id === phase.projectId); 
         const active_phases = proj_phases.filter((phase) => phase.active);
         const phases_rend = this.renderPhases(active_phases); 
         return(
@@ -98,7 +98,6 @@ class ProjectWorkInProgress extends Component {
                 <CardTitle className="pl-2">
                   <h4 lead>
                     Open Projects: Work In Progress
-                    {this.props.projects}
                   </h4>
                 </CardTitle>
                 <CardSubtitle className="pl-2">

@@ -32,20 +32,20 @@ constructor(props) {
 
 
 render () {
-
+  console.log(this.props); 
     return(
       <Container className="container-spacing" fluid={true}>
-        {/* <Row className="h-100 justify-content-center">
+        <Row className="h-100 justify-content-center">
 
           <Col lg="2">
-            <LeftMenu numProjects={this.props.projects.projects.length} />
-            <ProjectOff projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
-            <ProjectRecent projects={this.props.projects.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
+            <LeftMenu numProjects={this.props.projects.length} />
+            <ProjectOff projects={this.props.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
+            <ProjectRecent projects={this.props.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
           </Col>
 
           <Col lg="4">
             <ProjectWorkInProgress 
-              projects={this.props.projects.projects} 
+              projects={this.props.projects} 
               projectsLoading={this.props.projects.isLoading} 
               handleProjectClicked={this.handleProjectClicked}
               phases={this.props.phases}
@@ -56,14 +56,14 @@ render () {
             {this.state.projectClicked
               ? <ProjectDetails 
                   project={this.state.projectSelected} 
-                  phases={this.props.phases.phases.filter((phase) => phase.projectId === this.state.projectSelected.id)}
+                  phases={this.props.phases.filter((phase) => phase.projectId === this.state.projectSelected.id)}
                   handleCloseDetails={this.handleCloseDetails} 
                   updateProject={this.props.updateProject}></ProjectDetails>
               : <div></div>
             }
           </Col>
 
-        </Row> */}
+        </Row>
 
 
       </Container>
