@@ -105,7 +105,7 @@ class ProjectDetails extends Component {
       <Modal isOpen={this.state.projectModal} toggle={this.closeProjectModal}>
         <ModalHeader toggle={this.closeProjectModal} className="off-badge">Update {project.name}</ModalHeader>
         <ModalBody>
-          <UpdateProjectForm project={project}/>
+          <UpdateProjectForm project={project} updateProject={this.props.updateProject} closeProjectUpdateForm={this.closeProjectModal}/>
         </ModalBody>
         <ModalFooter>
           <Button color="secondary" onClick={this.closeProjectModal}>Cancel</Button>

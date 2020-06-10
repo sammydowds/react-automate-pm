@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import {  
   Row, 
   Col,
-  Label, 
+  Label,
+  Button 
  } from 'reactstrap';
  import { Control, LocalForm, Errors } from 'react-redux-form';
 
@@ -19,8 +20,9 @@ class UpdateProjectForm extends Component {
   }
 
   handleSubmit(values) {
-    // this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
-    alert(JSON.stringify(values)); 
+    const proj_id = this.props.project.id; 
+    this.props.updateProject(proj_id, values);
+    this.props.closeProjectUpdateForm(); 
   }
 
   render() {
@@ -75,6 +77,8 @@ class UpdateProjectForm extends Component {
             </div>
           </Col>
         </Row>
+        <Button type="submit">Submit</Button>
+
       </LocalForm>
     );
   }

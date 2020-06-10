@@ -14,6 +14,10 @@ export const Projects = (state = {
 
     case ActionTypes.PROJECTS_FAILED:
       return {...state, isLoading: false, errMess: action.payload, projects: []};
+    
+    case ActionTypes.UPDATE_PROJECT:
+      // TODO: Update the store. Probably will normalize the data
+      return state; 
 
     default:
       return state;

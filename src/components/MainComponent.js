@@ -16,7 +16,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => ({
   fetchProjects: () => {dispatch(fetchProjects())}, 
   fetchPhases: () => {dispatch(fetchPhases())}, 
-  updateProject: (id, name, description, phases, company, complete, status) => {dispatch(updateProject(id, name, description, phases, company, complete, status))}
+  updateProject: (proj_id, values) => {dispatch(updateProject(proj_id, values))}
 });
 
 class Main extends Component {

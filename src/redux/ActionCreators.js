@@ -52,14 +52,10 @@ export const fetchPhases = () => (dispatch) => {
 }
 
 // THUNK - Patch to update project details 
-export const updateProject = (id, name, status, complete) => (dispatch) => {
-  const projectUpdates = {
-    name: name, 
-    status: status, 
-    complete: complete, 
-  }
-  updateProject.lastupdated = new Date().toISOString();
-  return fetch(baseUrl + 'projects/', {
+export const updateProject = (proj_id, values) => (dispatch) => {
+  let projectUpdates = values; 
+  // projectUpdates.lastupdated = new Date().toISOString();
+  return fetch(baseUrl + 'projects/' + proj_id, {
     method: 'PATCH',
     body: JSON.stringify(projectUpdates),
     headers: {
@@ -83,7 +79,7 @@ export const updateProject = (id, name, status, complete) => (dispatch) => {
     })
     .then(response => response.json())
     // Updating the redux store
-    .then(response => dispatch(updateProject(response)))
+    .then(response => dispatch(updateProj(response)))
     .catch(error => {
       console.log('Update project ', error.message);
       alert('Your updates could not be posted\nError: ' + error.message);
@@ -104,6 +100,12 @@ export const projectsFailed = (errmess) => ({
 export const addProjects = (projects) => ({
   type: ActionTypes.ADD_PROJECTS,
   payload: projects
+});
+
+//update single project
+export const updateProj = (project) => ({
+  type: ActionTypes.UPDATE_PROJECT,
+  payload: project
 });
 
 // More Actions for phases 

@@ -1,6 +1,7 @@
 export const ADD_PROJECTS = "ADD_PROJECTS"; 
 export const PROJECTS_LOADING = "PROJECTS_LOADING"; 
 export const PROJECTS_FAILED = "PROJECTS_FAILED"; 
+export const UPDATE_PROJECT = "UPDATE_PROJECT"; 
 export const ADD_PHASES = "ADD_PHASES"; 
 export const PHASES_LOADING = "PHASES_LOADING"; 
 export const PHASES_FAILED = "PHASES_FAILED"; 
