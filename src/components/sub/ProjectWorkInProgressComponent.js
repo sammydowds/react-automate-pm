@@ -98,6 +98,7 @@ class ProjectWorkInProgress extends Component {
                 <CardTitle className="pl-2">
                   <h4 lead>
                     Open Projects: Work In Progress
+                    {this.props.projects}
                   </h4>
                 </CardTitle>
                 <CardSubtitle className="pl-2">

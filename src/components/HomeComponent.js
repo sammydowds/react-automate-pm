@@ -35,7 +35,7 @@ render () {
 
     return(
       <Container className="container-spacing" fluid={true}>
-        <Row className="h-100 justify-content-center">
+        {/* <Row className="h-100 justify-content-center">
 
           <Col lg="2">
             <LeftMenu numProjects={this.props.projects.projects.length} />
@@ -63,7 +63,7 @@ render () {
             }
           </Col>
 
-        </Row>
+        </Row> */}
 
 
       </Container>
