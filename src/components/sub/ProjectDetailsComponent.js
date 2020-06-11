@@ -55,10 +55,10 @@ class ProjectDetails extends Component {
               : <div></div>
             } 
           </th>
-          <td className="text-left"><strong>{phase.name}</strong></td>
+          <td className="text-left">{phase.name}</td>
           <td>{phase_start.format("M")}/{phase_start.date()} ({phase_start.format("ddd")})</td>
           <td>{phase_end.format("M")}/{phase_end.date()} ({phase_end.format("ddd")})</td>
-          <td><strong>{phase_end.fromNow()}</strong></td>
+          <td>{phase_end.fromNow()}</td>
           <td>{phase_end.diff(phase_start, "days")}</td>
           <td>
             <div onClick={() => {this.selectedPhase(phase)}}>
@@ -134,13 +134,13 @@ class ProjectDetails extends Component {
                     </span>
                 }
                 &nbsp;
-                <a href='#' className="project-link text-right">
+                {/* <a href='#' className="project-link text-right">
                   <svg class="bi bi-clipboard" width="1em" height="1em" viewBox="0 0 16 16" fill="black" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 00-2 2V14a2 2 0 002 2h10a2 2 0 002-2V3.5a2 2 0 00-2-2h-1v1h1a1 1 0 011 1V14a1 1 0 01-1 1H3a1 1 0 01-1-1V3.5a1 1 0 011-1h1v-1z" clip-rule="evenodd"/>
                     <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 00-.5.5v1a.5.5 0 00.5.5h3a.5.5 0 00.5-.5v-1a.5.5 0 00-.5-.5zm-3-1A1.5 1.5 0 005 1.5v1A1.5 1.5 0 006.5 4h3A1.5 1.5 0 0011 2.5v-1A1.5 1.5 0 009.5 0h-3z" clip-rule="evenodd"/>
                   </svg>
                 </a>
-                &nbsp;
+                &nbsp; */}
                 <span onClick={() => {this.toggleProjectModal()}}>
                   <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
