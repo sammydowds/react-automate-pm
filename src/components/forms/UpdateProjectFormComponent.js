@@ -20,13 +20,8 @@ class UpdateProjectForm extends Component {
   }
 
   handleSubmit(values) {
-    let submitted_vals = Object.assign({}, values); 
     const proj_id = this.props.project.id; 
-    if (values.status) {
-      const status = values.status === "true" ? true : false; 
-      submitted_vals.status = status; 
-    }
-    this.props.updateProject(proj_id, submitted_vals);
+    this.props.updateProject(proj_id, values);
   }
 
   render() {
@@ -56,44 +51,28 @@ class UpdateProjectForm extends Component {
         <Row className="text-center m-2">
           <Col md={5}>Status of Project:</Col>
           <Col>
-              <Label radio>
-                  <Control.radio
+              <div className="field">
+                  <Control.checkbox
                   model=".status"
-                  value="false"
-                  defalutValue={this.props.project.status}
-                  />
-                  <strong>Off Track</strong>
-              </Label>
-            </Col>
-            <Col>
-              <Label radio>
-                  <Control.radio
-                  model=".status" 
-                  value="true"
                   defaultValue={this.props.project.status}
-                      /> {' '}
-                  <strong>On Track</strong>
-              </Label>
+                  />
+                  &nbsp; 
+                  <strong> Project is On Track</strong>
+              </div>
             </Col>
         </Row>
         <Row className="text-center m-2">
           <Col md={4}>Project Active: </Col>
           <Col>
-            <Label radio>
-                <Control.radio
-                model=".complete" 
-                    /> {' '}
-                <strong>Complete</strong>
-            </Label>
-          </Col>
-          <Col>
-            <Label radio>
-                <Control.radio
-                model=".complete" 
-                    /> {' '}
-                <strong>Not Complete</strong>
-            </Label>
-          </Col>
+              <div className="field">
+                  <Control.checkbox
+                  model=".complete"
+                  defaultValue={this.props.project.complete}
+                  />
+                  &nbsp; 
+                  <strong> Project is Complete</strong>
+              </div>
+            </Col>
         </Row>
         <Row className="text-center">
           <Col>

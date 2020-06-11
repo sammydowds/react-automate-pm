@@ -76,24 +76,13 @@ class UpdateProjectForm extends Component {
         <Row className="text-center m-2">
           <Col md={5}>Status of Project:</Col>
           <Col>
-              <Label radio>
-                  <Control.radio
-                  model=".status" 
-                  name="status"
-                  value="true"
-                      /> {' '}
+              <div className="field">
+                  <Control.checkbox
+                  model=".status"
+                  defaultValue={!this.props.phase.status}
+                  />
                   <strong>Off Track</strong>
-              </Label>
-            </Col>
-            <Col>
-              <Label radio>
-                  <Control.radio
-                  model=".status" 
-                  name="status"
-                  value="false"
-                      /> {' '}
-                  <strong>On Track</strong>
-              </Label>
+              </div>
             </Col>
         </Row>
         <Row className="text-center m-2">
