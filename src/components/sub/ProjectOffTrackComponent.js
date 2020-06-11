@@ -42,7 +42,23 @@ function renderProj(projects, handleClicked) {
 function ProjectOff(props) {
   if (props.projectsLoading) {
     return(
-      <Loading />
+      <Row>
+        <Col>
+          <Card className="mt-3 card-border">
+            <CardBody>
+              <CardTitle className="pl-2 normal-text text-center">
+                <h6 lead>
+                  Off Track
+                </h6>
+              </CardTitle>
+              <CardSubtitle>
+                <hr></hr>
+              </CardSubtitle>
+              <CardText className="font-weight-bold text-left pl-2"><Loading /></CardText>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     );
   } else {
     const offtrack_projects = props.projects.filter((project) => project.status == false); 

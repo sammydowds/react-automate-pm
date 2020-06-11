@@ -37,9 +37,9 @@ class Header extends Component {
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav className="mr-auto" navbar>
               </Nav>
-              <NavbarText>
+              {/* <NavbarText>
                 <Button outline>Log In</Button>
-              </NavbarText>
+              </NavbarText> */}
             </Collapse>
         </Navbar>
       </div>

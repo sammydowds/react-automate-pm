@@ -73,38 +73,52 @@ class UpdateProjectForm extends Component {
           </Control.input>
           </Col>
         </Row>
-        <Row className="m-2">
+        <Row className="text-center m-2">
+          <Col md={5}>Status of Project:</Col>
           <Col>
-            <div className="form-check ml-3">
-              <Label check>
-                  <Control.checkbox 
-                  model=".active" 
-                  name="active"
-                  className="form-check-input"
+              <Label radio>
+                  <Control.radio
+                  model=".status" 
+                  name="status"
+                  value="true"
                       /> {' '}
-                  <strong>Phase is in Progress</strong>
-
+                  <strong>Off Track</strong>
               </Label>
-            </div>
+            </Col>
+            <Col>
+              <Label radio>
+                  <Control.radio
+                  model=".status" 
+                  name="status"
+                  value="false"
+                      /> {' '}
+                  <strong>On Track</strong>
+              </Label>
+            </Col>
+        </Row>
+        <Row className="text-center m-2">
+          <Col md={4}>Project Active: </Col>
+          <Col>
+            <Label radio>
+                <Control.radio
+                model=".complete" 
+                    /> {' '}
+                <strong>Complete</strong>
+            </Label>
+          </Col>
+          <Col>
+            <Label radio>
+                <Control.radio
+                model=".complete" 
+                    /> {' '}
+                <strong>Not Complete</strong>
+            </Label>
           </Col>
         </Row>
-        <Row className="m-2">
+        <Row className="text-center">
           <Col>
-            <div className="form-check ml-3">
-              <Label check>
-                  <Control.checkbox 
-                  model=".complete" 
-                  name="complete"
-                  className="form-check-input"
-                      /> {' '}
-                  <strong>Phase is complete</strong>
-
-              </Label>
-            </div>
+            <Button type="submit">Submit</Button>
           </Col>
-        </Row>
-        <Row>
-          <Button type="submit">Submit</Button>
         </Row>
       </LocalForm>
     );

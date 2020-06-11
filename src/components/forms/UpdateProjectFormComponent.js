@@ -20,8 +20,13 @@ class UpdateProjectForm extends Component {
   }
 
   handleSubmit(values) {
+    let submitted_vals = Object.assign({}, values); 
     const proj_id = this.props.project.id; 
-    this.props.updateProject(proj_id, values);
+    if (values.status) {
+      const status = values.status === "true" ? true : false; 
+      submitted_vals.status = status; 
+    }
+    this.props.updateProject(proj_id, submitted_vals);
   }
 
   render() {
@@ -48,36 +53,53 @@ class UpdateProjectForm extends Component {
               />
           </Col>
         </Row>
-        <Row className="ml-4">
-            <Col>
-              <div className="form-check">
-                  <Label check>
-                      <Control.checkbox 
-                      model=".status" 
-                      name="agree"
-                      className="form-check-input"
-                          /> {' '}
-                      <strong>Project is Off Track</strong>
-                  </Label>
-              </div>
-          </Col>
-        </Row>
-        <Row className="ml-4">
+        <Row className="text-center m-2">
+          <Col md={5}>Status of Project:</Col>
           <Col>
-            <div className="form-check">
-                <Label check>
-                    <Control.checkbox 
-                    model=".complete" 
-                    name="agree"
-                    className="form-check-input"
-                        /> {' '}
-                    <strong>Project is Complete</strong>
-                </Label>
-            </div>
+              <Label radio>
+                  <Control.radio
+                  model=".status"
+                  value="false"
+                  defalutValue={this.props.project.status}
+                  />
+                  <strong>Off Track</strong>
+              </Label>
+            </Col>
+            <Col>
+              <Label radio>
+                  <Control.radio
+                  model=".status" 
+                  value="true"
+                  defaultValue={this.props.project.status}
+                      /> {' '}
+                  <strong>On Track</strong>
+              </Label>
+            </Col>
+        </Row>
+        <Row className="text-center m-2">
+          <Col md={4}>Project Active: </Col>
+          <Col>
+            <Label radio>
+                <Control.radio
+                model=".complete" 
+                    /> {' '}
+                <strong>Complete</strong>
+            </Label>
+          </Col>
+          <Col>
+            <Label radio>
+                <Control.radio
+                model=".complete" 
+                    /> {' '}
+                <strong>Not Complete</strong>
+            </Label>
           </Col>
         </Row>
-        <Button type="submit">Submit</Button>
-
+        <Row className="text-center">
+          <Col>
+            <Button type="submit">Submit</Button>
+          </Col>
+        </Row>
       </LocalForm>
     );
   }

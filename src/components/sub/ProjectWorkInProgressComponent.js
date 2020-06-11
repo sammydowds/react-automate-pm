@@ -81,7 +81,23 @@ function renderProj(projects, phases, handleClicked) {
 function ProjectWorkInProgress(props) {
   if (props.projectsLoading) {
     return(
-      <Loading />
+      <Row>
+        <Col>
+          <Card className="mt-3 text-center card-border">
+            <CardBody className="text-left">
+              <CardTitle className="pl-2">
+                <h4 lead>
+                  Open Projects: Work In Progress
+                </h4>
+              </CardTitle>
+              <CardSubtitle className="pl-2">
+                <hr></hr>
+              </CardSubtitle>
+              <CardText className="font-weight-bold"><Loading /></CardText>
+            </CardBody>
+          </Card>
+        </Col>
+      </Row>
     );
   } else {
     return(
@@ -97,7 +113,7 @@ function ProjectWorkInProgress(props) {
               <CardSubtitle className="pl-2">
                 <hr></hr>
               </CardSubtitle>
-              <CardText className="pt-2 pl-4 font-weight-bold">{renderProj(props.projects, props.phases, props.handleProjectClicked)}</CardText>
+              <CardText className="pt-1 pl-4 font-weight-bold">{renderProj(props.projects, props.phases, props.handleProjectClicked)}</CardText>
             </CardBody>
           </Card>
         </Col>

@@ -11,8 +11,7 @@ import {
   Table,
   Modal, 
   ModalHeader, 
-  ModalBody,
-  ModalFooter
+  ModalBody
  } from 'reactstrap';
 import { Loading } from './LoadingComponent';
 import UpdateProjectForm from '../forms/UpdateProjectFormComponent'; 
@@ -81,8 +80,6 @@ class ProjectDetails extends Component {
           <ModalBody>
             <UpdatePhaseForm phase={phase}/>
           </ModalBody>
-          <ModalFooter>
-          </ModalFooter>
         </Modal>
       ); 
     } else {
@@ -98,8 +95,6 @@ class ProjectDetails extends Component {
         <ModalBody>
           <UpdateProjectForm project={this.props.project} updateProject={this.props.updateProject}/>
         </ModalBody>
-        <ModalFooter>
-        </ModalFooter>
       </Modal>
     ); 
   }

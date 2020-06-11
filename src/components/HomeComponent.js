@@ -38,14 +38,14 @@ render () {
 
           <Col lg="2">
             <LeftMenu numProjects={this.props.projects.length} />
-            <ProjectOff projects={this.props.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
-            <ProjectRecent projects={this.props.projects} projectsLoading={this.props.projects.isLoading} handleProjectClicked={this.handleProjectClicked} />
+            <ProjectOff projects={this.props.projects} projectsLoading={this.props.projectsLoading} handleProjectClicked={this.handleProjectClicked} />
+            <ProjectRecent projects={this.props.projects} projectsLoading={this.props.projectsLoading} handleProjectClicked={this.handleProjectClicked} />
           </Col>
 
           <Col lg="4">
             <ProjectWorkInProgress 
               projects={this.props.projects} 
-              projectsLoading={this.props.projects.isLoading} 
+              projectsLoading={this.props.projectsLoading} 
               handleProjectClicked={this.handleProjectClicked}
               phases={this.props.phases}
              />
