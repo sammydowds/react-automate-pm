@@ -22,7 +22,6 @@ class UpdateProjectForm extends Component {
   handleSubmit(values) {
     const proj_id = this.props.project.id; 
     this.props.updateProject(proj_id, values);
-    this.props.closeProjectUpdateForm(); 
   }
 
   render() {

@@ -32,7 +32,6 @@ constructor(props) {
 
 
 render () {
-  console.log(this.props); 
     return(
       <Container className="container-spacing" fluid={true}>
         <Row className="h-100 justify-content-center">

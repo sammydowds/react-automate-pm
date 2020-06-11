@@ -1,4 +1,4 @@
-import React, { useState, Component } from 'react';
+import React, { Component } from 'react';
 import moment from 'moment'; 
 import {  
   Badge, 
@@ -24,29 +24,24 @@ class ProjectDetails extends Component {
     this.state = {
       projectModal: false, 
       phaseModal: false, 
-      phaseSelected: null,
-      projectSelected: this.props.project 
+      phaseSelected: null
     }
-    this.openPhaseModal = this.openPhaseModal.bind(this);
-    this.closePhaseModal = this.closePhaseModal.bind(this);
-    this.openProjectModal = this.openProjectModal.bind(this);
-    this.closeProjectModal = this.closeProjectModal.bind(this);    
+    this.togglePhaseModal = this.togglePhaseModal.bind(this);
+    this.toggleProjectModal = this.toggleProjectModal.bind(this);
+    this.selectedPhase = this.selectedPhase.bind(this); 
   } 
 
-  closePhaseModal() {
-    this.setState({phaseModal: false, phaseSelected: null});
+  togglePhaseModal() {
+    this.setState({phaseModal: !this.state.phaseModal})
   }
 
-  openPhaseModal(phase) {
-    this.setState({phaseModal: true, phaseSelected: phase}); 
+  toggleProjectModal() {
+    this.setState({projectModal: !this.state.projectModal})
   }
 
-  closeProjectModal() {
-    this.setState({projectModal: false});
-  }
-
-  openProjectModal() {
-    this.setState({projectModal: true}); 
+  selectedPhase(phase) {
+    this.setState({phaseSelected: phase}); 
+    this.togglePhaseModal(); 
   }
 
   renderPhase(phase) {
@@ -66,7 +61,7 @@ class ProjectDetails extends Component {
           <td><strong>{phase_end.fromNow()}</strong></td>
           <td>{phase_end.diff(phase_start, "days")}</td>
           <td>
-            <div onClick={() => {this.openPhaseModal(phase)}}>
+            <div onClick={() => {this.selectedPhase(phase)}}>
               <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
                 <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
@@ -78,38 +73,32 @@ class ProjectDetails extends Component {
   }
 
   renderPhaseForm() {
-    if (this.state.phaseModal) {
+    if (this.state.phaseSelected) {
       const phase = this.state.phaseSelected; 
       return(
-        <Modal isOpen={this.state.phaseModal} toggle={this.closePhaseModal}>
+        <Modal isOpen={this.state.phaseModal} toggle={this.togglePhaseModal}>
           <ModalHeader toggle={this.closePhaseModal} className="off-badge">Update Phase: {phase.name}</ModalHeader>
           <ModalBody>
             <UpdatePhaseForm phase={phase}/>
           </ModalBody>
           <ModalFooter>
-            <Button color="secondary" onClick={this.closePhaseModal}>Cancel</Button>
-            <Button color="primary" onClick={this.closePhaseModal}>Submit Changes</Button>{' '}
           </ModalFooter>
         </Modal>
       ); 
     } else {
-      return (
-        <div></div>
-      ); 
+      return(<div></div>); 
     }
+  
   }; 
 
   renderProjectForm() {
-    const project = this.state.projectSelected; 
     return(
-      <Modal isOpen={this.state.projectModal} toggle={this.closeProjectModal}>
-        <ModalHeader toggle={this.closeProjectModal} className="off-badge">Update {project.name}</ModalHeader>
+      <Modal isOpen={this.state.projectModal} toggle={this.toggleProjectModal}>
+        <ModalHeader toggle={this.closeProjectModal} className="off-badge">Update {this.props.project.name}</ModalHeader>
         <ModalBody>
-          <UpdateProjectForm project={project} updateProject={this.props.updateProject} closeProjectUpdateForm={this.closeProjectModal}/>
+          <UpdateProjectForm project={this.props.project} updateProject={this.props.updateProject}/>
         </ModalBody>
         <ModalFooter>
-          <Button color="secondary" onClick={this.closeProjectModal}>Cancel</Button>
-          <Button color="primary" onClick={this.closeProjectModal}>Submit Changes</Button>{' '}
         </ModalFooter>
       </Modal>
     ); 
@@ -121,8 +110,6 @@ class ProjectDetails extends Component {
         <Loading />
       );
     } else {
-      console.log('PROPS');
-      console.log(this.props); 
       const proj_phases = this.props.phases.map((phase)=> {
         return(
           <tr>
@@ -154,7 +141,7 @@ class ProjectDetails extends Component {
                   </svg>
                 </a>
                 &nbsp;
-                <span onClick={() => {this.openProjectModal()}}>
+                <span onClick={() => {this.toggleProjectModal()}}>
                   <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
                     <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
