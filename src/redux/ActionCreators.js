@@ -65,8 +65,9 @@ export const fetchPhases = () => (dispatch) => {
 
 // THUNK - Patch to update project details 
 export const updateProject = (proj_id, values) => (dispatch) => {
-  let projectUpdates = values; 
-  // projectUpdates.lastupdated = new Date().toISOString();
+  //save to new object, because values is not extensible for adding timestamp  
+  let projectUpdates = Object.assign({}, values); 
+  projectUpdates.lastupdated = new Date().toISOString();
   return fetch(baseUrl + 'projects/' + proj_id, {
     method: 'PATCH',
     body: JSON.stringify(projectUpdates),
