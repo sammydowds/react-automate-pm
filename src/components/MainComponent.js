@@ -3,8 +3,7 @@ import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchProjects, fetchPhases } from '../redux/ActionCreators';
-import { updateProject } from '../redux/ActionCreators'; 
+import { fetchProjects, fetchPhases, updateProject, updatePhase } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -16,7 +15,9 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch) => ({
   fetchProjects: () => {dispatch(fetchProjects())}, 
   fetchPhases: () => {dispatch(fetchPhases())}, 
-  updateProject: (proj_id, values) => {dispatch(updateProject(proj_id, values))}
+  updateProject: (proj_id, values) => {dispatch(updateProject(proj_id, values))}, 
+  updatePhase: (phase_id, values) => {dispatch(updatePhase(phase_id, values))} 
+
 });
 
 class Main extends Component {
@@ -41,6 +42,7 @@ class Main extends Component {
             updateProject={this.props.updateProject}
             phases={Object.values(this.props.phases.phases)}
             phasesLoading={this.props.phases.isLoading}
+            updatePhase={this.props.updatePhase}
             />
         ); 
       }

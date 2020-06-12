@@ -53,7 +53,7 @@ function ProjectRecent (props) {
             <CardBody>
               <CardTitle className="pl-2 normal-text text-center">
                 <h6 lead>
-                  Recent Change 
+                  Recent Updates 
                 </h6>
               </CardTitle>
               <CardSubtitle>
@@ -74,7 +74,7 @@ function ProjectRecent (props) {
             <CardBody>
               <CardTitle className="pl-2 normal-text text-center">
                 <h6 lead>
-                  Recent Change <Badge className="off-badge">{recent_projects.length}</Badge>
+                  Recent Updates <Badge className="off-badge">{recent_projects.length}</Badge>
                 </h6>
               </CardTitle>
               <CardSubtitle>

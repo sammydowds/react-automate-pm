@@ -57,7 +57,9 @@ render () {
                   project={this.state.projectSelected} 
                   phases={this.props.phases.filter((phase) => phase.projectId === this.state.projectSelected.id)}
                   handleCloseDetails={this.handleCloseDetails} 
-                  updateProject={this.props.updateProject}></ProjectDetails>
+                  updateProject={this.props.updateProject}
+                  updatePhase={this.props.updatePhase}>
+                </ProjectDetails>
               : <div></div>
             }
           </Col>

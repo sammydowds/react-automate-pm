@@ -5,3 +5,4 @@ export const UPDATE_PROJECT = "UPDATE_PROJECT";
 export const ADD_PHASES = "ADD_PHASES"; 
 export const PHASES_LOADING = "PHASES_LOADING"; 
 export const PHASES_FAILED = "PHASES_FAILED"; 
+export const UPDATE_PHASE = "UPDATE_PHASE"; 

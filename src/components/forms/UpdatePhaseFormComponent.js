@@ -18,8 +18,8 @@ class UpdateProjectForm extends Component {
   }
 
   handleSubmit(values) {
-    alert(JSON.stringify(values)); 
-    alert('Phase ID: ' + this.props.phase.id)
+    const phase_id = this.props.phase.id; 
+    this.props.updatePhase(phase_id, values); 
     // this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
@@ -75,34 +75,29 @@ class UpdateProjectForm extends Component {
         </Row>
         <Row className="text-center m-2">
           <Col md={5}>Status of Project:</Col>
-          <Col>
+          <Col className="text-left">
               <div className="field">
                   <Control.checkbox
-                  model=".status"
-                  defaultValue={!this.props.phase.status}
+                  model=".active"
+                  defaultValue={this.props.phase.active}
                   />
-                  <strong>Off Track</strong>
+                  &nbsp; 
+                  <strong> Work in Progress</strong>
               </div>
             </Col>
         </Row>
         <Row className="text-center m-2">
-          <Col md={4}>Project Active: </Col>
-          <Col>
-            <Label radio>
-                <Control.radio
-                model=".complete" 
-                    /> {' '}
-                <strong>Complete</strong>
-            </Label>
-          </Col>
-          <Col>
-            <Label radio>
-                <Control.radio
-                model=".complete" 
-                    /> {' '}
-                <strong>Not Complete</strong>
-            </Label>
-          </Col>
+          <Col md={5}>Project Active: </Col>
+          <Col className="text-left">
+              <div className="field">
+                  <Control.checkbox
+                  model=".complete"
+                  defaultValue={this.props.phase.complete}
+                  />
+                  &nbsp; 
+                  <strong> Phase is Complete</strong>
+              </div>
+            </Col>
         </Row>
         <Row className="text-center">
           <Col>

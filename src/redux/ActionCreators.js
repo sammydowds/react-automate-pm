@@ -95,7 +95,44 @@ export const updateProject = (proj_id, values) => (dispatch) => {
     .then(response => dispatch(updateProj(response)))
     .catch(error => {
       console.log('Update project ', error.message);
-      alert('Your updates could not be posted\nError: ' + error.message);
+      alert('Your phase updates could not be posted\nError: ' + error.message);
+    });
+
+}
+
+// THUNK - Patch to update project details 
+export const updatePhase = (phase_id, values) => (dispatch) => {
+  //save to new object, because values is not extensible for adding timestamp  
+  let phaseUpdates = Object.assign({}, values); 
+  phaseUpdates.lastupdated = new Date().toISOString();
+  return fetch(baseUrl + 'phases/' + phase_id, {
+    method: 'PATCH',
+    body: JSON.stringify(phaseUpdates),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
+    })
+    .then(response => response.json())
+    // Updating the redux store
+    .then(response => dispatch(updatePhaseDetails(response)))
+    .catch(error => {
+      console.log('Update phase ', error.message);
+      alert('Your phase updates could not be posted\nError: ' + error.message);
     });
 
 }
@@ -119,6 +156,12 @@ export const addProjects = (projects) => ({
 export const updateProj = (project) => ({
   type: ActionTypes.UPDATE_PROJECT,
   payload: project
+});
+
+//update single phase
+export const updatePhaseDetails = (phase) => ({
+  type: ActionTypes.UPDATE_PHASE,
+  payload: phase
 });
 
 // More Actions for phases 
