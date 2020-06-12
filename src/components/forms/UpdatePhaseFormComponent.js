@@ -5,9 +5,9 @@ import {
   Label, 
   Button
  } from 'reactstrap';
- import { Control, LocalForm, Errors } from 'react-redux-form';
+ import { Control, LocalForm } from 'react-redux-form';
 
-class UpdateProjectForm extends Component {
+class UpdatePhaseForm extends Component {
 
   constructor(props) {
     super(props);
@@ -23,11 +23,13 @@ class UpdateProjectForm extends Component {
   }
 
   handleChange(values) {
+    console.log("CHANGE"); 
     console.log(values); 
     // this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
   handleUpdate(values) {
+    console.log("UDPATE"); 
     console.log(values); 
     // this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
   }
@@ -108,4 +110,4 @@ class UpdateProjectForm extends Component {
   }
 }
 
-export default UpdateProjectForm; 
+export default UpdatePhaseForm; 

@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { 
   Container, 
   Row, 
@@ -12,53 +12,46 @@ import LeftMenu from './sub/LeftMenuComponent';
 
 
 
-class HomeComponent extends Component {
+function renderHome(props) {
+  return(
+    <Container className="container-spacing" fluid={true}>
+      <Row className="h-100 justify-content-center">
 
-constructor(props) {
-  super(props);
+        <Col lg="2">
+          <LeftMenu numProjects={props.projects.length} />
+          <ProjectOff projects={props.projects} projectsLoading={props.projectsLoading} handleProjectClicked={props.openDetails} />
+          <ProjectRecent projects={props.projects} projectsLoading={props.projectsLoading} handleProjectClicked={props.openDetails} />
+        </Col>
+
+        <Col lg="4">
+          <ProjectWorkInProgress 
+            projects={props.projects} 
+            projectsLoading={props.projectsLoading} 
+            handleProjectClicked={props.openDetails}
+            phases={props.phases}
+            />
+        </Col>
+
+        <Col lg="6">
+          {props.projectDetails.open
+            ? <ProjectDetails 
+                project={props.projects[props.projectDetails.projectId]} 
+                phases={props.phases.filter((phase) => phase.projectId === props.projectDetails.projectId)}
+                handleCloseDetails={props.closeDetails} 
+                updateProject={props.updateProject}
+                updatePhase={props.updatePhase}>
+              </ProjectDetails>
+            : <div></div>
+          }
+        </Col>
+
+      </Row>
+
+
+    </Container>
+    
+  );
 }
 
-  render () {
-    return(
-      <Container className="container-spacing" fluid={true}>
-        <Row className="h-100 justify-content-center">
 
-          <Col lg="2">
-            <LeftMenu numProjects={this.props.projects.length} />
-            <ProjectOff projects={this.props.projects} projectsLoading={this.props.projectsLoading} handleProjectClicked={this.props.openDetails} />
-            <ProjectRecent projects={this.props.projects} projectsLoading={this.props.projectsLoading} handleProjectClicked={this.props.openDetails} />
-          </Col>
-
-          <Col lg="4">
-            <ProjectWorkInProgress 
-              projects={this.props.projects} 
-              projectsLoading={this.props.projectsLoading} 
-              handleProjectClicked={this.props.openDetails}
-              phases={this.props.phases}
-             />
-          </Col>
-
-          <Col lg="6">
-            {this.props.projectDetails.open
-              ? <ProjectDetails 
-                  project={this.props.projects[this.props.projectDetails.projectId]} 
-                  phases={this.props.phases.filter((phase) => phase.projectId === this.props.projectDetails.projectId)}
-                  handleCloseDetails={this.props.closeDetails} 
-                  updateProject={this.props.updateProject}
-                  updatePhase={this.props.updatePhase}>
-                </ProjectDetails>
-              : <div></div>
-            }
-          </Col>
-
-        </Row>
-
-
-      </Container>
-      
-    );
-  }
-
-}
-
-export default HomeComponent; 
+export default renderHome; 

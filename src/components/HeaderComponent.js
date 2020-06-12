@@ -5,10 +5,7 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavbarText,
-  Button
 } from 'reactstrap';
-import logo from '../shared/default.svg'; 
 
 class Header extends Component {
   constructor(props) {
@@ -37,9 +34,6 @@ class Header extends Component {
             <Collapse isOpen={this.state.isNavOpen} navbar>
               <Nav className="mr-auto" navbar>
               </Nav>
-              {/* <NavbarText>
-                <Button outline>Log In</Button>
-              </NavbarText> */}
             </Collapse>
         </Navbar>
       </div>
