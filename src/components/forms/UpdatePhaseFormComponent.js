@@ -3,7 +3,6 @@ import {
   Row,
   Col,  
   Label, 
-  Table, 
   Button
  } from 'reactstrap';
  import { Control, LocalForm, Errors } from 'react-redux-form';

@@ -16,46 +16,33 @@ class HomeComponent extends Component {
 
 constructor(props) {
   super(props);
-  this.state = {
-    projectClicked: false,
-    projectSelected: null,
-    }
-  }
+}
 
-  handleProjectClicked = projectFromDashboard => {
-    this.setState({projectClicked: true, projectSelected: projectFromDashboard}); 
-  }
-
-  handleCloseDetails = () => {
-    this.setState({projectClicked: false, projectSelected: null}); 
-  }
-
-
-render () {
+  render () {
     return(
       <Container className="container-spacing" fluid={true}>
         <Row className="h-100 justify-content-center">
 
           <Col lg="2">
             <LeftMenu numProjects={this.props.projects.length} />
-            <ProjectOff projects={this.props.projects} projectsLoading={this.props.projectsLoading} handleProjectClicked={this.handleProjectClicked} />
-            <ProjectRecent projects={this.props.projects} projectsLoading={this.props.projectsLoading} handleProjectClicked={this.handleProjectClicked} />
+            <ProjectOff projects={this.props.projects} projectsLoading={this.props.projectsLoading} handleProjectClicked={this.props.openDetails} />
+            <ProjectRecent projects={this.props.projects} projectsLoading={this.props.projectsLoading} handleProjectClicked={this.props.openDetails} />
           </Col>
 
           <Col lg="4">
             <ProjectWorkInProgress 
               projects={this.props.projects} 
               projectsLoading={this.props.projectsLoading} 
-              handleProjectClicked={this.handleProjectClicked}
+              handleProjectClicked={this.props.openDetails}
               phases={this.props.phases}
              />
           </Col>
 
           <Col lg="6">
-            {this.state.projectClicked
+            {this.props.projectDetails.open
               ? <ProjectDetails 
-                  project={this.state.projectSelected} 
-                  phases={this.props.phases.filter((phase) => phase.projectId === this.state.projectSelected.id)}
+                  project={this.props.projects[this.props.projectDetails.projectId]} 
+                  phases={this.props.phases.filter((phase) => phase.projectId === this.props.projectDetails.projectId)}
                   handleCloseDetails={this.handleCloseDetails} 
                   updateProject={this.props.updateProject}
                   updatePhase={this.props.updatePhase}>

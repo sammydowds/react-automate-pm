@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import {  
   Col, 
   Badge, 
@@ -14,7 +14,6 @@ import { Loading } from './LoadingComponent';
 
 function renderProj(projects, handleClicked) {
   const projects_rend = projects.map((project) => {
-    const on_schedule = project.status; 
     return(
       <span>
         <p style={{fontweight: 'superbold', fontSize: "12px"}}>

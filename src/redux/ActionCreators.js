@@ -178,3 +178,37 @@ export const addPhases = (phases) => ({
   type: ActionTypes.ADD_PHASES,
   payload: phases
 });
+
+//UI actions 
+export const initializeUserInterface = () => (dispatch) => {
+  const details_project = {
+    open: false, 
+    projectSelected: null
+  }; 
+  dispatch({
+    type: ActionTypes.INITIALIZE_UI, 
+    payload: details_project
+  }); 
+}
+
+export const openDetails = (projectId) => (dispatch) => {
+  const details_project = {
+    open: true, 
+    projectId: projectId
+  }; 
+  dispatch({
+    type: ActionTypes.DETAILS_OPEN, 
+    payload: details_project
+  }); 
+}
+
+export const closeDetails = () => (dispatch) => {
+  const details_project = {
+    open: false, 
+    projectSelected: null
+  }; 
+  dispatch({
+    type: ActionTypes.DETAILS_CLOSE, 
+    payload: details_project
+  }); 
+}
