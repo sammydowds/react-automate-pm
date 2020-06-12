@@ -43,7 +43,7 @@ constructor(props) {
               ? <ProjectDetails 
                   project={this.props.projects[this.props.projectDetails.projectId]} 
                   phases={this.props.phases.filter((phase) => phase.projectId === this.props.projectDetails.projectId)}
-                  handleCloseDetails={this.handleCloseDetails} 
+                  handleCloseDetails={this.props.closeDetails} 
                   updateProject={this.props.updateProject}
                   updatePhase={this.props.updatePhase}>
                 </ProjectDetails>
