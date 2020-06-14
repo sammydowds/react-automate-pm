@@ -17,7 +17,14 @@ function renderHome(props) {
       <Row>
         <Col>
           <Alert color="danger" className="text-center mt-3" fade={false}>
-              <h4>Black Lives Matter: <a href="https://blacklivesmatter.com/">Learn More Here</a></h4>
+              <h4 className="alert-heading">Black Lives Matter.</h4>
+              <p>
+                Here at Projectile we believe in accomplishing big things - but only when others arent oppressed. 
+                Help the cause. Help create a new history which does not repeat itself.
+              </p>
+              <p>
+                <h5><a href="https://blacklivesmatter.com/">Learn More, and Take Action.</a></h5>
+              </p>
           </Alert>
         </Col>
       </Row>

@@ -69,7 +69,7 @@ function ProjectRecent (props) {
     return(
       <Row>
         <Col>
-          <Card className="mt-3 card-border">
+          <Card className="mt-1 card-border">
             <CardBody>
               <CardTitle className="pl-2 normal-text text-center">
                 <h6 lead>
