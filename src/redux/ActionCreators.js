@@ -224,46 +224,86 @@ export const closeDetails = () => (dispatch) => {
   }); 
 }
 
-export const openPhaseModal = (phaseId) => (dispatch) => {
+export const openPhaseUpdateModal = (phaseId) => (dispatch) => {
   const details_phase = {
     open: true, 
     phaseId: phaseId
   }
   dispatch({
-    type: ActionTypes.PHASE_MODAL_OPEN, 
+    type: ActionTypes.PHASE_UPDATE_MODAL_OPEN, 
     payload: details_phase
   }); 
 }
 
-export const closePhaseModal = () => (dispatch) => {
+export const closePhaseUpdateModal = () => (dispatch) => {
   const details_phase = {
     open: false, 
     phaseId: null
   }
   dispatch({
-    type: ActionTypes.PHASE_MODAL_CLOSE, 
+    type: ActionTypes.PHASE_UPDATE_MODAL_CLOSE, 
     payload: details_phase
   }); 
 }
 
-export const openProjectModal = (projectId) => (dispatch) => {
+export const openProjectUpdateModal = (projectId) => (dispatch) => {
   const details_phase = {
     open: true, 
     projectId: projectId
   } 
   dispatch({
-    type: ActionTypes.PROJECT_MODAL_OPEN, 
+    type: ActionTypes.PROJECT_UPDATE_MODAL_OPEN, 
     payload: details_phase
   }); 
 }
 
-export const closeProjectModal = () => (dispatch) => {
+export const closeProjectUpdateModal = () => (dispatch) => {
   const details_phase = {
     open: false, 
     projectId: null
   }
   dispatch({
-    type: ActionTypes.PROJECT_MODAL_CLOSE, 
+    type: ActionTypes.PROJECT_UPDATE_MODAL_CLOSE, 
+    payload: details_phase
+  }); 
+}
+
+export const openProjectCreateModal = () => (dispatch) => {
+  const details_phase = {
+    open: true 
+  } 
+  dispatch({
+    type: ActionTypes.PROJECT_CREATE_MODAL_OPEN, 
+    payload: details_phase
+  }); 
+}
+
+export const closeProjectCreateModal = () => (dispatch) => {
+  const details_phase = {
+    open: false
+  }
+  dispatch({
+    type: ActionTypes.PROJECT_CREATE_MODAL_CLOSE, 
+    payload: details_phase
+  }); 
+}
+
+export const openPhaseCreateModal = () => (dispatch) => {
+  const details_phase = {
+    open: true 
+  } 
+  dispatch({
+    type: ActionTypes.PHASE_CREATE_MODAL_OPEN, 
+    payload: details_phase
+  }); 
+}
+
+export const closePhaseCreateModal = () => (dispatch) => {
+  const details_phase = {
+    open: false
+  }
+  dispatch({
+    type: ActionTypes.PHASE_CREATE_MODAL_CLOSE, 
     payload: details_phase
   }); 
 }

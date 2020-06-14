@@ -30,7 +30,12 @@ function renderHome(props) {
       </Row>
       <Row className="h-100 justify-content-center">
         <Col lg="2">
-          <LeftMenu numProjects={props.projects.length} />
+          <LeftMenu 
+            numProjects={props.projects.length} 
+            projectCreateModal={props.projectCreateModal} 
+            openProjectCreateModal={props.openProjectCreateModal}
+            closeProjectCreateModal={props.closeProjectCreateModal}
+          />
           <ProjectOff 
             projects={props.projects} 
             projectsLoading={props.projectsLoading} 
@@ -60,12 +65,15 @@ function renderHome(props) {
                 handleCloseDetails={props.closeDetails} 
                 updateProject={props.updateProject}
                 updatePhase={props.updatePhase}
-                phaseModal={props.phaseModal}
-                projectModal={props.projectModal}
-                openPhaseModal={props.openPhaseModal}
-                closePhaseModal={props.closePhaseModal}
-                openProjectModal={props.openProjectModal}
-                closeProjectModal={props.closeProjectModal}
+                phaseUpdateModal={props.phaseUpdateModal}
+                phaseCreateModal={props.phaseCreateModal}
+                projectUpdateModal={props.projectUpdateModal}
+                openPhaseUpdateModal={props.openPhaseUpdateModal}
+                closePhaseUpdateModal={props.closePhaseUpdateModal}
+                openProjectUpdateModal={props.openProjectUpdateModal}
+                closeProjectUpdateModal={props.closeProjectUpdateModal}
+                openPhaseCreateModal={props.openPhaseCreateModal}
+                closePhaseCreateModal={props.closePhaseCreateModal}
               />
             : <div></div>
           }

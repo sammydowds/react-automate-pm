@@ -10,13 +10,19 @@ const default_userinterface = {
     open: false, 
     projectId: null
   }, 
-  phaseModal: {
+  phaseUpdateModal: {
     open: false, 
     phaseId: null
   },
-  projectModal: {
+  projectUpdateModal: {
     open: false, 
     projectId: null
+  }, 
+  projectCreateModal: {
+    open: false 
+  }, 
+  phaseCreateModal: {
+    open: false 
   }
 }
 

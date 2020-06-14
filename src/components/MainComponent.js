@@ -10,10 +10,14 @@ import {
   updatePhase, 
   closeDetails, 
   openDetails, 
-  closePhaseModal, 
-  openPhaseModal, 
-  closeProjectModal,
-  openProjectModal
+  closePhaseUpdateModal, 
+  openPhaseUpdateModal, 
+  closeProjectUpdateModal,
+  openProjectUpdateModal, 
+  openProjectCreateModal, 
+  closeProjectCreateModal,
+  openPhaseCreateModal,
+  closePhaseCreateModal
 } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -31,10 +35,14 @@ const mapDispatchToProps = (dispatch) => ({
   updatePhase: (phase_id, values) => {dispatch(updatePhase(phase_id, values))}, 
   closeDetails: () => {dispatch(closeDetails())}, 
   openDetails: (projectId) => {dispatch(openDetails(projectId))},
-  openPhaseModal: (phaseId) => {dispatch(openPhaseModal(phaseId))}, 
-  closePhaseModal: () => {dispatch(closePhaseModal())},
-  openProjectModal: (projectId) => {dispatch(openProjectModal(projectId))}, 
-  closeProjectModal: () => {dispatch(closeProjectModal())} 
+  openPhaseUpdateModal: (phaseId) => {dispatch(openPhaseUpdateModal(phaseId))}, 
+  closePhaseUpdateModal: () => {dispatch(closePhaseUpdateModal())},
+  openProjectUpdateModal: (projectId) => {dispatch(openProjectUpdateModal(projectId))}, 
+  closeProjectUpdateModal: () => {dispatch(closeProjectUpdateModal())}, 
+  openProjectCreateModal: () => {dispatch(openProjectCreateModal())}, 
+  closeProjectCreateModal: () => {dispatch(closeProjectCreateModal())}, 
+  openPhaseCreateModal: () => {dispatch(openPhaseCreateModal())}, 
+  closePhaseCreateModal: () => {dispatch(closePhaseCreateModal())}
 });
 
 class Main extends Component {
@@ -60,14 +68,20 @@ class Main extends Component {
             phasesLoading={this.props.phases.isLoading}
             updatePhase={this.props.updatePhase}
             projectDetails={this.props.userinterface.projectDetails}
-            phaseModal={this.props.userinterface.phaseModal}
-            projectModal={this.props.userinterface.projectModal}
+            phaseUpdateModal={this.props.userinterface.phaseUpdateModal}
+            projectUpdateModal={this.props.userinterface.projectUpdateModal}
+            phaseCreateModal={this.props.userinterface.phaseCreateModal}
+            projectCreateModal={this.props.userinterface.projectCreateModal}
             openDetails={this.props.openDetails}
             closeDetails={this.props.closeDetails}
-            openPhaseModal={this.props.openPhaseModal}
-            closePhaseModal={this.props.closePhaseModal}
-            openProjectModal={this.props.openProjectModal}
-            closeProjectModal={this.props.closeProjectModal}
+            openPhaseUpdateModal={this.props.openPhaseUpdateModal}
+            closePhaseUpdateModal={this.props.closePhaseUpdateModal}
+            openProjectUpdateModal={this.props.openProjectUpdateModal}
+            closeProjectUpdateModal={this.props.closeProjectUpdateModal}
+            openProjectCreateModal={this.props.openProjectCreateModal}
+            closeProjectCreateModal={this.props.closeProjectCreateModal}
+            openPhaseCreateModal={this.props.openPhaseCreateModal}
+            closePhaseCreateModal={this.props.closePhaseCreateModal}
             />
         ); 
       }
