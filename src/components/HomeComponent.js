@@ -2,7 +2,8 @@ import React from 'react';
 import { 
   Container, 
   Row, 
-  Col
+  Col, 
+  Alert
  } from 'reactstrap';
 import ProjectWorkInProgress from './sub/ProjectWorkInProgressComponent'; 
 import ProjectOff from './sub/ProjectOffTrackComponent'; 
@@ -13,6 +14,13 @@ import LeftMenu from './sub/LeftMenuComponent';
 function renderHome(props) {
   return(
     <Container className="container-spacing" fluid={true}>
+      <Row>
+        <Col>
+          <Alert color="dark" className="lead text-center mt-3">
+              <h4>Black Lives Matter: <a href="https://blacklivesmatter.com/">Learn More Here</a></h4>
+          </Alert>
+        </Col>
+      </Row>
       <Row className="h-100 justify-content-center">
         <Col lg="2">
           <LeftMenu numProjects={props.projects.length} />

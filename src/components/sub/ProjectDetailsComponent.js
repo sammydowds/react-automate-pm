@@ -95,14 +95,14 @@ class ProjectDetails extends Component {
     } else {
       const proj_phases = this.props.phases.map((phase)=> {
         return(
-          <tr>
-            {this.renderPhase(phase)}
-          </tr>
+            <tr>
+              {this.renderPhase(phase)}
+            </tr>
         ); 
       });
       return(
         <div>
-          <Card className="my-3 card-border">
+          <Card className="my-1 card-border">
             <CardBody className="text-left">
               <CardTitle className="pl-2 text-center">
                 <h3 lead>
@@ -123,29 +123,29 @@ class ProjectDetails extends Component {
                     <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
                   </svg>
                 </span>
-               </h3>
+              </h3>
                 <hr></hr>
               </CardTitle>
               <CardSubtitle className="mb-2 lead text-center">
                 Project Phases
               </CardSubtitle>
               <CardText className="pl-3 pb-3">
-                <Table size="sm" className="text-center overflow-auto" hover responsive>
-                  <thead>
-                    <tr>
-                      <th>Status</th>
-                      <th>Phase</th>
-                      <th>Start</th>
-                      <th>End</th>
-                      <th>Rel. End</th>
-                      <th>Duration (Days)</th>
-                      <th></th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {proj_phases}
-                  </tbody>
-                </Table>
+                  <Table size="sm" className="text-center overflow-auto" hover responsive>
+                    <thead>
+                      <tr>
+                        <th>Status</th>
+                        <th>Phase</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Rel. End</th>
+                        <th>Duration (Days)</th>
+                        <th></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {proj_phases}
+                    </tbody>
+                  </Table>
               </CardText>
               <div className="text-right">
               &nbsp; 

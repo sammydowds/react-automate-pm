@@ -8,7 +8,7 @@ import {
 
 const LeftMenu = (props) => {
     return(
-        <Card className="mt-3 font-weight-bold card-border">
+        <Card className="mt-1 font-weight-bold card-border">
             <ListGroup vertical className="text-center w-100" flush>
                 <ListGroupItem className="text-center" tag="button" action>
                     <div>
