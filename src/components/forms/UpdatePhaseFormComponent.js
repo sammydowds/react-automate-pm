@@ -38,7 +38,6 @@ class UpdatePhaseForm extends Component {
 
 
   render() {
-    alert(JSON.stringify(this.props.phase)); 
     return (
       <LocalForm 
         onUpdate={(values) => this.handleUpdate(values)} 
