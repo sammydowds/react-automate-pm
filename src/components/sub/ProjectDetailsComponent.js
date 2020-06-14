@@ -54,21 +54,23 @@ class ProjectDetails extends Component {
     ); 
   }
 
-  // renderPhaseForm() { 
-  //     return(
-  //       <Modal isOpen={this.props.phaseModal.open} className="text-center">
-  //         <ModalHeader className="off-badge">Update Phase: {this.props.phase[this.props.phaseModal.phaseId]}</ModalHeader>
-  //         <ModalBody>
-  //           <UpdatePhaseForm 
-  //             phase={this.props.phase[this.props.phaseModal.phaseId]} 
-  //             updatePhase={this.props.updatePhase} 
-  //             closePhaseForm={this.props.closePhaseForm}
-  //           />
-  //         </ModalBody>
-  //       </Modal>
-  //     ); 
-  
-  // }; 
+  renderPhaseForm() { 
+    if (this.props.phaseModal.open) {
+      const phase_selected = this.props.phases.filter(obj => {return obj.id === this.props.phaseModal.phaseId})[0]; 
+      return(
+        <Modal isOpen={this.props.phaseModal.open} className="text-center">
+          <ModalHeader toggle={this.props.closePhaseModal} className="off-badge">Update Phase: {phase_selected.name}</ModalHeader>
+          <ModalBody>
+            <UpdatePhaseForm 
+              phase={phase_selected} 
+              updatePhase={this.props.updatePhase} 
+              closePhaseModal={this.props.closePhaseModal}
+            />
+          </ModalBody>
+        </Modal>
+      ); 
+    }
+  }
 
   renderProjectForm() {
     return(
@@ -78,7 +80,7 @@ class ProjectDetails extends Component {
             <UpdateProjectForm 
               project={this.props.project} 
               updateProject={this.props.updateProject}
-              closeProjectForm={this.props.closePhaseForm}
+              closeProjectModal={this.props.closeProjectModal}
             />
           </ModalBody>
         </Modal>
@@ -148,7 +150,7 @@ class ProjectDetails extends Component {
               <div className="text-right">
               &nbsp; 
               <Button size="sm" className="align-end" outline color="dark" onClick={this.props.handleCloseDetails}>Close Details</Button>
-              {/* {this.renderPhaseForm()} */}
+              {this.renderPhaseForm()}
               {this.renderProjectForm()}
               </div>
             </CardBody>

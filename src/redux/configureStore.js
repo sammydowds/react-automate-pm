@@ -5,6 +5,21 @@ import { UserInterface } from './ui';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
+const default_userinterface = {
+  projectDetails: {
+    open: false, 
+    projectId: null
+  }, 
+  phaseModal: {
+    open: false, 
+    phaseId: null
+  },
+  projectModal: {
+    open: false, 
+    projectId: null
+  }
+}
+
 export const ConfigureStore = () => {
   const store = createStore(
     combineReducers({
@@ -12,6 +27,9 @@ export const ConfigureStore = () => {
       phases: Phases, 
       userinterface: UserInterface
     }),
+    {
+      userinterface: default_userinterface
+    }, 
     applyMiddleware(thunk, logger)
   );
   return store;

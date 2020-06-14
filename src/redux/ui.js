@@ -1,19 +1,5 @@
 import * as ActionTypes from './ActionTypes';
 
-const default_state = {
-  projectDetails: {
-    open: false, 
-    projectId: null
-  }, 
-  phaseModal: {
-    open: false, 
-    phaseId: null
-  },
-  projectModal: {
-    open: false, 
-    projectId: null
-  }
-}
 
 //TODO: this seems too verbose - might look at refactoring to one reducer
 export const UserInterface = (state = {
@@ -58,6 +44,6 @@ export const UserInterface = (state = {
       return closeprojmodal_state; 
 
     default:
-      return default_state;
+      return state;
   }
 }
