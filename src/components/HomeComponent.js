@@ -16,7 +16,7 @@ function renderHome(props) {
     <Container className="container-spacing" fluid={true}>
       <Row>
         <Col>
-          <Alert color="dark" className="lead text-center mt-3">
+          <Alert color="danger" className="text-center mt-3" fade={false}>
               <h4>Black Lives Matter: <a href="https://blacklivesmatter.com/">Learn More Here</a></h4>
           </Alert>
         </Col>
