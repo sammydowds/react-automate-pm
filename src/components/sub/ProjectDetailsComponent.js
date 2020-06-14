@@ -16,7 +16,7 @@ import {
 import { Loading } from './LoadingComponent';
 import UpdateProjectForm from '../forms/UpdateProjectFormComponent'; 
 import UpdatePhaseForm from '../forms/UpdatePhaseFormComponent';
-import CreatePhaseModal from '../forms/CreatePhaseModalComponent';  
+import CreatePhaseForm from '../forms/CreatePhaseModalComponent';  
 
 class ProjectDetails extends Component {
   constructor(props) {
@@ -103,7 +103,7 @@ class ProjectDetails extends Component {
       });
       return(
         <div>
-          <Card className="my-1 card-border">
+          <Card className="my-2 card-border">
             <CardBody className="text-left">
               <CardTitle className="pl-2 text-center">
                 <h3 lead>
@@ -154,7 +154,13 @@ class ProjectDetails extends Component {
                 <Button size="sm" className="align-end" outline color="dark" onClick={this.props.handleCloseDetails}>Close Details</Button>
                 {this.renderPhaseForm()}
                 {this.renderProjectForm()}
-                <CreatePhaseModal phaseCreateModal={this.props.phaseCreateModal} closePhaseCreateModal={this.props.closePhaseCreateModal}></CreatePhaseModal>
+                <CreatePhaseForm 
+                  phaseCreateModal={this.props.phaseCreateModal} 
+                  closePhaseCreateModal={this.props.closePhaseCreateModal} 
+                  createPhase={this.props.createPhase}
+                  projectId={this.props.project.id}
+                  >
+                </CreatePhaseForm>
               </div>
             </CardBody>
           </Card>

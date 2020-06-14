@@ -35,6 +35,7 @@ function renderHome(props) {
             projectCreateModal={props.projectCreateModal} 
             openProjectCreateModal={props.openProjectCreateModal}
             closeProjectCreateModal={props.closeProjectCreateModal}
+            createProject={props.createProject}
           />
           <ProjectOff 
             projects={props.projects} 
@@ -65,6 +66,7 @@ function renderHome(props) {
                 handleCloseDetails={props.closeDetails} 
                 updateProject={props.updateProject}
                 updatePhase={props.updatePhase}
+                createPhase={props.createPhase}
                 phaseUpdateModal={props.phaseUpdateModal}
                 phaseCreateModal={props.phaseCreateModal}
                 projectUpdateModal={props.projectUpdateModal}

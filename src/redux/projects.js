@@ -20,6 +20,12 @@ export const Projects = (state = {
       const new_state = Object.assign({}, state); 
       new_state.projects[project.id] = project; 
       return {...state, projects: new_state.projects}; 
+    
+    case ActionTypes.CREATE_PROJECT:
+      const new_project = action.payload; 
+      const edit_state = Object.assign({}, state); 
+      edit_state.projects[new_project.id] = new_project; 
+      return {...state, projects: edit_state.projects}; 
 
     default:
       return state;

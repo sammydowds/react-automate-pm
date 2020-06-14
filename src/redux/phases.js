@@ -21,6 +21,12 @@ export const Phases = (state = {
       new_state.phases[phase.id] = phase; 
       return {...state, phases: new_state.phases}; 
 
+    case ActionTypes.CREATE_PHASE:
+      const new_phase = action.payload; 
+      const edit_state = Object.assign({}, state); 
+      edit_state.phases[new_phase.id] = new_phase; 
+      return {...state, phases: edit_state.phases}; 
+
     default:
       return state;
   }

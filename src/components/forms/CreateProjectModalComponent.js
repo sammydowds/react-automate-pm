@@ -23,9 +23,8 @@ class CreateProjectForm extends Component {
   }
 
   handleSubmit(values) {
-    const proj_id = this.props.project.id; 
-    this.props.updateProject(proj_id, values);
-    this.props.closeProjectModal(); 
+    this.props.createProject(values);
+    this.props.closeProjectCreateModal(); 
   }
 
   render() {

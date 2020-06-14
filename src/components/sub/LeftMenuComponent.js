@@ -28,7 +28,11 @@ const LeftMenu = (props) => {
                     <ListGroupItem tag="button" className="text-center" action>My Profile</ListGroupItem>
                 </ListGroup>
             </Card>
-            <CreateProjectForm projectCreateModal={props.projectCreateModal} closeProjectCreateModal={props.closeProjectCreateModal}></CreateProjectForm>
+            <CreateProjectForm 
+                projectCreateModal={props.projectCreateModal} 
+                closeProjectCreateModal={props.closeProjectCreateModal} 
+                createProject={props.createProject}>
+            </CreateProjectForm>
         </React.Fragment>
 
     ); 

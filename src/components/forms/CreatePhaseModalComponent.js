@@ -20,10 +20,9 @@ class CreatePhaseForm extends Component {
     super(props);
   }
 
-  handleSubmit(values) {
-    const proj_id = this.props.project.id; 
-    this.props.updateProject(proj_id, values);
-    this.props.closeProjectModal(); 
+  handleSubmit(projectId, values) {
+    this.props.createPhase(projectId, values);
+    this.props.closePhaseCreateModal(); 
   }
 
   render() {
@@ -31,8 +30,7 @@ class CreatePhaseForm extends Component {
       <Modal isOpen={this.props.phaseCreateModal.open} toggle={this.props.closePhaseCreateModal} className="text-center">
         <ModalHeader toggle={this.props.closePhaseCreateModal} className="off-badge">Create New Phase</ModalHeader>
           <ModalBody>
-          <LocalForm 
-              onSubmit={(values) => this.handleSubmit(values)}>
+          <LocalForm onSubmit={(values) => this.handleSubmit(this.props.projectId, values)}>
               <Row className="form-group text-center">
                 <Label htmlFor="author" md={4}><strong>Phase Name: </strong></Label>
                 <Col md={8}>

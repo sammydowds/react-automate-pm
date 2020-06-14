@@ -63,6 +63,80 @@ export const fetchPhases = () => (dispatch) => {
 
 }
 
+//Thunks CREATE Phase or Project 
+export const createProject = (values) => (dispatch) => {
+  //save to new object, because values is not extensible for adding timestamp  
+  let projectDetails = Object.assign({}, values); 
+  projectDetails.lastupdated = new Date().toISOString();
+  return fetch(baseUrl + 'projects', {
+    method: 'POST',
+    body: JSON.stringify(projectDetails),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
+    })
+    .then(response => response.json())
+    // Updating the redux store
+    .then(response => dispatch(createNewProject(response)))
+    .catch(error => {
+      console.log('Update project ', error.message);
+      alert('Your phase updates could not be posted\nError: ' + error.message);
+    });
+
+}
+
+export const createPhase = (proj_id, values) => (dispatch) => {
+  //save to new object, because values is not extensible for adding timestamp  
+  let phaseDetails = Object.assign({}, values); 
+  phaseDetails.lastupdated = new Date().toISOString();
+  phaseDetails.projectId = proj_id; 
+  return fetch(baseUrl + 'phases', {
+    method: 'POST',
+    body: JSON.stringify(phaseDetails),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
+    })
+    .then(response => response.json())
+    // Updating the redux store
+    .then(response => dispatch(createNewPhase(response)))
+    .catch(error => {
+      console.log('Update project ', error.message);
+      alert('Your phase updates could not be posted\nError: ' + error.message);
+    });
+
+}
+
 // THUNK - Patch to update project details 
 export const updateProject = (proj_id, values) => (dispatch) => {
   //save to new object, because values is not extensible for adding timestamp  
@@ -151,7 +225,16 @@ export const addProjects = (projects) => ({
   type: ActionTypes.ADD_PROJECTS,
   payload: projects
 });
-
+//create single project
+export const createNewProject = (project) => ({
+  type: ActionTypes.CREATE_PROJECT,
+  payload: project
+});
+//create single phase
+export const createNewPhase = (phase) => ({
+  type: ActionTypes.CREATE_PHASE,
+  payload: phase
+});
 //update single project
 export const updateProj = (project) => ({
   type: ActionTypes.UPDATE_PROJECT,

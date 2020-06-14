@@ -8,6 +8,8 @@ import {
   fetchPhases, 
   updateProject, 
   updatePhase, 
+  createProject, 
+  createPhase,
   closeDetails, 
   openDetails, 
   closePhaseUpdateModal, 
@@ -42,7 +44,9 @@ const mapDispatchToProps = (dispatch) => ({
   openProjectCreateModal: () => {dispatch(openProjectCreateModal())}, 
   closeProjectCreateModal: () => {dispatch(closeProjectCreateModal())}, 
   openPhaseCreateModal: () => {dispatch(openPhaseCreateModal())}, 
-  closePhaseCreateModal: () => {dispatch(closePhaseCreateModal())}
+  closePhaseCreateModal: () => {dispatch(closePhaseCreateModal())}, 
+  createProject: (values) => {dispatch(createProject(values))}, 
+  createPhase: (projectId, values) => {dispatch(createPhase(projectId, values))}
 });
 
 class Main extends Component {
@@ -67,6 +71,8 @@ class Main extends Component {
             phases={Object.values(this.props.phases.phases)}
             phasesLoading={this.props.phases.isLoading}
             updatePhase={this.props.updatePhase}
+            createProject={this.props.createProject}
+            createPhase={this.props.createPhase}
             projectDetails={this.props.userinterface.projectDetails}
             phaseUpdateModal={this.props.userinterface.phaseUpdateModal}
             projectUpdateModal={this.props.userinterface.projectUpdateModal}
