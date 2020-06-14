@@ -10,17 +10,22 @@ import ProjectRecent from './sub/ProjectRecentUpdateComponent';
 import ProjectDetails from './sub/ProjectDetailsComponent'; 
 import LeftMenu from './sub/LeftMenuComponent'; 
 
-
-
 function renderHome(props) {
   return(
     <Container className="container-spacing" fluid={true}>
       <Row className="h-100 justify-content-center">
-
         <Col lg="2">
           <LeftMenu numProjects={props.projects.length} />
-          <ProjectOff projects={props.projects} projectsLoading={props.projectsLoading} handleProjectClicked={props.openDetails} />
-          <ProjectRecent projects={props.projects} projectsLoading={props.projectsLoading} handleProjectClicked={props.openDetails} />
+          <ProjectOff 
+            projects={props.projects} 
+            projectsLoading={props.projectsLoading} 
+            handleProjectClicked={props.openDetails} 
+            />
+          <ProjectRecent 
+            projects={props.projects} 
+            projectsLoading={props.projectsLoading} 
+            handleProjectClicked={props.openDetails} 
+            />
         </Col>
 
         <Col lg="4">
@@ -39,8 +44,14 @@ function renderHome(props) {
                 phases={props.phases.filter((phase) => phase.projectId === props.projectDetails.projectId)}
                 handleCloseDetails={props.closeDetails} 
                 updateProject={props.updateProject}
-                updatePhase={props.updatePhase}>
-              </ProjectDetails>
+                updatePhase={props.updatePhase}
+                phaseModal={props.phaseModal}
+                projectModal={props.projectModal}
+                openPhaseModal={props.openPhaseModal}
+                closePhaseModal={props.closePhaseModal}
+                openProjectModal={props.openProjectModal}
+                closeProjectModal={props.closeProjectModal}
+              />
             : <div></div>
           }
         </Col>

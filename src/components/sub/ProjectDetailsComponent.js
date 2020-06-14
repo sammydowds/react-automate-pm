@@ -20,27 +20,6 @@ import UpdatePhaseForm from '../forms/UpdatePhaseFormComponent';
 class ProjectDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      projectModal: false, 
-      phaseModal: false, 
-      phaseSelected: null
-    }
-    this.togglePhaseModal = this.togglePhaseModal.bind(this);
-    this.toggleProjectModal = this.toggleProjectModal.bind(this);
-    this.selectedPhase = this.selectedPhase.bind(this); 
-  } 
-
-  togglePhaseModal() {
-    this.setState({phaseModal: !this.state.phaseModal})
-  }
-
-  toggleProjectModal() {
-    this.setState({projectModal: !this.state.projectModal})
-  }
-
-  selectedPhase(phase) {
-    this.setState({phaseSelected: phase}); 
-    this.togglePhaseModal(); 
   }
 
   renderPhase(phase) {
@@ -64,7 +43,7 @@ class ProjectDetails extends Component {
           <td>{phase_end.fromNow()}</td>
           <td>{phase_end.diff(phase_start, "days")}</td>
           <td>
-            <div onClick={() => {this.selectedPhase(phase)}}>
+            <div onClick={() => {this.props.openPhaseModal(phase.id)}}>
               <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
                 <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
@@ -75,31 +54,34 @@ class ProjectDetails extends Component {
     ); 
   }
 
-  renderPhaseForm() {
-    if (this.state.phaseSelected) {
-      const phase = this.state.phaseSelected; 
-      return(
-        <Modal isOpen={this.state.phaseModal} toggle={this.togglePhaseModal} className="text-center">
-          <ModalHeader toggle={this.closePhaseModal} className="off-badge">Update Phase: {phase.name}</ModalHeader>
-          <ModalBody>
-            <UpdatePhaseForm phase={phase} updatePhase={this.props.updatePhase}/>
-          </ModalBody>
-        </Modal>
-      ); 
-    } else {
-      return(<div></div>); 
-    }
+  // renderPhaseForm() { 
+  //     return(
+  //       <Modal isOpen={this.props.phaseModal.open} className="text-center">
+  //         <ModalHeader className="off-badge">Update Phase: {this.props.phase[this.props.phaseModal.phaseId]}</ModalHeader>
+  //         <ModalBody>
+  //           <UpdatePhaseForm 
+  //             phase={this.props.phase[this.props.phaseModal.phaseId]} 
+  //             updatePhase={this.props.updatePhase} 
+  //             closePhaseForm={this.props.closePhaseForm}
+  //           />
+  //         </ModalBody>
+  //       </Modal>
+  //     ); 
   
-  }; 
+  // }; 
 
   renderProjectForm() {
     return(
-      <Modal isOpen={this.state.projectModal} toggle={this.toggleProjectModal}>
-        <ModalHeader toggle={this.closeProjectModal} className="off-badge">Update {this.props.project.name}</ModalHeader>
-        <ModalBody>
-          <UpdateProjectForm project={this.props.project} updateProject={this.props.updateProject}/>
-        </ModalBody>
-      </Modal>
+      <Modal isOpen={this.props.projectModal.open}>
+          <ModalHeader toggle={this.props.closeProjectModal} className="off-badge">Update {this.props.project.name}</ModalHeader>
+          <ModalBody>
+            <UpdateProjectForm 
+              project={this.props.project} 
+              updateProject={this.props.updateProject}
+              closeProjectForm={this.props.closePhaseForm}
+            />
+          </ModalBody>
+        </Modal>
     ); 
   }
 
@@ -133,7 +115,7 @@ class ProjectDetails extends Component {
                     </span>
                 }
                 &nbsp;
-                <span onClick={() => {this.toggleProjectModal()}}>
+                <span onClick={() => {this.props.openProjectModal(this.props.project.id)}}>
                   <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
                     <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
@@ -165,8 +147,8 @@ class ProjectDetails extends Component {
               </CardText>
               <div className="text-right">
               &nbsp; 
-              <Button size="sm" className="align-end" outline color="dark" onClick={()=>{this.props.handleCloseDetails();}}>Close Details</Button>
-              {this.renderPhaseForm()}
+              <Button size="sm" className="align-end" outline color="dark" onClick={this.props.handleCloseDetails}>Close Details</Button>
+              {/* {this.renderPhaseForm()} */}
               {this.renderProjectForm()}
               </div>
             </CardBody>

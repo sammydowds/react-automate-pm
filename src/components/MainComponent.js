@@ -3,7 +3,18 @@ import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { fetchProjects, fetchPhases, updateProject, updatePhase, initializeUserInterface, closeDetails, openDetails } from '../redux/ActionCreators';
+import { 
+  fetchProjects, 
+  fetchPhases, 
+  updateProject, 
+  updatePhase, 
+  closeDetails, 
+  openDetails, 
+  closePhaseModal, 
+  openPhaseModal, 
+  closeProjectModal,
+  openProjectModal
+} from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
@@ -18,10 +29,12 @@ const mapDispatchToProps = (dispatch) => ({
   fetchPhases: () => {dispatch(fetchPhases())}, 
   updateProject: (proj_id, values) => {dispatch(updateProject(proj_id, values))}, 
   updatePhase: (phase_id, values) => {dispatch(updatePhase(phase_id, values))}, 
-  initializeUserInterface: () => {dispatch(initializeUserInterface())},
   closeDetails: () => {dispatch(closeDetails())}, 
-  openDetails: (projectId) => {dispatch(openDetails(projectId))}
-
+  openDetails: (projectId) => {dispatch(openDetails(projectId))},
+  openPhaseModal: (phaseId) => {dispatch(openPhaseModal(phaseId))}, 
+  closePhaseModal: () => {dispatch(closePhaseModal())},
+  openProjectModal: (projectId) => {dispatch(openProjectModal(projectId))}, 
+  closeProjectModal: () => {dispatch(closeProjectModal())} 
 });
 
 class Main extends Component {
@@ -34,11 +47,9 @@ class Main extends Component {
     console.log('Main component mounted'); 
     this.props.fetchProjects();
     this.props.fetchPhases();
-    this.props.initializeUserInterface(); 
   }
 
   render () {
-
       const HomePage = () => {
         return(
           <Home 
@@ -48,9 +59,15 @@ class Main extends Component {
             phases={Object.values(this.props.phases.phases)}
             phasesLoading={this.props.phases.isLoading}
             updatePhase={this.props.updatePhase}
-            projectDetails={this.props.userinterface.userinterface}
+            projectDetails={this.props.userinterface.projectDetails}
+            phaseModal={this.props.userinterface.phaseModal}
+            projectModal={this.props.userinterface.projectModal}
             openDetails={this.props.openDetails}
             closeDetails={this.props.closeDetails}
+            openPhaseModal={this.props.openPhaseModal}
+            closePhaseModal={this.props.closePhaseModal}
+            openProjectModal={this.props.openProjectModal}
+            closeProjectModal={this.props.closeProjectModal}
             />
         ); 
       }

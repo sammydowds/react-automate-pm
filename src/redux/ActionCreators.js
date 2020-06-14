@@ -180,14 +180,25 @@ export const addPhases = (phases) => ({
 });
 
 //UI actions 
+//could combineReducers here probably 
 export const initializeUserInterface = () => (dispatch) => {
-  const details_project = {
+  const uiinitvals = {
+  projectDetails: {
     open: false, 
-    projectSelected: null
-  }; 
+    projectId: null
+  }, 
+  phaseModal: {
+    open: false, 
+    projectId: null
+  },
+  projectModal: {
+    open: false, 
+    projectId: null
+  },
+}
   dispatch({
     type: ActionTypes.INITIALIZE_UI, 
-    payload: details_project
+    payload: uiinitvals
   }); 
 }
 
@@ -195,7 +206,7 @@ export const openDetails = (projectId) => (dispatch) => {
   const details_project = {
     open: true, 
     projectId: projectId
-  }; 
+  }
   dispatch({
     type: ActionTypes.DETAILS_OPEN, 
     payload: details_project
@@ -204,11 +215,55 @@ export const openDetails = (projectId) => (dispatch) => {
 
 export const closeDetails = () => (dispatch) => {
   const details_project = {
-    open: false, 
-    projectSelected: null
-  }; 
+      open: false, 
+      projectSelected: null
+    }
   dispatch({
     type: ActionTypes.DETAILS_CLOSE, 
     payload: details_project
+  }); 
+}
+
+export const openPhaseModal = (phaseId) => (dispatch) => {
+  const details_phase = {
+    open: true, 
+    phaseId: phaseId
+  }
+  dispatch({
+    type: ActionTypes.PHASE_MODAL_OPEN, 
+    payload: details_phase
+  }); 
+}
+
+export const closePhaseModal = () => (dispatch) => {
+  const details_phase = {
+    open: false, 
+    phaseId: null
+  }
+  dispatch({
+    type: ActionTypes.PHASE_MODAL_CLOSE, 
+    payload: details_phase
+  }); 
+}
+
+export const openProjectModal = (projectId) => (dispatch) => {
+  const details_phase = {
+    open: true, 
+    projectId: projectId
+  } 
+  dispatch({
+    type: ActionTypes.PROJECT_MODAL_OPEN, 
+    payload: details_phase
+  }); 
+}
+
+export const closeProjectModal = () => (dispatch) => {
+  const details_phase = {
+    open: false, 
+    projectId: null
+  }
+  dispatch({
+    type: ActionTypes.PROJECT_MODAL_CLOSE, 
+    payload: details_phase
   }); 
 }
