@@ -65,7 +65,7 @@ class ProjectDetails extends Component {
             <UpdatePhaseForm 
               phase={phase_selected} 
               updatePhase={this.props.updatePhase} 
-              closePhaseModal={this.props.closePhaseModal}
+              closePhaseUpdateModal={this.props.closePhaseUpdateModal}
             />
           </ModalBody>
         </Modal>
@@ -81,7 +81,7 @@ class ProjectDetails extends Component {
           <UpdateProjectForm 
             project={this.props.project} 
             updateProject={this.props.updateProject}
-            closeProjectModal={this.props.closeProjectModal}
+            closeProjectUpdateModal={this.props.closeProjectUpdateModal}
           />
         </ModalBody>
       </Modal>

@@ -19,7 +19,7 @@ class UpdatePhaseForm extends Component {
   handleSubmit(values) {
     const phase_id = this.props.phase.id; 
     this.props.updatePhase(phase_id, values); 
-    this.props.closePhaseModal(); 
+    this.props.closePhaseUpdateModal(); 
     // this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
   }
 
