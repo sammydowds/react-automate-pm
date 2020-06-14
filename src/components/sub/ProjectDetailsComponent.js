@@ -38,7 +38,7 @@ class ProjectDetails extends Component {
               : <div></div>
             } 
           </th>
-          <td className="text-left">{phase.name}</td>
+          <td>{phase.name}</td>
           <td>{phase_start.format("M")}/{phase_start.date()} ({phase_start.format("ddd")})</td>
           <td>{phase_end.format("M")}/{phase_end.date()} ({phase_end.format("ddd")})</td>
           <td>{phase_end.fromNow()}</td>
