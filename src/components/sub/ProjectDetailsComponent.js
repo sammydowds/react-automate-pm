@@ -21,6 +21,11 @@ import CreatePhaseForm from '../forms/CreatePhaseModalComponent';
 class ProjectDetails extends Component {
   constructor(props) {
     super(props);
+    this.projDetailsCard = React.createRef(); 
+  }
+
+  componentDidMount() {
+    this.projDetailsCard.current.focus(); 
   }
 
   renderPhase(phase) {
@@ -102,7 +107,7 @@ class ProjectDetails extends Component {
         ); 
       });
       return(
-        <div>
+        <div ref={this.projDetailsCard}>
           <Card className="my-2 card-border">
             <CardBody className="text-left">
               <CardTitle className="pl-2 text-center">
