@@ -44,23 +44,6 @@ export const PHASES = {
       "lastupdated": "2020-06-14T20:03:11.187Z",
       "projectId": 0,
       "id": 3
-    },
-    {
-      "name": "Programming ",
-      "start": "2020-06-23",
-      "end": "2020-06-26",
-      "lastupdated": "2020-06-14T19:50:18.312Z",
-      "projectId": 0,
-      "id": 5
-    },
-    {
-      "name": "Optimize Rendering ",
-      "start": "2020-06-16",
-      "end": "2020-06-17",
-      "active": true,
-      "lastupdated": "2020-06-14T20:04:52.295Z",
-      "projectId": 0,
-      "id": 8
     }
   ]
 }
