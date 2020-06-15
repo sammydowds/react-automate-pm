@@ -20,12 +20,12 @@ const LeftMenu = (props) => {
                             <path fill-rule="evenodd" d="M8 15A7 7 0 108 1a7 7 0 000 14zm0 1A8 8 0 108 0a8 8 0 000 16z" clip-rule="evenodd"/>
                             </svg>
                             &nbsp; 
-                            Add Project
+                            <strong>Add Project</strong>
                         </div>
                     </ListGroupItem>
-                    <ListGroupItem tag="button" className="text-center" action>All Projects <Badge> {props.numProjects} </Badge></ListGroupItem>
-                    <ListGroupItem tag="button" className="text-center" action>Learn</ListGroupItem>
-                    <ListGroupItem tag="button" className="text-center" action>My Profile</ListGroupItem>
+                    <ListGroupItem tag="button" className="text-center" action disabled>All Projects <Badge> {props.numProjects} </Badge></ListGroupItem>
+                    <ListGroupItem tag="button" className="text-center" action disabled>Learn</ListGroupItem>
+                    <ListGroupItem tag="button" className="text-center" disabled>My Profile</ListGroupItem>
                 </ListGroup>
             </Card>
             <CreateProjectForm 

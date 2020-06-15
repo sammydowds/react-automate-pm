@@ -46,7 +46,7 @@ export const PHASES = {
       "id": 3
     },
     {
-      "name": "Programming on Customer's Site ",
+      "name": "Programming ",
       "start": "2020-06-23",
       "end": "2020-06-26",
       "lastupdated": "2020-06-14T19:50:18.312Z",
