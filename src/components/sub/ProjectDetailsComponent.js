@@ -26,7 +26,7 @@ class ProjectDetails extends Component {
   componentDidMount() {
     if (document.getElementById('projDetails')) {
       const element = document.getElementById('projDetails'); 
-      element.scrollIntoView(); 
+      element.scrollIntoView({behavior: "smooth"}); 
     }
   }
 
