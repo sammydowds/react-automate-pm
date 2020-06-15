@@ -1,23 +1,22 @@
 {
   "files": {
-    "main.css": "/react-automate-pm/static/css/main.35835747.chunk.css",
-    "main.js": "/react-automate-pm/static/js/main.596b3ddf.chunk.js",
-    "main.js.map": "/react-automate-pm/static/js/main.596b3ddf.chunk.js.map",
-    "runtime-main.js": "/react-automate-pm/static/js/runtime-main.c13328a9.js",
-    "runtime-main.js.map": "/react-automate-pm/static/js/runtime-main.c13328a9.js.map",
-    "static/js/2.0c236bb1.chunk.js": "/react-automate-pm/static/js/2.0c236bb1.chunk.js",
-    "static/js/2.0c236bb1.chunk.js.map": "/react-automate-pm/static/js/2.0c236bb1.chunk.js.map",
+    "main.css": "/react-automate-pm/static/css/main.fc973d90.chunk.css",
+    "main.js": "/react-automate-pm/static/js/main.1e4ce082.chunk.js",
+    "main.js.map": "/react-automate-pm/static/js/main.1e4ce082.chunk.js.map",
+    "runtime-main.js": "/react-automate-pm/static/js/runtime-main.579b17a2.js",
+    "runtime-main.js.map": "/react-automate-pm/static/js/runtime-main.579b17a2.js.map",
+    "static/js/2.57c2e3e3.chunk.js": "/react-automate-pm/static/js/2.57c2e3e3.chunk.js",
+    "static/js/2.57c2e3e3.chunk.js.map": "/react-automate-pm/static/js/2.57c2e3e3.chunk.js.map",
     "index.html": "/react-automate-pm/index.html",
-    "precache-manifest.06419aaaa18f90fed8c12aaa1ce1be19.js": "/react-automate-pm/precache-manifest.06419aaaa18f90fed8c12aaa1ce1be19.js",
+    "precache-manifest.3ba47773a4d7d72274137d4add4698f5.js": "/react-automate-pm/precache-manifest.3ba47773a4d7d72274137d4add4698f5.js",
     "service-worker.js": "/react-automate-pm/service-worker.js",
-    "static/css/main.35835747.chunk.css.map": "/react-automate-pm/static/css/main.35835747.chunk.css.map",
-    "static/js/2.0c236bb1.chunk.js.LICENSE.txt": "/react-automate-pm/static/js/2.0c236bb1.chunk.js.LICENSE.txt",
-    "static/media/default.svg": "/react-automate-pm/static/media/default.e142c50f.svg"
+    "static/css/main.fc973d90.chunk.css.map": "/react-automate-pm/static/css/main.fc973d90.chunk.css.map",
+    "static/js/2.57c2e3e3.chunk.js.LICENSE.txt": "/react-automate-pm/static/js/2.57c2e3e3.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c13328a9.js",
-    "static/js/2.0c236bb1.chunk.js",
-    "static/css/main.35835747.chunk.css",
-    "static/js/main.596b3ddf.chunk.js"
+    "static/js/runtime-main.579b17a2.js",
+    "static/js/2.57c2e3e3.chunk.js",
+    "static/css/main.fc973d90.chunk.css",
+    "static/js/main.1e4ce082.chunk.js"
   ]
 }
