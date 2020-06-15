@@ -54,6 +54,7 @@ class ProjectDetails extends Component {
     document.execCommand("copy");
     this.setState({copiedSuccess: true, phaseCopied: phaseToCopy.id}); 
     document.body.removeChild(dummy);
+    setTimeout(() => (this.setState({copiedSuccess: false, phaseCopied: null})), 1000); 
   }
 
 
