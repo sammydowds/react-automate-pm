@@ -51,6 +51,7 @@ function renderHome(props) {
             />
           <ProjectRecent 
             projects={props.projects} 
+            phases={props.phases}
             projectsLoading={props.projectsLoading} 
             handleProjectClicked={props.openDetails} 
             />
