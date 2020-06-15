@@ -77,7 +77,7 @@ class UpdatePhaseForm extends Component {
         </Row>
         <Row className="text-center m-2">
           <Col md={5}>Status of Project:</Col>
-          <Col className="text-left">
+          <Col>
               <div className="field">
                   <Control.checkbox
                   model=".active"
@@ -90,7 +90,7 @@ class UpdatePhaseForm extends Component {
         </Row>
         <Row className="text-center m-2">
           <Col md={5}>Project Active: </Col>
-          <Col className="text-left">
+          <Col>
               <div className="field">
                   <Control.checkbox
                   model=".complete"

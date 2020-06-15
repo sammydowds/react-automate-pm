@@ -31,7 +31,7 @@ class CreateProjectForm extends Component {
     return (
       <Modal isOpen={this.props.projectCreateModal.open} toggle={this.props.closeProjectCreateModal} className="text-center">
         <ModalHeader toggle={this.props.closeProjectCreateModal} className="off-badge">Create New Project</ModalHeader>
-          <ModalBody className="text-center">
+          <ModalBody>
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group text-center">
                 <Label htmlFor="author" md={4}><strong>Project Name: </strong></Label>
@@ -55,7 +55,7 @@ class CreateProjectForm extends Component {
               </Row>
               <Row className="text-center m-2">
                 <Col md={5}>Status of Project:</Col>
-                <Col className="text-left">
+                <Col>
                     <div className="field">
                         <Control.checkbox
                         model=".status"
@@ -67,7 +67,7 @@ class CreateProjectForm extends Component {
               </Row>
               <Row className="text-center m-2">
                 <Col md={5}>Project Active: </Col>
-                <Col className="text-left">
+                <Col>
                     <div className="field">
                         <Control.checkbox
                         model=".complete"
