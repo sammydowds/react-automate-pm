@@ -55,7 +55,7 @@ class CreatePhaseForm extends Component {
                 <Col>
                   <Label>Start Date:</Label>
                 </Col>
-                <Col>
+                <Col md={8}>
                   <Control.input 
                       type="date" 
                       model=".start"
@@ -70,7 +70,7 @@ class CreatePhaseForm extends Component {
                 <Col>
                   <Label>End Date:</Label>
                 </Col>
-                <Col>
+                <Col md={8}>
                   <Control.input 
                       type="date" 
                       model=".end"

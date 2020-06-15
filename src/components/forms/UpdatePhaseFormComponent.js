@@ -63,7 +63,7 @@ class UpdatePhaseForm extends Component {
           <Col>
             <Label>End Date:</Label>
           </Col>
-          <Col>
+          <Col md={8}>
             <Control.input 
                 type="date" 
                 defaultValue={this.props.phase.end}
