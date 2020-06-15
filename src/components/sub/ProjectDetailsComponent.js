@@ -19,9 +19,14 @@ import UpdateProjectForm from '../forms/UpdateProjectFormComponent';
 import UpdatePhaseForm from '../forms/UpdatePhaseFormComponent';
 import CreatePhaseForm from '../forms/CreatePhaseModalComponent';  
 
+
 class ProjectDetails extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      copiedSuccess: false, 
+      phaseCopied: null
+    }
   }
 
   componentDidMount() {
@@ -30,6 +35,27 @@ class ProjectDetails extends Component {
       element.scrollIntoView({behavior: "smooth"}); 
     }
   }
+
+  copyToClipboard = (phaseToCopy, projectToCopy) => {
+    const phase_strt = moment(phaseToCopy.start); 
+    const phase_ending = moment(phaseToCopy.end);
+    let start_date = (phase_strt.format("M") + '/' + phase_strt.date() + ' (' + phase_strt.format("ddd") + ') - ' + phase_strt.fromNow()); 
+    let end_date = (phase_ending.format("M") + '/' + phase_ending.date() + ' (' + phase_ending.format("ddd") + ') - ' + phase_ending.fromNow()); 
+    var body_text = (
+    ' Project: ' + projectToCopy.name + '\n' +
+    ' Phase Name: ' + phaseToCopy.name + '\n' +
+    ' Starts: ' + start_date + '\n' +
+    ' Ends: ' + end_date + '\n' 
+      ); 
+    var dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = body_text;
+    dummy.select();
+    document.execCommand("copy");
+    this.setState({copiedSuccess: true, phaseCopied: phaseToCopy.id}); 
+    document.body.removeChild(dummy);
+  }
+
 
   renderPhase(phase) {
     const phase_end = moment(phase.end, "YYYY-MM-DD");
@@ -67,12 +93,25 @@ class ProjectDetails extends Component {
           <td>{phase_end.fromNow()}</td>
           <td>{phase_end.diff(phase_start, "days")}</td>
           <td>
-            <div onClick={() => {this.props.openPhaseUpdateModal(phase.id)}}>
+              {this.state.copiedSuccess && this.state.phaseCopied === phase.id
+                ? <span><Badge color="danger">Copied!</Badge></span>
+                : <span><Badge color="danger" className="invisible">Copied!</Badge></span>
+              }
+          </td>
+          <td>
+            <span onClick={() => {this.props.openPhaseUpdateModal(phase.id)}}>
               <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
                 <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
               </svg>
-            </div>
+            </span>
+            &nbsp;
+            <span onClick={() => {this.copyToClipboard(phase, this.props.project)}}>
+              <svg class="bi bi-clipboard" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+              </svg>
+            </span> 
           </td>
         </React.Fragment>
     ); 
@@ -153,7 +192,7 @@ class ProjectDetails extends Component {
               <CardSubtitle className="mb-2 lead text-center">
                 Project Phases 
               </CardSubtitle>
-              <CardText className="pl-3 pb-3">
+              <CardText className="pl-3 pb-3 text-center">
                   <Table size="sm" className="text-center overflow-auto" hover responsive>
                     <thead>
                       <tr>
@@ -163,6 +202,7 @@ class ProjectDetails extends Component {
                         <th>End</th>
                         <th>Rel. End</th>
                         <th>Duration (Days)</th>
+                        <th></th>
                         <th></th>
                       </tr>
                     </thead>
