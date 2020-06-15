@@ -31,7 +31,7 @@ class CreateProjectForm extends Component {
     return (
       <Modal isOpen={this.props.projectCreateModal.open} toggle={this.props.closeProjectCreateModal} className="text-center">
         <ModalHeader toggle={this.props.closeProjectCreateModal} className="off-badge">Create New Project</ModalHeader>
-          <ModalBody>
+          <ModalBody className="text-center">
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group text-center">
                 <Label htmlFor="author" md={4}><strong>Project Name: </strong></Label>
