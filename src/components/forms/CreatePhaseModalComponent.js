@@ -37,7 +37,7 @@ class CreatePhaseForm extends Component {
                   <Control.text model=".name" id="author" name="author"
                     className="form-control"
                     validators={{
-                      required, minLength: minLength(5), maxLength: maxLength(50)
+                      required, minLength: minLength(5), maxLength: maxLength(20)
                     }} />
                     <Errors
                       className="text-danger"
@@ -46,7 +46,7 @@ class CreatePhaseForm extends Component {
                       messages={{
                         required: 'Required',
                         minLength: 'Must be greater than 5 characters',
-                        maxLength: 'Must be 50 characters or less'
+                        maxLength: 'Must be 20 characters or less'
                       }}
                     />
                 </Col>

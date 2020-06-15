@@ -28,6 +28,13 @@ function renderHome(props) {
           </Alert>
         </Col>
       </Row>
+      <Row>
+        <Col>
+          <Alert color="warning" className="text-center mt-1" fade={false}>
+            Warning: This is a prototype only, and not suitable for production.
+          </Alert>
+        </Col>
+      </Row>
       <Row className="h-100 justify-content-center">
         <Col lg="2">
           <LeftMenu 

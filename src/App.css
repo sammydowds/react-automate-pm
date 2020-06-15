@@ -106,7 +106,7 @@
 
 .project-link {
   text-decoration: none;
-  border-bottom: 1px dashed grey; 
+  border-bottom: 1px solid black; 
 }
 
 .project-link:hover {
