@@ -37,7 +37,7 @@ class CreatePhaseForm extends Component {
                   <Control.text model=".name" id="author" name="author"
                     className="form-control"
                     validators={{
-                      required, minLength: minLength(5), maxLength: maxLength(20)
+                      required, minLength: minLength(1), maxLength: maxLength(50)
                     }} />
                     <Errors
                       className="text-danger"
