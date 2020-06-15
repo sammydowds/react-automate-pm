@@ -17,6 +17,7 @@ import { Loading } from './LoadingComponent';
 function renderProj(phases, handleClicked, projects) {
   if (phases != null){
     const phases_rend = phases.map((phase) => {
+      const associate_project = projects[phase.projectId]; 
       return(
         <span>
           <p style={{fontweight: 'superbold', fontSize: "12px"}} id={'tooltip-'+ phase.id}>
@@ -28,9 +29,9 @@ function renderProj(phases, handleClicked, projects) {
               &nbsp; 
               &nbsp; 
               <span className="project-link" onClick={() => {handleClicked(phase.projectId);}}>
-              {projects[phase.projectId].name}: {phase.name} 
+              {associate_project.name}: {phase.name} 
               </span>
-              <UncontrolledTooltip placement="right" target={'tooltip-'+ phase.id}>
+              <UncontrolledTooltip placement="auto" target={'tooltip-'+ phase.id}>
                   Changes made {moment(phase.lastupdated).fromNow()}
               </UncontrolledTooltip>
             </span>

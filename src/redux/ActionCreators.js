@@ -226,7 +226,7 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
   // dispatch(updatePhaseDetails(phase_changed)); 
   //for API 
   //save to new object, because values is not extensible for adding timestamp  
-  let phaseUpdates = Object.assign({}, values); 
+  let phaseUpdates = Object.assign({}, values);
   phaseUpdates.lastupdated = new Date().toISOString();
   return fetch(baseUrl + 'phases/' + phase_id, {
     method: 'PATCH',
