@@ -10,6 +10,8 @@ import ProjectOff from './sub/ProjectOffTrackComponent';
 import ProjectRecent from './sub/ProjectRecentUpdateComponent'; 
 import ProjectDetails from './sub/ProjectDetailsComponent'; 
 import LeftMenu from './sub/LeftMenuComponent'; 
+import StatsCard from './sub/StatsComponent';
+
 
 function renderHome(props) {
   return(
@@ -57,7 +59,7 @@ function renderHome(props) {
             />
         </Col>
 
-        <Col lg="4">
+        <Col lg="3">
           <ProjectWorkInProgress 
             projects={props.projects} 
             projectsLoading={props.projectsLoading} 
@@ -66,28 +68,31 @@ function renderHome(props) {
             />
         </Col>
 
-        <Col lg="6">
           {props.projectDetails.open
-            ? <ProjectDetails 
-                project={props.projects[props.projectDetails.projectId]} 
-                phases={props.phases.filter((phase) => phase.projectId === props.projectDetails.projectId)}
-                handleCloseDetails={props.closeDetails} 
-                updateProject={props.updateProject}
-                updatePhase={props.updatePhase}
-                createPhase={props.createPhase}
-                phaseUpdateModal={props.phaseUpdateModal}
-                phaseCreateModal={props.phaseCreateModal}
-                projectUpdateModal={props.projectUpdateModal}
-                openPhaseUpdateModal={props.openPhaseUpdateModal}
-                closePhaseUpdateModal={props.closePhaseUpdateModal}
-                openProjectUpdateModal={props.openProjectUpdateModal}
-                closeProjectUpdateModal={props.closeProjectUpdateModal}
-                openPhaseCreateModal={props.openPhaseCreateModal}
-                closePhaseCreateModal={props.closePhaseCreateModal}
-              />
-            : <div></div>
+            ? 
+              <Col lg="7">
+                <ProjectDetails 
+                  project={props.projects[props.projectDetails.projectId]} 
+                  phases={props.phases.filter((phase) => phase.projectId === props.projectDetails.projectId)}
+                  handleCloseDetails={props.closeDetails} 
+                  updateProject={props.updateProject}
+                  updatePhase={props.updatePhase}
+                  createPhase={props.createPhase}
+                  phaseUpdateModal={props.phaseUpdateModal}
+                  phaseCreateModal={props.phaseCreateModal}
+                  projectUpdateModal={props.projectUpdateModal}
+                  openPhaseUpdateModal={props.openPhaseUpdateModal}
+                  closePhaseUpdateModal={props.closePhaseUpdateModal}
+                  openProjectUpdateModal={props.openProjectUpdateModal}
+                  closeProjectUpdateModal={props.closeProjectUpdateModal}
+                  openPhaseCreateModal={props.openPhaseCreateModal}
+                  closePhaseCreateModal={props.closePhaseCreateModal}
+                />
+              </Col>
+            : <Col lg="7">
+                <StatsCard projects={props.projects} phases={props.phases}></StatsCard>
+              </Col>
           }
-        </Col>
 
       </Row>
 

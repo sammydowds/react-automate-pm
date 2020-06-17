@@ -105,15 +105,15 @@ function ProjectWorkInProgress(props) {
         <Col>
           <Card className="mt-2 text-center card-border">
             <CardBody className="text-left">
-              <CardTitle className="pl-2">
+              <CardTitle>
                 <h4 lead>
                   Work In Progress (Deadlines)
                 </h4>
               </CardTitle>
-              <CardSubtitle className="pl-2">
+              <CardSubtitle>
                 <hr></hr>
               </CardSubtitle>
-              <CardText className="pt-1 pl-4 font-weight-bold">{renderProj(props.projects, props.phases, props.handleProjectClicked)}</CardText>
+              <CardText className="pt-1 pl-1 font-weight-bold">{renderProj(props.projects, props.phases, props.handleProjectClicked)}</CardText>
             </CardBody>
           </Card>
         </Col>
