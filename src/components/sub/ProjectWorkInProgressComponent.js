@@ -83,11 +83,11 @@ function ProjectWorkInProgress(props) {
     return(
       <Row>
         <Col>
-          <Card className="my-2 text-center card-border">
+          <Card className="mt-2 text-center card-border">
             <CardBody className="text-left">
               <CardTitle className="pl-2">
                 <h4 lead>
-                  Open Projects: Work In Progress
+                  Work In Progress (Deadlines)
                 </h4>
               </CardTitle>
               <CardSubtitle className="pl-2">
@@ -103,11 +103,11 @@ function ProjectWorkInProgress(props) {
     return(
       <Row>
         <Col>
-          <Card className="my-2 text-center card-border">
+          <Card className="mt-2 text-center card-border">
             <CardBody className="text-left">
               <CardTitle className="pl-2">
                 <h4 lead>
-                  Open Projects: Work In Progress (Deadlines)
+                  Work In Progress (Deadlines)
                 </h4>
               </CardTitle>
               <CardSubtitle className="pl-2">

@@ -170,7 +170,6 @@ class ProjectDetails extends Component {
               <CardTitle className="pl-2 text-center">
                 <h3 lead>
                 {this.props.project.name}
-                &nbsp;
                 { this.props.project.status
                   ? <span>
                       <Badge color="success" className="ml-1">On Track</Badge>

@@ -10,7 +10,7 @@ import CreateProjectForm from '../forms/CreateProjectModalComponent';
 const LeftMenu = (props) => {
     return(
         <React.Fragment>
-            <Card className="mt-1 font-weight-bold card-border">
+            <Card className="mt-2 font-weight-bold card-border">
                 <ListGroup vertical className="text-center w-100" flush>
                     <ListGroupItem className="text-center" tag="button" action onClick={props.openProjectCreateModal}>
                         <div>
