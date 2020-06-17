@@ -73,7 +73,7 @@ class ProjectDetails extends Component {
               : <div></div>
             } 
           </th>
-          <td>
+          <td className="text-nowrap">
             {phase.name}
             &nbsp; 
             {moment(phase.lastupdated, "YYYY-MM-DD") > moment().subtract(5, "days")
@@ -94,13 +94,7 @@ class ProjectDetails extends Component {
           <td>{phase_end.fromNow()}</td>
           <td>{phase_end.diff(phase_start, "days")}</td>
           <td>
-              {this.state.copiedSuccess && this.state.phaseCopied === phase.id
-                ? <span><Badge color="danger">Copied!</Badge></span>
-                : <span><Badge color="danger" className="invisible">Copied!</Badge></span>
-              }
-          </td>
-          <td>
-            <span onClick={() => {this.props.openPhaseUpdateModal(phase.id)}}>
+          <span onClick={() => {this.props.openPhaseUpdateModal(phase.id)}}>
               <svg class="bi bi-pencil" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M11.293 1.293a1 1 0 0 1 1.414 0l2 2a1 1 0 0 1 0 1.414l-9 9a1 1 0 0 1-.39.242l-3 1a1 1 0 0 1-1.266-1.265l1-3a1 1 0 0 1 .242-.391l9-9zM12 2l2 2-9 9-3 1 1-3 9-9z"/>
                 <path fill-rule="evenodd" d="M12.146 6.354l-2.5-2.5.708-.708 2.5 2.5-.707.708zM3 10v.5a.5.5 0 0 0 .5.5H4v.5a.5.5 0 0 0 .5.5H5v.5a.5.5 0 0 0 .5.5H6v-1.5a.5.5 0 0 0-.5-.5H5v-.5a.5.5 0 0 0-.5-.5H3z"/>
@@ -113,6 +107,11 @@ class ProjectDetails extends Component {
                 <path fill-rule="evenodd" d="M9.5 1h-3a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
               </svg>
             </span> 
+            &nbsp; 
+              {this.state.copiedSuccess && this.state.phaseCopied === phase.id
+                ? <span><Badge color="danger" className="off-badge" pill>Copied!</Badge></span>
+                : <span><Badge color="danger" className="off-badge invisible" pill>Copied!</Badge></span>
+              }
           </td>
         </React.Fragment>
     ); 
@@ -204,10 +203,9 @@ class ProjectDetails extends Component {
                         <th>Rel. End</th>
                         <th>Duration (Days)</th>
                         <th></th>
-                        <th></th>
                       </tr>
                     </thead>
-                    <tbody>
+                    <tbody className="text-nowrap">
                       {proj_phases}
                     </tbody>
                   </Table>
