@@ -76,19 +76,19 @@ function StatisticsProjects(props) {
     return (
         <React.Fragment>
              <Row className="my-3 justify-content-center">
-                <Col md={2} className="stat-cubes">
+                <Col md={3} className="stat-cubes">
                     <h3 className="display-4">{num_projects}</h3>
                     <p>Total Projects</p>
                 </Col>
-                <Col md={2} className="stat-cubes text-nowrap">
+                <Col md={3} className="stat-cubes text-nowrap">
                     <h3 className="display-4">{percent_project_off}%</h3>
                     <p>Projects Off Track</p>
                 </Col>
-                <Col md={2} className="stat-cubes">
+                <Col md={3} className="stat-cubes">
                     <h3 className=" display-4">{num_phases}</h3>
                     <p>Total Phases</p>
                 </Col>
-                <Col md={2} className="stat-cubes">
+                <Col md={3} className="stat-cubes">
                     <h3 className="display-4">{percent_phases_wip}%</h3>
                     <p>Phases In Progress</p>
                 </Col>

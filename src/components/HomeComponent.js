@@ -61,10 +61,9 @@ function renderHome(props) {
             phases={props.phases}
             />
         </Col>
-
-          {props.projectDetails.open
+        {props.projectDetails.open
             ? 
-              <Col lg="7">
+              <Col lg="6">
                 <ProjectDetails 
                   project={props.projects[props.projectDetails.projectId]} 
                   phases={props.phases.filter((phase) => phase.projectId === props.projectDetails.projectId)}
@@ -85,11 +84,10 @@ function renderHome(props) {
                   log={props.log.filter((entry) => (entry.projectId === props.projectDetails.projectId && (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days"))))}
                 />
               </Col>
-            : <Col lg="7">
+            : <Col lg="6">
                 <DashboardCard projects={props.projects} phases={props.phases} log={props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))}></DashboardCard>
               </Col>
           }
-
       </Row>
 
 

@@ -87,7 +87,7 @@ function ProjectWorkInProgress(props) {
             <CardBody className="text-left">
               <CardTitle className="pl-2">
                 <h4 lead>
-                  Work In Progress (Deadlines)
+                  Projects & Deadlines
                 </h4>
               </CardTitle>
               <CardSubtitle className="pl-2">
@@ -107,7 +107,7 @@ function ProjectWorkInProgress(props) {
             <CardBody className="text-left">
               <CardTitle>
                 <h4 lead>
-                  Work In Progress (Deadlines)
+                  Projects & Deadlines
                 </h4>
               </CardTitle>
               <CardSubtitle>
