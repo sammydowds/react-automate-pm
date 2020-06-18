@@ -34,12 +34,26 @@ function PhasesEndingSoon(props) {
         ); 
     })
     return(
-        <Col md={8}>
+        <React.Fragment>
+             <Row className="my-3 justify-content-center">
+                <Col className="mx-1">
+                    <h4 className="mt-2">Phases ending this Week <Badge className="off-badge">{end_this_week.length}</Badge></h4>
+                    <hr></hr>
+                    <div className="stats-table">
+                    <Table size="sm" className="overflow-auto" borderless hover>
+                        <tbody>
+                            {week_end_table}
+                        </tbody>
+                    </Table>
+                    </div>
+                </Col>
+            </Row>
             <Row className="my-3 justify-content-center">
                 <Col className="mx-1">
-                    <h6 className="mt-2">Recent Changes <Badge className="off-badge">{props.log.length}</Badge></h6>
+                    <h4 className="mt-2">Recent Changes <Badge className="off-badge">{props.log.length}</Badge></h4>
+                    <hr></hr>
                     <div className="log-table">
-                        <Table size="sm" className="h-100 overflow-auto">
+                        <Table size="sm" className="h-100 overflow-auto" borderless hover>
                             <thead></thead>
                             <tbody className="stats-table-border">
                                 {log_table}
@@ -48,19 +62,7 @@ function PhasesEndingSoon(props) {
                     </div>
                 </Col>
             </Row>
-            <Row className="my-3 justify-content-center">
-                <Col className="mx-1">
-                    <h6 className="mt-2">Phases ending this Week <Badge className="off-badge">{end_this_week.length}</Badge></h6>
-                    <div className="log-table">
-                    <Table size="sm" className="overflow-auto">
-                        <tbody>
-                            {week_end_table}
-                        </tbody>
-                    </Table>
-                    </div>
-                </Col>
-            </Row>
-        </Col>
+        </React.Fragment>
     ); 
 }
 
@@ -72,28 +74,26 @@ function StatisticsProjects(props) {
     let num_phases = props.phases.length; 
     let percent_phases_wip = Math.round(num_wip_phases/num_phases * 100); 
     return (
-        <Col>
-            <Row className="my-3 justify-content-center">
-                <Col className="card-border mx-1">
+        <React.Fragment>
+             <Row className="my-3 justify-content-center">
+                <Col md={2} className="stat-cubes">
                     <h3 className="display-4">{num_projects}</h3>
-                    <p><strong>Projects</strong></p>
+                    <p>Total Projects</p>
                 </Col>
-                <Col className="card-border mx-1">
-                    <h3 className="display-4">{num_phases}</h3>
-                    <p><strong>Phases</strong></p>
-                </Col>
-            </Row>
-            <Row className="my-3 justify-content-center">
-                <Col className="card-border mx-1 text-nowrap">
+                <Col md={2} className="stat-cubes text-nowrap">
                     <h3 className="display-4">{percent_project_off}%</h3>
-                    <p><strong> Off Track</strong></p>
+                    <p>Projects Off Track</p>
                 </Col>
-                <Col className="card-border mx-1">
+                <Col md={2} className="stat-cubes">
+                    <h3 className=" display-4">{num_phases}</h3>
+                    <p>Total Phases</p>
+                </Col>
+                <Col md={2} className="stat-cubes">
                     <h3 className="display-4">{percent_phases_wip}%</h3>
-                    <p><strong>Phases In Progress</strong></p>
+                    <p>Phases In Progress</p>
                 </Col>
             </Row>
-        </Col>
+        </React.Fragment>
     ); 
 }
 
@@ -107,17 +107,16 @@ function DashboardCard(props) {
             <Card className="my-2 card-border">
             <CardBody className="text-left">
                 <CardTitle className="pl-2 text-center">
-                    <h3>
+                    <h2>
                         Dashboard 
-                    </h3>
+                    </h2>
+                    <hr></hr>
                 </CardTitle>
                 <CardSubtitle className="mb-2 lead text-center">
                 </CardSubtitle>
-                <CardText className="pb-3 text-center">
-                    <Row className="align-middle">
+                <CardText className="text-center">
                         <StatisticsProjects projects={props.projects} phases={props.phases}></StatisticsProjects>
                         <PhasesEndingSoon phases={props.phases} projects={props.projects} log={props.log}></PhasesEndingSoon>
-                    </Row>
                 </CardText>
             </CardBody>
         </Card>
