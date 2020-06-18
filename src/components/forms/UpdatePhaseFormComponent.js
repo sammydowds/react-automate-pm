@@ -26,7 +26,11 @@ class UpdatePhaseForm extends Component {
     let entry = {}; 
     entry['projectId'] = this.props.phase.projectId; 
     entry['description'] = this.props.phase.name + ' ' + changed_vals + ' updated'; 
-    entry['notes'] = values.entry.notes; 
+    if (values.notes) {
+      entry['notes'] = values.entry.notes; 
+    } else {
+      entry['notes'] = 'No note entered'
+    }
     this.props.updatePhase(phase_id, values.phase); 
     this.props.createLogEntry(entry); 
     this.props.closePhaseUpdateModal(); 

@@ -13,19 +13,29 @@ import {
 import { Loading } from './LoadingComponent'; 
 
 function renderPhases(active_phases) {
-  const active_phases_lst = active_phases.map((phase) => {
-    const phase_end = moment(phase.end); 
+  if (active_phases.length != 0) {
+    const active_phases_lst = active_phases.map((phase) => {
+      const phase_end = moment(phase.end); 
+      return(
+        <span className="px-1">
+          <Badge color="dark">
+            {phase.name} {phase_end.fromNow()}
+          </Badge>
+        </span>
+      ); 
+    }); 
     return(
-      <span className="px-1">
-        <Badge color="dark">
-          {phase.name} {phase_end.fromNow()}
-        </Badge>
-      </span>
+      <span>{active_phases_lst}</span>
     ); 
-  }); 
-  return(
-    <span>{active_phases_lst}</span>
-  ); 
+  } else {
+    return(
+    <span className="px-1">
+      <Badge color="dark">
+        No Phases in Progress
+      </Badge>
+  </span>
+    ); 
+  }
 }
 
 function renderProj(projects, phases, handleClicked) {

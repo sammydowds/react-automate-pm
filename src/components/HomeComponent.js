@@ -81,7 +81,7 @@ function renderHome(props) {
                   openPhaseCreateModal={props.openPhaseCreateModal}
                   closePhaseCreateModal={props.closePhaseCreateModal}
                   createLogEntry={props.createLogEntry}
-                  log={props.log.filter((entry) => (entry.projectId === props.projectDetails.projectId && (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days"))))}
+                  log={props.log.filter((entry) => (entry.projectId === props.projectDetails.projectId))}
                 />
               </Col>
             : <Col lg="6">

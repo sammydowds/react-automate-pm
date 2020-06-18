@@ -65,8 +65,10 @@ class ProjectDetails extends Component {
         const time_stamp = moment(entry.timestamp).fromNow(); 
           return(
             <tr>
-              <td className="text-right">{entry.description} {time_stamp}</td>
-              <td className="text-left w-50"><strong>Note: </strong>{entry.notes}</td>
+              <td className="text-center">{entry.description} {time_stamp} 
+              &nbsp; 
+              <strong> Note: </strong>{entry.notes}
+              </td>
             </tr>
           ); 
         }); 

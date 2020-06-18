@@ -20,7 +20,7 @@ function PhasesEndingSoon(props) {
         return(
             <tr>
                 <td className="text-center">
-                    {phase.name} - Project: {project_name}</td>
+                {project_name}: {phase.name}</td>
             </tr>
         ); 
     })
@@ -108,7 +108,7 @@ function DashboardCard(props) {
             <CardBody className="text-left">
                 <CardTitle className="pl-2 text-center">
                     <h2>
-                        Dashboard 
+                        Weekly Dashboard 
                     </h2>
                     <hr></hr>
                 </CardTitle>
