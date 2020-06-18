@@ -66,6 +66,7 @@ class ProjectDetails extends Component {
           return(
             <tr>
               <td>{entry.description} {time_stamp}</td>
+              <td>Notes: {entry.notes}</td>
             </tr>
           ); 
         }); 

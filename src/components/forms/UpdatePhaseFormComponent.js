@@ -18,25 +18,30 @@ class UpdatePhaseForm extends Component {
     const phase_id = this.props.phase.id;
     let changed_vals = []; 
     //collecting changed fields 
-    for (let key in values) {
-      if (values[key] != this.props.phase[key] ) {
+    for (let key in values.phase) {
+      if (values.phase[key] != this.props.phase[key] ) {
         changed_vals.push(key); 
       }
     }
     let entry = {}; 
     entry['projectId'] = this.props.phase.projectId; 
-    entry['description'] = this.props.phase.name + ' ' + changed_vals + ' updated'
-    this.props.updatePhase(phase_id, values); 
+    entry['description'] = this.props.phase.name + ' ' + changed_vals + ' updated'; 
+    entry['notes'] = values.entry.notes; 
+    this.props.updatePhase(phase_id, values.phase); 
     this.props.createLogEntry(entry); 
     this.props.closePhaseUpdateModal(); 
   }
 
   render() {
+    let init_phase = {
+      phase: this.props.phase, 
+      entry: {}
+    }
     return (
       <LocalForm
         onSubmit={(values) => this.handleSubmit(values)}
-        initialState={this.props.phase}
-        >
+        initialState= {init_phase}
+      >
         <Row className="m-2">
           <Col>
             <Label>Start Date:</Label>
@@ -44,7 +49,7 @@ class UpdatePhaseForm extends Component {
           <Col md={8}>
             <Control.input 
                 type="date" 
-                model=".start"
+                model=".phase.start"
                 id="idk"
                 name="idk"
                 className="form-control"
@@ -59,7 +64,7 @@ class UpdatePhaseForm extends Component {
           <Col md={8}>
             <Control.input 
                 type="date" 
-                model=".end"
+                model=".phase.end"
                 id="phaseEnd"
                 name="phaseEnd"
                 className="form-control"
@@ -72,7 +77,7 @@ class UpdatePhaseForm extends Component {
           <Col>
               <div className="field">
                   <Control.checkbox
-                  model=".active"
+                  model=".phase.active"
                   />
                   &nbsp; 
                   <strong> Work in Progress</strong>
@@ -84,12 +89,18 @@ class UpdatePhaseForm extends Component {
           <Col>
               <div className="field">
                   <Control.checkbox
-                  model=".complete"
+                  model=".phase.complete"
                   />
                   &nbsp; 
                   <strong> Phase is Complete</strong>
               </div>
             </Col>
+        </Row>
+        <Row className="text-center m-2">
+          <Col md={5}>Notes: </Col>
+          <Col>
+            <Control.textarea model=".entry.notes" />
+          </Col>
         </Row>
         <Row className="text-center">
           <Col>
