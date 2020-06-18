@@ -69,57 +69,6 @@ function PhasesThisWeek(props) {
     ); 
 }
 
-function PhasesThisMonth(props) {
-    const start_this_month = props.phases.filter((phase) => moment(phase.start).format("M") === moment().format("M") && moment(phase.start).format("Y") === moment().format("Y"));
-    const end_this_month =  props.phases.filter((phase) => moment(phase.end).format("M") === moment().format("M") && moment(phase.end).format("Y") === moment().format("Y"));
-    const month_start_table = start_this_month.map((phase) => {
-        const project_name = props.projects[phase.projectId].name; 
-        return(
-            <tr>
-                <td>{phase.name}</td>
-                <td>Project: {project_name}</td>
-            </tr>
-        ); 
-    })
-    const month_end_table = end_this_month.map((phase) => {
-        const project_name = props.projects[phase.projectId].name; 
-        return(
-            <tr>
-                <td>{phase.name}</td>
-                <td>Project: {project_name}</td>
-            </tr>
-        ); 
-    })
-    return( 
-        <React.Fragment>
-            <Row className="my-3 justify-content-center">
-                <Col md={8} className="card-border mx-1">
-                    <h6 className="mt-2">Phases starting this Month <Badge className="off-badge">{start_this_month.length}</Badge></h6>
-                    <div className="stats-table">
-                    <Table size="sm" className="overflow-auto">
-                        <tbody>
-                            {month_start_table}
-                        </tbody>
-                    </Table>
-                    </div>
-                </Col>
-            </Row>
-            <Row className="my-3 justify-content-center">
-                <Col md={8} className="card-border mx-1">
-                    <h6 className="mt-2">Phases ending this Month <Badge className="off-badge">{end_this_month.length}</Badge></h6>
-                    <div className="stats-table">
-                    <Table size="sm" className="overflow-auto">
-                        <tbody>
-                            {month_end_table}
-                        </tbody>
-                    </Table>
-                    </div>
-                </Col>
-            </Row>
-        </React.Fragment>
-    ); 
-}
-
 function StatisticsProjects(props) {
     let num_offtrack = (props.projects.filter((project) => project.status === false)).length; 
     let num_projects = props.projects.length; 

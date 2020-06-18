@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment'; 
 import { 
   Container, 
   Row, 
@@ -51,12 +52,6 @@ function renderHome(props) {
             projectsLoading={props.projectsLoading} 
             handleProjectClicked={props.openDetails} 
             />
-          <ProjectRecent 
-            projects={props.projects} 
-            phases={props.phases}
-            projectsLoading={props.projectsLoading} 
-            handleProjectClicked={props.openDetails} 
-            />
         </Col>
 
         <Col lg="3">
@@ -87,6 +82,8 @@ function renderHome(props) {
                   closeProjectUpdateModal={props.closeProjectUpdateModal}
                   openPhaseCreateModal={props.openPhaseCreateModal}
                   closePhaseCreateModal={props.closePhaseCreateModal}
+                  createLogEntry={props.createLogEntry}
+                  log={props.log.filter((entry) => (entry.projectId === props.projectDetails.projectId && (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days"))))}
                 />
               </Col>
             : <Col lg="7">

@@ -9,7 +9,12 @@ export const ADD_PHASES = "ADD_PHASES";
 export const PHASES_LOADING = "PHASES_LOADING"; 
 export const PHASES_FAILED = "PHASES_FAILED"; 
 export const UPDATE_PHASE = "UPDATE_PHASE";
-export const CREATE_PHASE = "CREATE_PHASE";  
+export const CREATE_PHASE = "CREATE_PHASE"; 
+//log types 
+export const ADD_LOG = "ADD_LOG"; 
+export const LOG_LOADING = "LOG_LOADING"; 
+export const LOG_FAILED = "PROJECTS_FAILED"; 
+export const CREATE_LOG_ENTRY = "CREATE_LOG_ENTRY";  
 //UI types 
 export const DETAILS_OPEN = "DETAILS_OPEN"; 
 export const INITIALIZE_UI = "INITIALIZE_UI";

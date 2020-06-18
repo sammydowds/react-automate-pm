@@ -47,6 +47,33 @@ export const fetchProjects = () => (dispatch) => {
   
   }
 
+  export const fetchLog = () => (dispatch) => {
+    dispatch(logLoading(true));
+
+    //for API 
+    return fetch(baseUrl + 'log')
+      .then(response => {
+        if (response.ok) {
+          return response;
+        }
+        else {
+          var error = new Error('Error ' + response.status + ': ' + response.statusText);
+          error.response = response;
+          throw error;
+        }
+      },
+      error => {
+        var errmess= new Error(error.message);
+        throw errmess;
+      })
+      .then(response => response.json())
+      //normalizing response 
+      .then(notNrmResp => normalizeResponse(notNrmResp))
+      .then(log => dispatch(addLog(log))) 
+      .catch(error => dispatch(logFailed(error.message)));
+  
+  }
+
   // THUNK to fetch phases 
 export const fetchPhases = () => (dispatch) => {
   dispatch(phasesLoading(true));
@@ -171,6 +198,46 @@ export const createPhase = (proj_id, values) => (dispatch) => {
 
 }
 
+//creating Log entry 
+export const createLogEntry = (values) => (dispatch) => {
+  //simulating locally
+
+  //for API 
+  //save to new object, because values is not extensible for adding timestamp 
+  let entryDetails = Object.assign({}, values); 
+  entryDetails.timestamp = new Date().toISOString();
+  return fetch(baseUrl + 'log', {
+    method: 'POST',
+    body: JSON.stringify(entryDetails),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
+    })
+    .then(response => response.json())
+    // Updating the redux store
+    .then(response => dispatch(createEntry(response)))
+    .catch(error => {
+      console.log('Update project ', error.message);
+      alert('Your phase updates could not be posted\nError: ' + error.message);
+    });
+
+}
+
 // THUNK - Patch to update project details 
 export const updateProject = (proj_id, values) => (dispatch) => {
   //Simulating locally 
@@ -270,6 +337,21 @@ export const projectsFailed = (errmess) => ({
   payload: errmess
 });
 
+// Log main actions 
+export const logLoading = () => ({
+  type: ActionTypes.LOG_LOADING
+});
+
+export const logFailed = (errmess) => ({
+  type: ActionTypes.LOG_FAILED,
+  payload: errmess
+});
+
+export const addLog = (log) => ({
+  type: ActionTypes.ADD_LOG,
+  payload: log
+});
+
 export const addProjects = (projects) => ({
   type: ActionTypes.ADD_PROJECTS,
   payload: projects
@@ -310,6 +392,12 @@ export const addPhases = (phases) => ({
   type: ActionTypes.ADD_PHASES,
   payload: phases
 });
+
+//logging change made 
+export const createEntry = (entry) => ({
+  type: ActionTypes.CREATE_LOG_ENTRY, 
+  payload: entry
+})
 
 //UI actions 
 //could combineReducers here probably 

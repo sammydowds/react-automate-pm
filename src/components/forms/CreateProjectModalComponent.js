@@ -43,7 +43,7 @@ class CreateProjectForm extends Component {
                     }} />
                     <Errors
                       className="text-danger"
-                      model=".author"
+                      model=".name"
                       show="touched"
                       messages={{
                         required: 'Required',

@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Projects } from './projects';
 import { Phases } from './phases';
 import { UserInterface } from './ui'; 
+import { Log } from './log'; 
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -31,7 +32,8 @@ export const ConfigureStore = () => {
     combineReducers({
       projects: Projects,
       phases: Phases, 
-      userinterface: UserInterface
+      userinterface: UserInterface, 
+      log: Log
     }),
     {
       userinterface: default_userinterface

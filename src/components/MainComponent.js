@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { 
   fetchProjects, 
   fetchPhases, 
+  fetchLog,
   updateProject, 
   updatePhase, 
   createProject, 
@@ -19,20 +20,23 @@ import {
   openProjectCreateModal, 
   closeProjectCreateModal,
   openPhaseCreateModal,
-  closePhaseCreateModal
+  closePhaseCreateModal, 
+  createLogEntry
 } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
   return {
     projects: state.projects, 
     phases: state.phases, 
-    userinterface: state.userinterface 
+    userinterface: state.userinterface, 
+    log: state.log
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   fetchProjects: () => {dispatch(fetchProjects())}, 
-  fetchPhases: () => {dispatch(fetchPhases())}, 
+  fetchPhases: () => {dispatch(fetchPhases())},
+  fetchLog: () => {dispatch(fetchLog())},  
   updateProject: (proj_id, values) => {dispatch(updateProject(proj_id, values))}, 
   updatePhase: (phase_id, values) => {dispatch(updatePhase(phase_id, values))}, 
   closeDetails: () => {dispatch(closeDetails())}, 
@@ -46,7 +50,9 @@ const mapDispatchToProps = (dispatch) => ({
   openPhaseCreateModal: () => {dispatch(openPhaseCreateModal())}, 
   closePhaseCreateModal: () => {dispatch(closePhaseCreateModal())}, 
   createProject: (values) => {dispatch(createProject(values))}, 
-  createPhase: (projectId, values) => {dispatch(createPhase(projectId, values))}
+  createPhase: (projectId, values) => {dispatch(createPhase(projectId, values))}, 
+  createLogEntry: (entry) => {dispatch(createLogEntry(entry))}
+
 });
 
 class Main extends Component {
@@ -59,6 +65,7 @@ class Main extends Component {
     console.log('Main component mounted'); 
     this.props.fetchProjects();
     this.props.fetchPhases();
+    this.props.fetchLog(); 
   }
 
   render () {
@@ -88,6 +95,8 @@ class Main extends Component {
             closeProjectCreateModal={this.props.closeProjectCreateModal}
             openPhaseCreateModal={this.props.openPhaseCreateModal}
             closePhaseCreateModal={this.props.closePhaseCreateModal}
+            createLogEntry={this.props.createLogEntry}
+            log={Object.values(this.props.log.log)}
             />
         ); 
       }
