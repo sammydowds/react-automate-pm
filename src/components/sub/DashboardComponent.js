@@ -52,7 +52,7 @@ function PhasesEndingSoon(props) {
                 <Col className="mx-1">
                     <h4 className="mt-2">Recent Changes <Badge className="off-badge">{props.log.length}</Badge></h4>
                     <hr></hr>
-                    <div className="log-table">
+                    <div className="stats-table">
                         <Table size="sm" className="h-100 overflow-auto" borderless hover>
                             <thead></thead>
                             <tbody className="stats-table-border">

@@ -199,7 +199,7 @@ class ProjectDetails extends Component {
         <div id='projDetails'>
           <Card className="my-2 card-border">
             <CardBody className="text-left">
-              <CardTitle className="pl-2 text-center">
+              <CardTitle className="text-center">
                 <h3 lead>
                 {this.props.project.name}
                 { this.props.project.status

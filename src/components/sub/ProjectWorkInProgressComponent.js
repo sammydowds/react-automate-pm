@@ -105,7 +105,7 @@ function ProjectWorkInProgress(props) {
         <Col>
           <Card className="mt-2 text-center card-border">
             <CardBody className="text-left">
-              <CardTitle>
+              <CardTitle className="text-center">
                 <h4 lead>
                   Projects & Deadlines
                 </h4>
