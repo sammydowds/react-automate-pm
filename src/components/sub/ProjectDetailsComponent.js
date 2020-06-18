@@ -65,8 +65,8 @@ class ProjectDetails extends Component {
         const time_stamp = moment(entry.timestamp).fromNow(); 
           return(
             <tr>
-              <td>{entry.description} {time_stamp}</td>
-              <td>Notes: {entry.notes}</td>
+              <td className="text-right">{entry.description} {time_stamp}</td>
+              <td className="text-left w-50"><strong>Note: </strong>{entry.notes}</td>
             </tr>
           ); 
         }); 
@@ -219,7 +219,7 @@ class ProjectDetails extends Component {
                 </span>
               </h3>
               </CardTitle>
-              <CardText className="pl-3 pb-3 text-center">
+              <CardText className="pb-3 text-center">
                 <Row>
                   <Col>
                     <Table size="sm" className="text-center overflow-auto" hover responsive>

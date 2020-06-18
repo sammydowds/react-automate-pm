@@ -8,10 +8,9 @@ import {
  } from 'reactstrap';
 import ProjectWorkInProgress from './sub/ProjectWorkInProgressComponent'; 
 import ProjectOff from './sub/ProjectOffTrackComponent'; 
-import ProjectRecent from './sub/ProjectRecentUpdateComponent'; 
 import ProjectDetails from './sub/ProjectDetailsComponent'; 
 import LeftMenu from './sub/LeftMenuComponent'; 
-import StatsCard from './sub/StatsComponent';
+import DashboardCard from './sub/DashboardComponent';
 
 
 function renderHome(props) {
@@ -87,7 +86,7 @@ function renderHome(props) {
                 />
               </Col>
             : <Col lg="7">
-                <StatsCard projects={props.projects} phases={props.phases}></StatsCard>
+                <DashboardCard projects={props.projects} phases={props.phases} log={props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))}></DashboardCard>
               </Col>
           }
 
