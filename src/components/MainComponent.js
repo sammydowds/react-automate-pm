@@ -76,7 +76,8 @@ class Main extends Component {
         return(
           <Home 
             projects={Object.values(this.props.projects.projects)} 
-            projectsLoading={this.props.projects.isLoading} 
+            projectsLoading={this.props.projects.isLoading}
+            phasesLoading={this.props.phases.isLoading} 
             updateProject={this.props.updateProject}
             phases={Object.values(this.props.phases.phases)}
             phasesLoading={this.props.phases.isLoading}

@@ -116,6 +116,7 @@ export const createProject = (values) => (dispatch) => {
   // dispatch(createNewProject(projectDetails)); 
   
   //for API 
+  dispatch(projectsUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectDetails = Object.assign({}, values); 
   projectDetails.lastupdated = new Date().toISOString();
@@ -162,6 +163,7 @@ export const createPhase = (proj_id, values) => (dispatch) => {
   // dispatch(createNewPhase(phasesDetails)); 
 
   //for API 
+  dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseDetails = Object.assign({}, values); 
   phaseDetails.lastupdated = new Date().toISOString();
@@ -248,6 +250,7 @@ export const updateProject = (proj_id, values) => (dispatch) => {
   // dispatch(updateProj(proj_changed)); 
 
   //for API 
+  dispatch(projectsUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectUpdates = Object.assign({}, values); 
   projectUpdates.lastupdated = new Date().toISOString();
@@ -292,6 +295,7 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
   // PHASES_DB.phases[phase_id] = phase_changed; 
   // dispatch(updatePhaseDetails(phase_changed)); 
   //for API 
+  dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseUpdates = Object.assign({}, values);
   phaseUpdates.lastupdated = new Date().toISOString();
@@ -332,6 +336,7 @@ export const deleteProject = (proj_id) => (dispatch) => {
   //Simulating locally 
 
   //for API 
+  dispatch(projectsUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   return fetch(baseUrl + 'projects/' + proj_id, {
     method: 'DELETE',
@@ -356,7 +361,7 @@ export const deleteProject = (proj_id) => (dispatch) => {
     })
     .then(response => response.json())
     // Updating the redux store
-    .then(proj_id => dispatch(deleteProj(proj_id)))
+    .then(response => dispatch(deleteProj(proj_id, response)))
     .catch(error => {
       console.log('Delete project ', error.message);
       alert('Your deletion could not be posted\nError: ' + error.message);
@@ -368,6 +373,7 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
   //Simulating locally 
 
   //for API 
+  dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   return fetch(baseUrl + 'phases/' + phase_id, {
     method: 'DELETE',
@@ -403,6 +409,10 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
 export const projectsLoading = () => ({
   type: ActionTypes.PROJECTS_LOADING
 });
+
+export const projectsUpdating = () => ({
+  type: ActionTypes.PROJECTS_UPDATING
+}); 
 
 export const projectsFailed = (errmess) => ({
   type: ActionTypes.PROJECTS_FAILED,
@@ -443,6 +453,11 @@ export const createNewPhase = (phase) => ({
   type: ActionTypes.CREATE_PHASE,
   payload: phase
 });
+
+export const phasesUpdating = () => ({
+  type: ActionTypes.PHASES_UPDATING
+}); 
+
 export const deletePhase = (phase_id) => ({
   type: ActionTypes.DELETE_PHASE, 
   payload: phase_id

@@ -15,11 +15,10 @@ import { Loading } from './LoadingComponent';
 function renderPhases(active_phases) {
   if (active_phases.length != 0) {
     const active_phases_lst = active_phases.map((phase) => {
-      const phase_end = moment(phase.end); 
       return(
         <span className="px-1">
           <Badge color="dark">
-            {phase.name} {phase_end.fromNow()}
+            {phase.name}
           </Badge>
         </span>
       ); 
@@ -95,9 +94,9 @@ function ProjectWorkInProgress(props) {
         <Col>
           <Card className="mt-2 text-center card-border">
             <CardBody className="text-left">
-              <CardTitle className="pl-2">
+              <CardTitle className="text-center">
                 <h4 lead>
-                  Projects & Deadlines
+                  Work in Progress
                 </h4>
               </CardTitle>
               <CardSubtitle className="pl-2">
@@ -117,7 +116,7 @@ function ProjectWorkInProgress(props) {
             <CardBody className="text-left">
               <CardTitle className="text-center">
                 <h4 lead>
-                  Projects & Deadlines
+                  Work in Progress
                 </h4>
               </CardTitle>
               <CardSubtitle>

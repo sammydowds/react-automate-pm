@@ -3,6 +3,7 @@ export const ADD_PROJECTS = "ADD_PROJECTS";
 export const PROJECTS_LOADING = "PROJECTS_LOADING"; 
 export const PROJECTS_FAILED = "PROJECTS_FAILED"; 
 export const UPDATE_PROJECT = "UPDATE_PROJECT"; 
+export const PROJECTS_UPDATING = "PROJECTS_UPDATING"; 
 export const CREATE_PROJECT = "CREATE_PROJECT";
 export const DELETE_PROJECT = "DELETE_PROJECT"; 
 //phase types 
@@ -10,6 +11,7 @@ export const ADD_PHASES = "ADD_PHASES";
 export const PHASES_LOADING = "PHASES_LOADING"; 
 export const PHASES_FAILED = "PHASES_FAILED"; 
 export const UPDATE_PHASE = "UPDATE_PHASE";
+export const PHASES_UPDATING = "PHASES_UPDATING"; 
 export const CREATE_PHASE = "CREATE_PHASE"; 
 export const DELETE_PHASE = "DELETE_PHASE"; 
 //log types 

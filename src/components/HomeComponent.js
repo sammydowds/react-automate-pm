@@ -59,14 +59,17 @@ function renderHome(props) {
             projectsLoading={props.projectsLoading} 
             handleProjectClicked={props.openDetails}
             phases={props.phases}
+            phasesLoading={props.phasesLoading}
             />
         </Col>
         {props.projectDetails.open
             ? 
               <Col lg="6">
                 <ProjectDetails 
-                  project={props.projects[props.projectDetails.projectId]} 
+                  project={props.projects[props.projectDetails.projectId]}
+                  projectsLoading={props.projectsLoading} 
                   phases={props.phases.filter((phase) => phase.projectId === props.projectDetails.projectId)}
+                  phasesLoading={props.phasesLoading}
                   handleCloseDetails={props.closeDetails} 
                   updateProject={props.updateProject}
                   updatePhase={props.updatePhase}
