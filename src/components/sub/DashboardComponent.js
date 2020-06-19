@@ -1,80 +1,14 @@
 import React, {useState} from 'react'; 
-import moment from 'moment'; 
 import {  
-  Badge, 
   Card,
   CardBody, 
   CardSubtitle, 
   CardTitle, 
   CardText,
   Col,
-  Table, 
   Row
  } from 'reactstrap';
  import { Loading } from './LoadingComponent';
-
-function PhasesEndingSoon(props) {
-    const end_this_week =  props.phases.filter((phase) => moment(phase.end).format("W") === moment().format("W"));
-    const week_end_table = end_this_week.map((phase) => {
-        const project_name = props.projects[phase.projectId].name; 
-        const phase_end = moment(phase.end).format("dddd"); 
-        return(
-            <tr>
-                <td className="text-center">
-                    <span className="project-link" onClick={() => {props.handleClicked(phase.projectId);}}>
-                    {project_name}
-                    </span>
-                    : {phase.name} ending on {phase_end}
-                </td>
-            </tr>
-        ); 
-    })
-    const log_table = props.log.map((entry) => {
-        const project_name = props.projects[entry.projectId].name;
-        const time_stamp = moment(entry.timestamp).fromNow();  
-        return(
-            <tr>
-                <td className="text-center">
-                    <span className="project-link" onClick={() => {props.handleClicked(entry.projectId);}}>
-                        {project_name}
-                    </span>
-                    : {entry.description} {time_stamp}
-                </td>
-            </tr>
-        ); 
-    })
-    return(
-        <React.Fragment>
-             <Row className="my-3 justify-content-center">
-                <Col className="mx-1">
-                    <h4 className="mt-2">Phases ending this Week <Badge className="off-badge">{end_this_week.length}</Badge></h4>
-                    <hr></hr>
-                    <div className="stats-table">
-                    <Table size="sm" className="overflow-auto" borderless hover>
-                        <tbody>
-                            {week_end_table}
-                        </tbody>
-                    </Table>
-                    </div>
-                </Col>
-            </Row>
-            <Row className="my-3 justify-content-center">
-                <Col className="mx-1">
-                    <h4 className="mt-2">Recent Changes <Badge className="off-badge">{props.log.length}</Badge></h4>
-                    <hr></hr>
-                    <div className="stats-table">
-                        <Table size="sm" className="h-100 overflow-auto" borderless hover>
-                            <thead></thead>
-                            <tbody className="stats-table-border">
-                                {log_table}
-                            </tbody>
-                        </Table>
-                    </div>
-                </Col>
-            </Row>
-        </React.Fragment>
-    ); 
-}
 
 function StatisticsProjects(props) {
     let num_offtrack = (props.projects.filter((project) => project.status === false)).length; 
@@ -139,8 +73,7 @@ function DashboardCard(props) {
                 <CardSubtitle className="mb-2 lead text-center">
                 </CardSubtitle>
                 <CardText className="text-center">
-                        <StatisticsProjects projects={props.projects} phases={props.phases}></StatisticsProjects>
-                        <PhasesEndingSoon handleClicked={props.handleClicked} phases={props.phases} projects={props.projects} log={props.log}></PhasesEndingSoon>
+                    <StatisticsProjects projects={props.projects} phases={props.phases}></StatisticsProjects>
                 </CardText>
             </CardBody>
         </Card>

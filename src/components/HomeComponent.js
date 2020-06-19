@@ -11,6 +11,8 @@ import ProjectOff from './sub/ProjectOffTrackComponent';
 import ProjectDetails from './sub/ProjectDetailsComponent'; 
 import LeftMenu from './sub/LeftMenuComponent'; 
 import DashboardCard from './sub/DashboardComponent';
+import PhasesEndingSoon from './sub/PhasesEndingSoonComponent'; 
+import RecentChanges from './sub/RecentChangesComponent'; 
 
 
 function renderHome(props) {
@@ -51,20 +53,22 @@ function renderHome(props) {
             projectsLoading={props.projectsLoading} 
             handleProjectClicked={props.openDetails} 
             />
-        </Col>
-
-        <Col lg="3">
-          <ProjectWorkInProgress 
-            projects={props.projects} 
+          <PhasesEndingSoon 
             projectsLoading={props.projectsLoading} 
-            handleProjectClicked={props.openDetails}
-            phases={props.phases}
-            phasesLoading={props.phasesLoading}
-            />
+            projects={props.projects} phases={props.phases} 
+            handleClicked={props.openDetails}>
+          </PhasesEndingSoon>
         </Col>
-        {props.projectDetails.open
+        <Col lg="6">
+          <DashboardCard 
+            projectsLoading={props.projectsLoading}
+            projects={props.projects} 
+            phases={props.phases} 
+            log={props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))}>
+          </DashboardCard>
+
+          {props.projectDetails.open
             ? 
-              <Col lg="6">
                 <ProjectDetails 
                   project={props.projects[props.projectDetails.projectId]}
                   projectsLoading={props.projectsLoading} 
@@ -88,11 +92,27 @@ function renderHome(props) {
                   deleteProject={props.deleteProject}
                   deleteSinglePhase={props.deleteSinglePhase}
                 />
-              </Col>
-            : <Col lg="6">
-                <DashboardCard handleClicked={props.openDetails} projectsLoading={props.projectsLoading} projects={props.projects} phases={props.phases} log={props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))}></DashboardCard>
-              </Col>
+            : <span></span>
           }
+        
+
+        </Col>
+        <Col lg="3">
+          <RecentChanges 
+            log={props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))} 
+            projectsLoading={props.projectsLoading} 
+            projects={props.projects} phases={props.phases} 
+            handleClicked={props.openDetails}>
+          </RecentChanges>
+          <ProjectWorkInProgress 
+            projects={props.projects} 
+            projectsLoading={props.projectsLoading} 
+            handleProjectClicked={props.openDetails}
+            phases={props.phases}
+            phasesLoading={props.phasesLoading}
+            />
+        </Col>
+        
       </Row>
 
 
