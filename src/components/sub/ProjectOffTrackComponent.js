@@ -45,7 +45,7 @@ function ProjectOff(props) {
         <Col>
           <Card className="mt-2 card-border">
             <CardBody>
-              <CardTitle className="pl-2 normal-text text-center">
+              <CardTitle className="normal-text text-center">
                 <h6 lead>
                   Off Track
                 </h6>
@@ -66,7 +66,7 @@ function ProjectOff(props) {
         <Col>
           <Card className="mt-2 card-border">
             <CardBody>
-              <CardTitle className="pl-2 normal-text text-center">
+              <CardTitle className="normal-text text-center">
                 <h6 lead>
                   Off Track <Badge className="off-badge">{offtrack_projects.length}</Badge>
                 </h6>

@@ -20,7 +20,7 @@ function StatisticsProjects(props) {
     return (
         <React.Fragment>
              <Row className="my-3 justify-content-center">
-                <Col md={3} className="stat-cubes">
+                <Col className="stat-cubes">
                     <h3 className="display-4">{num_projects}</h3>
                     <p>Total Open Projects</p>
                 </Col>
@@ -28,12 +28,12 @@ function StatisticsProjects(props) {
                     <h3 className="display-4 text-nowrap">{percent_project_on}%</h3>
                     <p>Projects On Track</p>
                 </Col>
-                <Col md={3} className="stat-cubes">
+                <Col className="stat-cubes">
                     <h3 className=" display-4">{num_phases}</h3>
                     <p>Total Open Phases</p>
                 </Col>
-                <Col md={3} className="stat-cubes">
-                    <h3 className="display-4">{percent_phases_wip}%</h3>
+                <Col md={4} className="stat-cubes">
+                    <h3 className="display-4 text-nowrap">{percent_phases_wip}%</h3>
                     <p>Phases In Progress</p>
                 </Col>
             </Row>
@@ -46,7 +46,7 @@ function DashboardCard(props) {
         return(
             <Card className="my-2 card-border">
                 <CardBody className="text-left">
-                    <CardTitle className="pl-2 text-center">
+                    <CardTitle className="text-center">
                         <h2>
                             Weekly Dashboard 
                         </h2>
@@ -64,7 +64,7 @@ function DashboardCard(props) {
         return(
             <Card className="my-2 card-border">
             <CardBody className="text-left">
-                <CardTitle className="pl-2 text-center">
+                <CardTitle className="text-center">
                     <h2>
                         Weekly Dashboard 
                     </h2>

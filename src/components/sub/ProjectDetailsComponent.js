@@ -70,9 +70,12 @@ class ProjectDetails extends Component {
         const time_stamp = moment(entry.timestamp).fromNow(); 
           return(
             <tr>
-              <td className="text-left">{entry.description} {time_stamp} 
-              &nbsp; 
+              <td className="text-left">{entry.description}
+              <br></br>
               <strong> Note: </strong>{entry.notes}
+              <br>
+              </br>
+              <small>{time_stamp} </small>
               </td>
             </tr>
           ); 
@@ -228,6 +231,13 @@ class ProjectDetails extends Component {
                       <Badge className="off-badge ml-1">Off Track</Badge>
                     </span>
                 }
+                { this.props.project.complete
+                  ? <span>
+                      <Badge color="success" className="ml-1">Complete</Badge>
+                    </span>
+                  : <span>
+                    </span>
+                }
                 &nbsp;
                   {(this.props.phases.length === 0)
                     ? <span onClick={() => {this.deleteProjectActions(this.props.project.id)}}>
@@ -258,7 +268,7 @@ class ProjectDetails extends Component {
                           <th>Start</th>
                           <th>End</th>
                           <th>Rel. End</th>
-                          <th>Duration (Days)</th>
+                          <th>Days</th>
                           <th></th>
                         </tr>
                       </thead>

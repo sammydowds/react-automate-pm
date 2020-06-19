@@ -110,7 +110,7 @@ function ProjectWorkInProgress(props) {
       <Row>
         <Col>
           <Card className="my-2 text-center card-border">
-            <CardBody className="text-left">
+            <CardBody className="text-center">
               <CardTitle className="text-center">
                 <h3 lead>
                   Work in Progress
@@ -119,7 +119,7 @@ function ProjectWorkInProgress(props) {
               <CardSubtitle>
                 <hr></hr>
               </CardSubtitle>
-              <CardText className="pt-1 pl-5 font-weight-bold">{renderProj(props.projects.filter((project) => project.complete === false), props.phases, props.handleProjectClicked)}</CardText>
+              <CardText className="pt-1 font-weight-bold">{renderProj(props.projects.filter((project) => project.complete === false), props.phases, props.handleProjectClicked)}</CardText>
             </CardBody>
           </Card>
         </Col>

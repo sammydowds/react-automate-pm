@@ -61,7 +61,7 @@ function renderHome(props) {
             handleClicked={props.openDetails}>
           </PhasesEndingSoon>
         </Col>
-        <Col lg="6">
+        <Col lg="7">
           <DashboardCard 
             projectsLoading={props.projectsLoading}
             projects={props.projects} 

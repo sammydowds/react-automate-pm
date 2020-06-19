@@ -60,19 +60,6 @@ function renderProj(projects, phases, handleClicked) {
               &nbsp; 
 
             </span>
-            <p className="ml-4">
-              { on_schedule
-                ? <span>
-                    <Badge color="success">On Track</Badge>
-                  </span>
-                : <span>
-                    <Badge className="off-badge">Off Track</Badge>
-                  </span>
-              } | 
-              {phases_rend}
-            </p>
-            <p className="ml-4">
-            </p>
           </p>  
         </span>  
       ); 
@@ -114,7 +101,7 @@ function CompletedProjects(props) {
       <Row>
         <Col>
           <Card className="my-2 text-center card-border">
-            <CardBody className="text-left">
+            <CardBody className="text-center">
               <CardTitle className="text-center">
                 <h3 lead>
                   Completed Projects 

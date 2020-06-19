@@ -44,18 +44,23 @@ function RecentChanges(props) {
         ); 
     } else {
         const log_table = props.log.map((entry) => {
-            const project_name = props.projects[entry.projectId].name;
-            const time_stamp = moment(entry.timestamp).fromNow();  
-            return(
-                <tr>
-                    <td className="text-left">
-                        <span className="project-link" onClick={() => {props.handleClicked(entry.projectId);}}>
-                            {project_name}
-                        </span>
-                        : {entry.description} {time_stamp}
-                    </td>
-                </tr>
-            ); 
+            if (props.projects[entry.projectId]) {
+                const project_name = props.projects[entry.projectId].name;
+                const time_stamp = moment(entry.timestamp).fromNow();  
+                return(
+                    <tr>
+                        <td className="text-left">
+                            <span className="project-link" onClick={() => {props.handleClicked(entry.projectId);}}>
+                                {project_name}
+                            </span>
+                            : {entry.description} 
+                            <br>
+                            </br>
+                            <small>{time_stamp}</small>
+                        </td>
+                    </tr>
+                ); 
+            }
         })
         return(
             <Card className="my-2 card-border">

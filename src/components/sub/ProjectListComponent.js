@@ -18,7 +18,7 @@ function ProjectList(props) {
                 <CardBody className="text-left">
                     <CardTitle className="pl-2 text-center">
                         <h3>
-                            Project List 
+                            Open Projects 
                         </h3>
                         <hr></hr>
                     </CardTitle>
@@ -31,7 +31,8 @@ function ProjectList(props) {
             </Card>
         );
       } else {
-        const project_rows = props.projects.map((project) => {
+        const projects = props.projects.filter((project) => project.complete === false); 
+        const project_rows = projects.map((project) => {
             return (
                 <tr>
                     <td>
@@ -47,7 +48,7 @@ function ProjectList(props) {
             <CardBody className="text-left">
                 <CardTitle className="pl-2 text-center">
                     <h3>
-                        Project List 
+                        Open Projects 
                     </h3>
                     <hr></hr>
                 </CardTitle>
