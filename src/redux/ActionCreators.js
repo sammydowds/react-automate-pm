@@ -327,6 +327,78 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
 
 }
 
+// THUNK - Delete a project 
+export const deleteProject = (proj_id) => (dispatch) => {
+  //Simulating locally 
+
+  //for API 
+  //save to new object, because values is not extensible for adding timestamp  
+  return fetch(baseUrl + 'projects/' + proj_id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
+    })
+    .then(response => response.json())
+    // Updating the redux store
+    .then(proj_id => dispatch(deleteProj(proj_id)))
+    .catch(error => {
+      console.log('Delete project ', error.message);
+      alert('Your deletion could not be posted\nError: ' + error.message);
+    });
+}
+
+//THUNK delete phase 
+export const deleteSinglePhase = (phase_id) => (dispatch) => {
+  //Simulating locally 
+
+  //for API 
+  //save to new object, because values is not extensible for adding timestamp  
+  return fetch(baseUrl + 'phases/' + phase_id, {
+    method: 'DELETE',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
+      }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
+    })
+    .then(response => response.json())
+    // Updating the redux store
+    .then(proj_id => dispatch(deletePhase(phase_id)))
+    .catch(error => {
+      console.log('Delete phase ', error.message);
+      alert('Your deletion could not be posted\nError: ' + error.message);
+    });
+}
+
 // More Actions
 export const projectsLoading = () => ({
   type: ActionTypes.PROJECTS_LOADING
@@ -361,11 +433,20 @@ export const createNewProject = (project) => ({
   type: ActionTypes.CREATE_PROJECT,
   payload: project
 });
+//delete project
+export const deleteProj = (proj_id) => ({
+  type: ActionTypes.DELETE_PROJECT, 
+  payload: proj_id
+}); 
 //create single phase
 export const createNewPhase = (phase) => ({
   type: ActionTypes.CREATE_PHASE,
   payload: phase
 });
+export const deletePhase = (phase_id) => ({
+  type: ActionTypes.DELETE_PHASE, 
+  payload: phase_id
+})
 //update single project
 export const updateProj = (project) => ({
   type: ActionTypes.UPDATE_PROJECT,

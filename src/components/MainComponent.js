@@ -21,7 +21,9 @@ import {
   closeProjectCreateModal,
   openPhaseCreateModal,
   closePhaseCreateModal, 
-  createLogEntry
+  createLogEntry, 
+  deleteProject, 
+  deleteSinglePhase
 } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -51,8 +53,9 @@ const mapDispatchToProps = (dispatch) => ({
   closePhaseCreateModal: () => {dispatch(closePhaseCreateModal())}, 
   createProject: (values) => {dispatch(createProject(values))}, 
   createPhase: (projectId, values) => {dispatch(createPhase(projectId, values))}, 
-  createLogEntry: (entry) => {dispatch(createLogEntry(entry))}
-
+  createLogEntry: (entry) => {dispatch(createLogEntry(entry))}, 
+  deleteProject: (project_id) => {dispatch(deleteProject(project_id))}, 
+  deleteSinglePhase: (phase_id) => {dispatch(deleteSinglePhase(phase_id))}
 });
 
 class Main extends Component {
@@ -96,7 +99,9 @@ class Main extends Component {
             openPhaseCreateModal={this.props.openPhaseCreateModal}
             closePhaseCreateModal={this.props.closePhaseCreateModal}
             createLogEntry={this.props.createLogEntry}
-            log={Object.values(this.props.log.log)}
+            log={Object.values(this.props.log.log).reverse()}
+            deleteProject = {this.props.deleteProject}
+            deleteSinglePhase = {this.props.deleteSinglePhase}
             />
         ); 
       }

@@ -17,10 +17,15 @@ function PhasesEndingSoon(props) {
     const end_this_week =  props.phases.filter((phase) => moment(phase.end).format("W") === moment().format("W"));
     const week_end_table = end_this_week.map((phase) => {
         const project_name = props.projects[phase.projectId].name; 
+        const phase_end = moment(phase.end).format("dddd"); 
         return(
             <tr>
                 <td className="text-center">
-                {project_name}: {phase.name}</td>
+                    <span className="project-link" onClick={() => {props.handleClicked(phase.projectId);}}>
+                    {project_name}
+                    </span>
+                    : {phase.name} ending on {phase_end}
+                </td>
             </tr>
         ); 
     })
@@ -29,7 +34,12 @@ function PhasesEndingSoon(props) {
         const time_stamp = moment(entry.timestamp).fromNow();  
         return(
             <tr>
-                <td className="text-center">{project_name}: {entry.description} {time_stamp}</td>
+                <td className="text-center">
+                    <span className="project-link" onClick={() => {props.handleClicked(entry.projectId);}}>
+                        {project_name}
+                    </span>
+                    : {entry.description} {time_stamp}
+                </td>
             </tr>
         ); 
     })
@@ -69,7 +79,7 @@ function PhasesEndingSoon(props) {
 function StatisticsProjects(props) {
     let num_offtrack = (props.projects.filter((project) => project.status === false)).length; 
     let num_projects = props.projects.length; 
-    let percent_project_off = Math.round(num_offtrack/num_projects * 100); 
+    let percent_project_on = Math.round((num_projects-num_offtrack)/num_projects * 100); 
     let num_wip_phases = (props.phases.filter((phase) => phase.active === true)).length; 
     let num_phases = props.phases.length; 
     let percent_phases_wip = Math.round(num_wip_phases/num_phases * 100); 
@@ -81,8 +91,8 @@ function StatisticsProjects(props) {
                     <p>Total Projects</p>
                 </Col>
                 <Col md={3} className="stat-cubes text-nowrap">
-                    <h3 className="display-4">{percent_project_off}%</h3>
-                    <p>Projects Off Track</p>
+                    <h3 className="display-4">{percent_project_on}%</h3>
+                    <p>Projects On Track</p>
                 </Col>
                 <Col md={3} className="stat-cubes">
                     <h3 className=" display-4">{num_phases}</h3>
@@ -100,7 +110,21 @@ function StatisticsProjects(props) {
 function DashboardCard(props) {
     if (props.projectsLoading) {
         return(
-          <Loading />
+            <Card className="my-2 card-border">
+                <CardBody className="text-left">
+                    <CardTitle className="pl-2 text-center">
+                        <h2>
+                            Weekly Dashboard 
+                        </h2>
+                        <hr></hr>
+                    </CardTitle>
+                    <CardSubtitle className="mb-2 lead text-center">
+                    </CardSubtitle>
+                    <CardText className="text-center">
+                            <Loading />
+                    </CardText>
+                </CardBody>
+            </Card>
         );
       } else {
         return(
@@ -116,7 +140,7 @@ function DashboardCard(props) {
                 </CardSubtitle>
                 <CardText className="text-center">
                         <StatisticsProjects projects={props.projects} phases={props.phases}></StatisticsProjects>
-                        <PhasesEndingSoon phases={props.phases} projects={props.projects} log={props.log}></PhasesEndingSoon>
+                        <PhasesEndingSoon handleClicked={props.handleClicked} phases={props.phases} projects={props.projects} log={props.log}></PhasesEndingSoon>
                 </CardText>
             </CardBody>
         </Card>

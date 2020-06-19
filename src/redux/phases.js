@@ -26,6 +26,12 @@ export const Phases = (state = {
       const edit_state = Object.assign({}, state); 
       edit_state.phases[new_phase.id] = new_phase; 
       return {...state, phases: edit_state.phases}; 
+    
+    case ActionTypes.DELETE_PHASE:
+      const delete_phase = action.payload; 
+      const deleted_phase_state = Object.assign({}, state); 
+      delete deleted_phase_state.phases.delete_phase; 
+      return {...state, phases: deleted_phase_state.phases}; 
 
     default:
       return state;

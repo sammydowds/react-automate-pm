@@ -82,10 +82,12 @@ function renderHome(props) {
                   closePhaseCreateModal={props.closePhaseCreateModal}
                   createLogEntry={props.createLogEntry}
                   log={props.log.filter((entry) => (entry.projectId === props.projectDetails.projectId))}
+                  deleteProject={props.deleteProject}
+                  deleteSinglePhase={props.deleteSinglePhase}
                 />
               </Col>
             : <Col lg="6">
-                <DashboardCard projects={props.projects} phases={props.phases} log={props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))}></DashboardCard>
+                <DashboardCard handleClicked={props.openDetails} projectsLoading={props.projectsLoading} projects={props.projects} phases={props.phases} log={props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))}></DashboardCard>
               </Col>
           }
       </Row>

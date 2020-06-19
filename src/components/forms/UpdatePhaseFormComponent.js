@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment'; 
 import {  
   Row,
   Col,  
@@ -20,13 +21,13 @@ class UpdatePhaseForm extends Component {
     //collecting changed fields 
     for (let key in values.phase) {
       if (values.phase[key] != this.props.phase[key] ) {
-        changed_vals.push(key); 
+        changed_vals.push(key + ' to ' + values.phase[key]); 
       }
     }
     let entry = {}; 
     entry['projectId'] = this.props.phase.projectId; 
     entry['description'] = this.props.phase.name + ' ' + changed_vals + ' updated'; 
-    if (values.notes) {
+    if (values.entry.notes != "") {
       entry['notes'] = values.entry.notes; 
     } else {
       entry['notes'] = 'No note entered'
@@ -103,7 +104,10 @@ class UpdatePhaseForm extends Component {
         <Row className="text-center m-2">
           <Col md={5}>Notes: </Col>
           <Col>
-            <Control.textarea model=".entry.notes" />
+            <Control.textarea 
+            model=".entry.notes" 
+            defaultValue=""
+            />
           </Col>
         </Row>
         <Row className="text-center">

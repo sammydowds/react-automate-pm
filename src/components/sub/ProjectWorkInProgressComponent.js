@@ -30,7 +30,7 @@ function renderPhases(active_phases) {
   } else {
     return(
     <span className="px-1">
-      <Badge color="dark">
+      <Badge color="light">
         No Phases in Progress
       </Badge>
   </span>

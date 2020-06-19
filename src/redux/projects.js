@@ -27,6 +27,12 @@ export const Projects = (state = {
       edit_state.projects[new_project.id] = new_project; 
       return {...state, projects: edit_state.projects}; 
 
+    case ActionTypes.DELETE_PROJECT:
+      const delete_project = action.payload; 
+      const deleted_state = Object.assign({}, state); 
+      delete deleted_state.projects.delete_project; 
+      return {...state, projects: deleted_state.projects}; 
+
     default:
       return state;
   }

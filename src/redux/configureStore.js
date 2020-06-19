@@ -24,6 +24,9 @@ const default_userinterface = {
   }, 
   phaseCreateModal: {
     open: false 
+  },
+  deleteModal: {
+    open: false
   }
 }
 
