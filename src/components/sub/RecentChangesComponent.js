@@ -20,7 +20,7 @@ function RecentChanges(props) {
             <CardBody className="text-left">
                 <CardTitle className="pl-2 text-center">
                     <h3>
-                        Recent Changes <Badge className="off-badge">0</Badge>
+                        Recent Changes
                     </h3>
                     <hr></hr>
                 </CardTitle>

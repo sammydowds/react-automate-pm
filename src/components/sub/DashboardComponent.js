@@ -22,7 +22,7 @@ function StatisticsProjects(props) {
              <Row className="my-3 justify-content-center">
                 <Col md={3} className="stat-cubes">
                     <h3 className="display-4">{num_projects}</h3>
-                    <p>Total Projects</p>
+                    <p>Total Open Projects</p>
                 </Col>
                 <Col md={3} className="stat-cubes">
                     <h3 className="display-4 text-nowrap">{percent_project_on}%</h3>
@@ -30,7 +30,7 @@ function StatisticsProjects(props) {
                 </Col>
                 <Col md={3} className="stat-cubes">
                     <h3 className=" display-4">{num_phases}</h3>
-                    <p>Total Phases</p>
+                    <p>Total Open Phases</p>
                 </Col>
                 <Col md={3} className="stat-cubes">
                     <h3 className="display-4">{percent_phases_wip}%</h3>
@@ -73,7 +73,7 @@ function DashboardCard(props) {
                 <CardSubtitle className="mb-2 lead text-center">
                 </CardSubtitle>
                 <CardText className="text-center">
-                    <StatisticsProjects projects={props.projects} phases={props.phases}></StatisticsProjects>
+                    <StatisticsProjects projects={props.projects.filter((project) => project.complete === false)} phases={props.phases.filter((phase) => phase.complete === false)}></StatisticsProjects>
                 </CardText>
             </CardBody>
         </Card>

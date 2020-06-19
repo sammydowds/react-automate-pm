@@ -13,7 +13,8 @@ import LeftMenu from './sub/LeftMenuComponent';
 import DashboardCard from './sub/DashboardComponent';
 import PhasesEndingSoon from './sub/PhasesEndingSoonComponent'; 
 import RecentChanges from './sub/RecentChangesComponent';
-import ProjectList from './sub/ProjectListComponent';  
+import ProjectList from './sub/ProjectListComponent';
+import CompletedProjects from './sub/CompletedProjectsComponent';   
 
 
 function renderHome(props) {
@@ -93,13 +94,22 @@ function renderHome(props) {
                   deleteProject={props.deleteProject}
                   deleteSinglePhase={props.deleteSinglePhase}
                 />
-            : <ProjectWorkInProgress 
+            : <React.Fragment>
+              <ProjectWorkInProgress 
                 projects={props.projects} 
                 projectsLoading={props.projectsLoading} 
                 handleProjectClicked={props.openDetails}
                 phases={props.phases}
                 phasesLoading={props.phasesLoading}
                 />
+              <CompletedProjects 
+                projects={props.projects} 
+                projectsLoading={props.projectsLoading} 
+                handleProjectClicked={props.openDetails}
+                phases={props.phases}
+                phasesLoading={props.phasesLoading}
+                />
+              </React.Fragment>
           }
         
 

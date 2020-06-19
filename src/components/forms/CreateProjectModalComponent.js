@@ -28,11 +28,18 @@ class CreateProjectForm extends Component {
   }
 
   render() {
+    const init_proj = {
+      complete: false,
+      status: false
+    }
     return (
       <Modal isOpen={this.props.projectCreateModal.open} toggle={this.props.closeProjectCreateModal} className="text-center">
         <ModalHeader toggle={this.props.closeProjectCreateModal} className="off-badge">Create New Project</ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+            <LocalForm 
+              onSubmit={(values) => this.handleSubmit(values)}
+              initialState={init_proj}
+              >
               <Row className="form-group text-center">
                 <Label htmlFor="author" md={4}><strong>Project Name: </strong></Label>
                 <Col md={8}>

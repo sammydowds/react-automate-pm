@@ -26,11 +26,18 @@ class CreatePhaseForm extends Component {
   }
 
   render() {
+    const init_phase = {
+      complete: false,
+      active: false
+    }
     return (
       <Modal isOpen={this.props.phaseCreateModal.open} toggle={this.props.closePhaseCreateModal} className="text-center">
         <ModalHeader toggle={this.props.closePhaseCreateModal} className="off-badge">Create New Phase</ModalHeader>
           <ModalBody>
-          <LocalForm onSubmit={(values) => this.handleSubmit(this.props.projectId, values)}>
+          <LocalForm 
+            onSubmit={(values) => this.handleSubmit(this.props.projectId, values)}
+            initialState={init_phase}
+            >
               <Row className="form-group text-center">
                 <Label htmlFor="author" md={4}><strong>Phase Name: </strong></Label>
                 <Col md={8}>

@@ -20,7 +20,7 @@ function PhasesEndingSoon(props) {
             <CardBody className="text-left">
                 <CardTitle className="pl-2 normal-text text-center">
                     <h6 lead>
-                        Ending this Week <Badge className="off-badge">0</Badge>
+                        Ending this Week
                     </h6>
                     <hr></hr>
                 </CardTitle>
