@@ -12,7 +12,8 @@ import ProjectDetails from './sub/ProjectDetailsComponent';
 import LeftMenu from './sub/LeftMenuComponent'; 
 import DashboardCard from './sub/DashboardComponent';
 import PhasesEndingSoon from './sub/PhasesEndingSoonComponent'; 
-import RecentChanges from './sub/RecentChangesComponent'; 
+import RecentChanges from './sub/RecentChangesComponent';
+import ProjectList from './sub/ProjectListComponent';  
 
 
 function renderHome(props) {
@@ -92,7 +93,13 @@ function renderHome(props) {
                   deleteProject={props.deleteProject}
                   deleteSinglePhase={props.deleteSinglePhase}
                 />
-            : <span></span>
+            : <ProjectWorkInProgress 
+                projects={props.projects} 
+                projectsLoading={props.projectsLoading} 
+                handleProjectClicked={props.openDetails}
+                phases={props.phases}
+                phasesLoading={props.phasesLoading}
+                />
           }
         
 
@@ -104,13 +111,8 @@ function renderHome(props) {
             projects={props.projects} phases={props.phases} 
             handleClicked={props.openDetails}>
           </RecentChanges>
-          <ProjectWorkInProgress 
-            projects={props.projects} 
-            projectsLoading={props.projectsLoading} 
-            handleProjectClicked={props.openDetails}
-            phases={props.phases}
-            phasesLoading={props.phasesLoading}
-            />
+          <ProjectList handleClicked={props.openDetails} phases={props.phases} projects={props.projects} projectsLoading={props.projectsLoading}></ProjectList>
+
         </Col>
         
       </Row>

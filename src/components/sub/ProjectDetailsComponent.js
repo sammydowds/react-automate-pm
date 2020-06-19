@@ -70,7 +70,7 @@ class ProjectDetails extends Component {
         const time_stamp = moment(entry.timestamp).fromNow(); 
           return(
             <tr>
-              <td className="text-center">{entry.description} {time_stamp} 
+              <td className="text-left">{entry.description} {time_stamp} 
               &nbsp; 
               <strong> Note: </strong>{entry.notes}
               </td>
@@ -192,7 +192,15 @@ class ProjectDetails extends Component {
   render() {
     if (this.props.projectsLoading) {
       return(
-        <Loading />
+        <Card className="my-2 card-border">
+            <CardBody className="text-left">
+              <CardTitle className="text-center">
+              </CardTitle>
+              <CardText className="pb-3 text-center">
+                <Loading />
+              </CardText>
+            </CardBody>
+          </Card>
       );
     } else {
       let proj_phases = null; 
@@ -268,7 +276,7 @@ class ProjectDetails extends Component {
                   <h6 className="mt-2"><strong>Change Log <Badge className="off-badge">{this.props.log.length}</Badge></strong></h6>
                   <div className="log-table">
                     <Table size="sm" className="text-center overflow-auto" hover responsive>
-                      <tbody className="text-nowrap">
+                      <tbody>
                         {this.renderLog()} 
                       </tbody>
                     </Table>

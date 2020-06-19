@@ -24,8 +24,8 @@ function StatisticsProjects(props) {
                     <h3 className="display-4">{num_projects}</h3>
                     <p>Total Projects</p>
                 </Col>
-                <Col md={3} className="stat-cubes text-nowrap">
-                    <h3 className="display-4">{percent_project_on}%</h3>
+                <Col md={3} className="stat-cubes">
+                    <h3 className="display-4 text-nowrap">{percent_project_on}%</h3>
                     <p>Projects On Track</p>
                 </Col>
                 <Col md={3} className="stat-cubes">
