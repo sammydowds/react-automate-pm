@@ -72,50 +72,62 @@ class Main extends Component {
   }
 
   render () {
-      const HomePage = () => {
-        return(
-          <Home 
-            projects={Object.values(this.props.projects.projects)} 
-            projectsLoading={this.props.projects.isLoading}
-            phasesLoading={this.props.phases.isLoading} 
-            updateProject={this.props.updateProject}
-            phases={Object.values(this.props.phases.phases)}
-            phasesLoading={this.props.phases.isLoading}
-            updatePhase={this.props.updatePhase}
-            createProject={this.props.createProject}
-            createPhase={this.props.createPhase}
-            projectDetails={this.props.userinterface.projectDetails}
-            phaseUpdateModal={this.props.userinterface.phaseUpdateModal}
-            projectUpdateModal={this.props.userinterface.projectUpdateModal}
-            phaseCreateModal={this.props.userinterface.phaseCreateModal}
-            projectCreateModal={this.props.userinterface.projectCreateModal}
-            openDetails={this.props.openDetails}
-            closeDetails={this.props.closeDetails}
-            openPhaseUpdateModal={this.props.openPhaseUpdateModal}
-            closePhaseUpdateModal={this.props.closePhaseUpdateModal}
-            openProjectUpdateModal={this.props.openProjectUpdateModal}
-            closeProjectUpdateModal={this.props.closeProjectUpdateModal}
-            openProjectCreateModal={this.props.openProjectCreateModal}
-            closeProjectCreateModal={this.props.closeProjectCreateModal}
-            openPhaseCreateModal={this.props.openPhaseCreateModal}
-            closePhaseCreateModal={this.props.closePhaseCreateModal}
-            createLogEntry={this.props.createLogEntry}
-            log={Object.values(this.props.log.log).reverse()}
-            deleteProject = {this.props.deleteProject}
-            deleteSinglePhase = {this.props.deleteSinglePhase}
-            />
-        ); 
-      }
-
-      return(
-        <div className="main-container">
-          <Header />
-          <Switch>
-            <Route path="/" component={HomePage} />
-          </Switch>
-        </div>
-      );
+    let projects_list = []; 
+    let phases_list = []; 
+    let log_list = []; 
+    if (this.props.projects.projects.length != 0) {
+      projects_list = Object.values(this.props.projects.projects); 
+    } 
+    if (this.props.phases.phases.length != 0) {
+      phases_list = Object.values(this.props.phases.phases); 
     }
+    if (this.props.log.log.length != 0) {
+      log_list = Object.values(this.props.log.log).reverse(); 
+    }
+    const HomePage = () => {
+      return(
+        <Home 
+          projects={projects_list} 
+          projectsLoading={this.props.projects.isLoading}
+          phasesLoading={this.props.phases.isLoading} 
+          updateProject={this.props.updateProject}
+          phases={phases_list}
+          phasesLoading={this.props.phases.isLoading}
+          updatePhase={this.props.updatePhase}
+          createProject={this.props.createProject}
+          createPhase={this.props.createPhase}
+          projectDetails={this.props.userinterface.projectDetails}
+          phaseUpdateModal={this.props.userinterface.phaseUpdateModal}
+          projectUpdateModal={this.props.userinterface.projectUpdateModal}
+          phaseCreateModal={this.props.userinterface.phaseCreateModal}
+          projectCreateModal={this.props.userinterface.projectCreateModal}
+          openDetails={this.props.openDetails}
+          closeDetails={this.props.closeDetails}
+          openPhaseUpdateModal={this.props.openPhaseUpdateModal}
+          closePhaseUpdateModal={this.props.closePhaseUpdateModal}
+          openProjectUpdateModal={this.props.openProjectUpdateModal}
+          closeProjectUpdateModal={this.props.closeProjectUpdateModal}
+          openProjectCreateModal={this.props.openProjectCreateModal}
+          closeProjectCreateModal={this.props.closeProjectCreateModal}
+          openPhaseCreateModal={this.props.openPhaseCreateModal}
+          closePhaseCreateModal={this.props.closePhaseCreateModal}
+          createLogEntry={this.props.createLogEntry}
+          log={log_list}
+          deleteProject = {this.props.deleteProject}
+          deleteSinglePhase = {this.props.deleteSinglePhase}
+          />
+      ); 
+    }
+
+    return(
+      <div className="main-container">
+        <Header />
+        <Switch>
+          <Route path="/" component={HomePage} />
+        </Switch>
+      </div>
+    );
+  }
 
 }
 

@@ -10,9 +10,16 @@ import { normalize, schema } from 'normalizr';
 
 //function to normalize an array of objects, returns normalized list of objects 
 const normalizeResponse = (response) => {
-  const new_schema = new schema.Entity('schema', {attributeId: 'id'});  
-  const norm_data = normalize(response, [new_schema]);
-  return norm_data.entities.schema;   
+  if (response.length != 0) {
+    const new_schema = new schema.Entity('schema', {attributeId: 'id'});  
+    const norm_data = normalize(response, [new_schema]);
+    alert('Normalized!'); 
+    alert(norm_data.entities.schema);
+    return norm_data.entities.schema; 
+  } else {
+    return []; 
+  }
+    
 }
 
 // THUNK
@@ -24,9 +31,10 @@ export const fetchProjects = () => (dispatch) => {
     // dispatch(addProjects(projs)); 
     
     //for API 
-    return fetch(baseUrl + 'projects')
+    return fetch(baseUrl + 'projects/')
       .then(response => {
         if (response.ok) {
+          // alert(JSON.stringify(response));  
           return response;
         }
         else {
@@ -36,6 +44,8 @@ export const fetchProjects = () => (dispatch) => {
         }
       },
       error => {
+        alert(error); 
+        console.log('Error in the Hood'); 
         var errmess= new Error(error.message);
         throw errmess;
       })
@@ -51,7 +61,7 @@ export const fetchProjects = () => (dispatch) => {
     dispatch(logLoading(true));
 
     //for API 
-    return fetch(baseUrl + 'log')
+    return fetch(baseUrl + 'log/')
       .then(response => {
         if (response.ok) {
           return response;
@@ -82,7 +92,7 @@ export const fetchPhases = () => (dispatch) => {
   // const phases_local = normalizeResponse(response_phases); 
   // dispatch(addPhases(phases_local)); 
   //for API 
-  return fetch(baseUrl + 'phases')
+  return fetch(baseUrl + 'phases/')
     .then(response => {
       if (response.ok) {
         return response;
@@ -519,6 +529,7 @@ export const initializeUserInterface = () => (dispatch) => {
 }
 
 export const openDetails = (projectId) => (dispatch) => {
+  alert(projectId); 
   const details_project = {
     open: true, 
     projectId: projectId

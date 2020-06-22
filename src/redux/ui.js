@@ -11,6 +11,7 @@ export const UserInterface = (state = {
     case ActionTypes.DETAILS_OPEN:
       const openProjectDetails = action.payload; 
       const opendetails_state = Object.assign({}, state); 
+      alert(JSON.stringify(openProjectDetails)); 
       opendetails_state.projectDetails = openProjectDetails; 
       return opendetails_state;
 

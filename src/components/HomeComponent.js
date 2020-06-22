@@ -72,7 +72,7 @@ function renderHome(props) {
           {props.projectDetails.open
             ? 
                 <ProjectDetails 
-                  project={props.projects[props.projectDetails.projectId]}
+                  project={props.projects.filter((project) => project.id === props.projectDetails.projectId)[0]}
                   projectsLoading={props.projectsLoading} 
                   phases={props.phases.filter((phase) => phase.projectId === props.projectDetails.projectId)}
                   phasesLoading={props.phasesLoading}

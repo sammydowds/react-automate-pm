@@ -31,6 +31,7 @@ function ProjectList(props) {
             </Card>
         );
       } else {
+        alert(JSON.stringify(props.projects)); 
         const projects = props.projects.filter((project) => project.complete === false); 
         const project_rows = projects.map((project) => {
             return (
