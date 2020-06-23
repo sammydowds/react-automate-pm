@@ -6,7 +6,8 @@ import {
   updateProjectUrl,
   createPhaseUrl,
   deletePhaseUrl,
-  updatePhaseUrl
+  updatePhaseUrl,
+  createLogEntryUrl
 } from '../shared/baseUrl';
 import { normalize, schema } from 'normalizr';
 
@@ -40,7 +41,6 @@ export const fetchProjects = () => (dispatch) => {
     return fetch(baseUrl + 'projects/')
       .then(response => {
         if (response.ok) {
-          // alert(JSON.stringify(response));  
           return response;
         }
         else {
@@ -136,7 +136,6 @@ export const createProject = (values) => (dispatch) => {
   let projectDetails = Object.assign({}, values); 
   projectDetails.lastupdated = new Date().toISOString().split("T")[0]
 
-  alert(JSON.stringify(projectDetails)); 
   return fetch(baseUrl + createProjectUrl, {
     method: 'POST',
     mode: 'cors',
@@ -225,8 +224,8 @@ export const createLogEntry = (values) => (dispatch) => {
   //for API 
   //save to new object, because values is not extensible for adding timestamp 
   let entryDetails = Object.assign({}, values); 
-  entryDetails.timestamp = new Date().toISOString();
-  return fetch(baseUrl + 'log', {
+  entryDetails.timestamp = new Date().toISOString().split("T")[0];
+  return fetch(baseUrl + createLogEntryUrl, {
     method: 'POST',
     body: JSON.stringify(entryDetails),
     headers: {

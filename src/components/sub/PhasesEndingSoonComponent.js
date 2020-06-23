@@ -45,7 +45,7 @@ function PhasesEndingSoon(props) {
     } else {
         const end_this_week =  props.phases.filter((phase) => moment(phase.end).format("W") === moment().format("W") && phase.complete === false);
         const week_end_table = end_this_week.map((phase) => {
-            const project_name = props.projects[phase.projectId].name; 
+            const project_name = (props.projects.filter((project) => project.id === phase.projectId)[0]).name; 
             const phase_end = moment(phase.end).format("dddd"); 
             return(
                 <tr>

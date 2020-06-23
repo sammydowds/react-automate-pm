@@ -44,8 +44,9 @@ function RecentChanges(props) {
         ); 
     } else {
         const log_table = props.log.map((entry) => {
-            if (props.projects[entry.projectId]) {
-                const project_name = props.projects[entry.projectId].name;
+            if (props.projects.filter((project) => project.id === entry.projectId)) {
+                const project_match = (props.projects.filter((project) => project.id === entry.projectId))[0];
+                const project_name = project_match.name; 
                 const time_stamp = moment(entry.timestamp).fromNow();  
                 return(
                     <tr>

@@ -57,7 +57,8 @@ function renderHome(props) {
             />
           <PhasesEndingSoon 
             projectsLoading={props.projectsLoading} 
-            projects={props.projects} phases={props.phases} 
+            projects={props.projects} 
+            phases={props.phases} 
             handleClicked={props.openDetails}>
           </PhasesEndingSoon>
         </Col>

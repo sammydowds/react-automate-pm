@@ -5,3 +5,5 @@ export const updateProjectUrl = 'projects/update/';
 export const createPhaseUrl = 'phases/create/'; 
 export const deletePhaseUrl = 'phases/delete/'; 
 export const updatePhaseUrl = 'phases/update/'; 
+export const createLogEntryUrl = 'log/create/'; 
+
