@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import moment from 'moment'; 
 import {  
   Row,
   Col,  
@@ -20,14 +19,14 @@ class UpdatePhaseForm extends Component {
     let changed_vals = []; 
     //collecting changed fields 
     for (let key in values.phase) {
-      if (values.phase[key] != this.props.phase[key] ) {
+      if (values.phase[key] !== this.props.phase[key] ) {
         changed_vals.push(key + ' to ' + values.phase[key]); 
       }
     }
     let entry = {}; 
     entry['projectId'] = this.props.phase.projectId; 
     entry['description'] = this.props.phase.name + ' ' + changed_vals + ' updated'; 
-    if (values.entry.notes != "") {
+    if (values.entry.notes !== "") {
       entry['notes'] = values.entry.notes; 
     } else {
       entry['notes'] = 'No note entered'

@@ -75,13 +75,13 @@ class Main extends Component {
     let projects_list = []; 
     let phases_list = []; 
     let log_list = []; 
-    if (this.props.projects.projects.length != 0) {
+    if (this.props.projects.projects.length !== 0) {
       projects_list = Object.values(this.props.projects.projects); 
     } 
-    if (this.props.phases.phases.length != 0) {
+    if (this.props.phases.phases.length !== 0) {
       phases_list = Object.values(this.props.phases.phases); 
     }
-    if (this.props.log.log.length != 0) {
+    if (this.props.log.log.length !== 0) {
       log_list = Object.values(this.props.log.log).reverse(); 
     }
     const HomePage = () => {
@@ -92,7 +92,6 @@ class Main extends Component {
           phasesLoading={this.props.phases.isLoading} 
           updateProject={this.props.updateProject}
           phases={phases_list}
-          phasesLoading={this.props.phases.isLoading}
           updatePhase={this.props.updatePhase}
           createProject={this.props.createProject}
           createPhase={this.props.createPhase}

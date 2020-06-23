@@ -13,7 +13,7 @@ import {
 import { Loading } from './LoadingComponent'; 
 
 function renderPhases(active_phases) {
-  if (active_phases.length != 0) {
+  if (active_phases.length !== 0) {
     const active_phases_lst = active_phases.map((phase) => {
       const phase_end = moment(phase.end).fromNow(); 
       return(

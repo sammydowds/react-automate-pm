@@ -1,13 +1,11 @@
-import React, {useState} from 'react'; 
+import React from 'react'; 
 import {  
   Card,
   CardBody, 
   CardSubtitle, 
   CardTitle, 
   CardText,
-  Col,
-  Table,
-  Row
+  Table
  } from 'reactstrap';
  import { Loading } from './LoadingComponent';
 
@@ -31,7 +29,6 @@ function ProjectList(props) {
             </Card>
         );
       } else {
-        alert(JSON.stringify(props.projects)); 
         const projects = props.projects.filter((project) => project.complete === false); 
         const project_rows = projects.map((project) => {
             return (

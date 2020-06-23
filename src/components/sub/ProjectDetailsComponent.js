@@ -4,7 +4,6 @@ import {
   Badge, 
   Card,
   CardBody, 
-  CardSubtitle, 
   CardTitle, 
   CardText, 
   Col, 
@@ -65,7 +64,7 @@ class ProjectDetails extends Component {
   }
 
   renderLog() {
-    if (this.props.log.length != 0) {
+    if (this.props.log.length !== 0) {
       const log_render = this.props.log.map((entry) => {
         const time_stamp = moment(entry.timestamp).fromNow(); 
           return(

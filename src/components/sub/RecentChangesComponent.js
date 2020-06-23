@@ -1,4 +1,4 @@
-import React, {useState} from 'react'; 
+import React from 'react'; 
 import moment from 'moment'; 
 import {  
   Badge, 
@@ -59,6 +59,14 @@ function RecentChanges(props) {
                             <small>{time_stamp}</small>
                         </td>
                     </tr>
+                ); 
+            } else {
+                return(
+                    <tr>
+                        <td className="text-left">
+                            No log entries.
+                        </td>
+                    </tr> 
                 ); 
             }
         })

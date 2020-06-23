@@ -1,8 +1,6 @@
 import React from 'react';
-import moment from 'moment'; 
 import {  
   Col, 
-  Badge, 
   Card,
   CardBody, 
   CardSubtitle, 
@@ -12,40 +10,10 @@ import {
  } from 'reactstrap';
 import { Loading } from './LoadingComponent'; 
 
-function renderPhases(active_phases) {
-  if (active_phases.length != 0) {
-    const active_phases_lst = active_phases.map((phase) => {
-      const phase_end = moment(phase.end).fromNow(); 
-      return(
-        <span className="px-1">
-          <Badge color="dark">
-            {phase.name} {phase_end}
-          </Badge>
-        </span>
-      ); 
-    }); 
-    return(
-      <span>{active_phases_lst}</span>
-    ); 
-  } else {
-    return(
-    <span className="px-1">
-      <Badge color="light">
-        No Phases in Progress
-      </Badge>
-  </span>
-    ); 
-  }
-}
-
-function renderProj(projects, phases, handleClicked) {
+function renderProj(projects, handleClicked) {
   if (projects) {
     const projects_rend = projects.map((project) => {
-      const on_schedule = project.status;
       // filtering for phases related to this project
-      const proj_phases = phases.filter((phase) => project.id === phase.projectId); 
-      const active_phases = proj_phases.filter((phase) => phase.active);
-      const phases_rend = renderPhases(active_phases); 
       return(
         <span>
           <p style={{fontweight: 'superbold'}}>
