@@ -377,9 +377,8 @@ export const deleteProject = (proj_id) => (dispatch) => {
       var errmess= new Error(error.message);
       throw errmess;
     })
-    .then(response => response.json())
     // Updating the redux store
-    .then(response => dispatch(deleteProj(proj_id, response)))
+    .then(response => dispatch(deleteProj(proj_id)))
     .catch(error => {
       console.log('Delete project ', error.message);
       alert('Your deletion could not be posted\nError: ' + error.message);
@@ -414,7 +413,6 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
       var errmess= new Error(error.message);
       throw errmess;
     })
-    .then(response => response.json())
     // Updating the redux store
     .then(proj_id => dispatch(deletePhase(phase_id)))
     .catch(error => {
