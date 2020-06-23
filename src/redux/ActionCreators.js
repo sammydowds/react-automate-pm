@@ -1,5 +1,13 @@
 import * as ActionTypes from './ActionTypes'; 
-import { baseUrl } from '../shared/baseUrl';
+import { 
+  baseUrl, 
+  createProjectUrl,
+  deleteProjectUrl,
+  updateProjectUrl,
+  createPhaseUrl,
+  deletePhaseUrl,
+  updatePhaseUrl
+} from '../shared/baseUrl';
 import { normalize, schema } from 'normalizr';
 
 //Simulating API locally  
@@ -126,9 +134,12 @@ export const createProject = (values) => (dispatch) => {
   dispatch(projectsUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectDetails = Object.assign({}, values); 
-  projectDetails.lastupdated = new Date().toISOString();
-  return fetch(baseUrl + 'projects', {
+  projectDetails.lastupdated = new Date().toISOString().split("T")[0]
+
+  alert(JSON.stringify(projectDetails)); 
+  return fetch(baseUrl + createProjectUrl, {
     method: 'POST',
+    mode: 'cors',
     body: JSON.stringify(projectDetails),
     headers: {
       'Content-Type': 'application/json'
@@ -173,9 +184,9 @@ export const createPhase = (proj_id, values) => (dispatch) => {
   dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseDetails = Object.assign({}, values); 
-  phaseDetails.lastupdated = new Date().toISOString();
+  phaseDetails.lastupdated = new Date().toISOString().split("T")[0];
   phaseDetails.projectId = proj_id; 
-  return fetch(baseUrl + 'phases', {
+  return fetch(baseUrl + createPhaseUrl, {
     method: 'POST',
     body: JSON.stringify(phaseDetails),
     headers: {
@@ -260,8 +271,8 @@ export const updateProject = (proj_id, values) => (dispatch) => {
   dispatch(projectsUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectUpdates = Object.assign({}, values); 
-  projectUpdates.lastupdated = new Date().toISOString();
-  return fetch(baseUrl + 'projects/' + proj_id, {
+  projectUpdates.lastupdated = new Date().toISOString().split("T")[0];
+  return fetch(baseUrl + updateProjectUrl + proj_id, {
     method: 'PATCH',
     body: JSON.stringify(projectUpdates),
     headers: {
@@ -305,8 +316,8 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
   dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseUpdates = Object.assign({}, values);
-  phaseUpdates.lastupdated = new Date().toISOString();
-  return fetch(baseUrl + 'phases/' + phase_id, {
+  phaseUpdates.lastupdated = new Date().toISOString().split("T")[0];
+  return fetch(baseUrl + updatePhaseUrl + phase_id, {
     method: 'PATCH',
     body: JSON.stringify(phaseUpdates),
     headers: {
@@ -345,7 +356,7 @@ export const deleteProject = (proj_id) => (dispatch) => {
   //for API 
   dispatch(projectsUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
-  return fetch(baseUrl + 'projects/' + proj_id, {
+  return fetch(baseUrl + deleteProjectUrl + proj_id, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'
@@ -382,7 +393,7 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
   //for API 
   dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
-  return fetch(baseUrl + 'phases/' + phase_id, {
+  return fetch(baseUrl + deletePhaseUrl + phase_id, {
     method: 'DELETE',
     headers: {
       'Content-Type': 'application/json'

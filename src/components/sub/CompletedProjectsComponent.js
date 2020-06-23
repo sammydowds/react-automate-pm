@@ -39,7 +39,7 @@ function renderProj(projects, handleClicked) {
     ); 
   } else {
     return(
-    <div>wtf</div>); 
+    <div></div>); 
   }
 }
 
@@ -65,6 +65,7 @@ function CompletedProjects(props) {
       </Row>
     );
   } else {
+    const completed_proj = props.projects.filter((project) => project.complete === true); 
     return(
       <Row>
         <Col>
@@ -78,7 +79,7 @@ function CompletedProjects(props) {
               <CardSubtitle>
                 <hr></hr>
               </CardSubtitle>
-              <CardText className="pt-1 pl-1 font-weight-bold">{renderProj(props.projects.filter((project) => project.complete === true), props.phases, props.handleProjectClicked)}</CardText>
+              <CardText className="pt-1 pl-1 font-weight-bold">{renderProj(completed_proj, props.handleProjectClicked)}</CardText>
             </CardBody>
           </Card>
         </Col>
