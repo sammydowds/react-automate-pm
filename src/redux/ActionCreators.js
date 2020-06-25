@@ -134,7 +134,7 @@ export const createProject = (values) => (dispatch) => {
   dispatch(projectsUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectDetails = Object.assign({}, values); 
-  projectDetails.lastupdated = new Date().toISOString().split("T")[0]
+  projectDetails.lastupdated = new Date().toISOString(); 
 
   return fetch(baseUrl + createProjectUrl, {
     method: 'POST',
@@ -183,7 +183,7 @@ export const createPhase = (proj_id, values) => (dispatch) => {
   dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseDetails = Object.assign({}, values); 
-  phaseDetails.lastupdated = new Date().toISOString().split("T")[0];
+  phaseDetails.lastupdated = new Date().toISOString(); 
   phaseDetails.projectId = proj_id; 
   return fetch(baseUrl + createPhaseUrl, {
     method: 'POST',
@@ -224,7 +224,7 @@ export const createLogEntry = (values) => (dispatch) => {
   //for API 
   //save to new object, because values is not extensible for adding timestamp 
   let entryDetails = Object.assign({}, values); 
-  entryDetails.timestamp = new Date().toISOString().split("T")[0];
+  entryDetails.timestamp = new Date().toISOString();
   return fetch(baseUrl + createLogEntryUrl, {
     method: 'POST',
     body: JSON.stringify(entryDetails),
@@ -270,7 +270,7 @@ export const updateProject = (proj_id, values) => (dispatch) => {
   dispatch(projectsUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectUpdates = Object.assign({}, values); 
-  projectUpdates.lastupdated = new Date().toISOString().split("T")[0];
+  projectUpdates.lastupdated = new Date().toISOString();
   return fetch(baseUrl + updateProjectUrl + proj_id, {
     method: 'PATCH',
     body: JSON.stringify(projectUpdates),
@@ -315,7 +315,7 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
   dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseUpdates = Object.assign({}, values);
-  phaseUpdates.lastupdated = new Date().toISOString().split("T")[0];
+  phaseUpdates.lastupdated = new Date().toISOString();
   return fetch(baseUrl + updatePhaseUrl + phase_id, {
     method: 'PATCH',
     body: JSON.stringify(phaseUpdates),

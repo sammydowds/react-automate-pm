@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import Login from './LoginComponent'; 
+import Landing from './LandingComponent'; 
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { 
@@ -123,6 +124,7 @@ class Main extends Component {
       <div className="main-container">
         <Header />
         <Switch>
+          <Route path="/learn" ><Landing /></Route>
           <Route path="/home" component={HomePage} />
           <Route path="/login" ><Login /></Route>
         </Switch>

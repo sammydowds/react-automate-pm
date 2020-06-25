@@ -20,7 +20,7 @@ import CompletedProjects from './sub/CompletedProjectsComponent';
 function renderHome(props) {
   return(
     <Container className="container-spacing" fluid={true}>
-      <Row>
+      {/* <Row>
         <Col>
           <Alert color="danger" className="text-center mt-3" fade={false}>
               <h4 className="alert-heading">Black Lives Matter.</h4>
@@ -40,7 +40,7 @@ function renderHome(props) {
             Warning: This is a prototype only, and not suitable for production.
           </Alert>
         </Col>
-      </Row>
+      </Row> */}
       <Row className="h-100 justify-content-center">
         <Col lg="2">
           <LeftMenu 

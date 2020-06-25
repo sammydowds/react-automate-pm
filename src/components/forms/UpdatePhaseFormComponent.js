@@ -20,12 +20,12 @@ class UpdatePhaseForm extends Component {
     //collecting changed fields 
     for (let key in values.phase) {
       if (values.phase[key] !== this.props.phase[key] ) {
-        changed_vals.push(key + ' to ' + values.phase[key]); 
+        changed_vals.push(' ' + key + ' updated to ' + values.phase[key]); 
       }
     }
     let entry = {}; 
     entry['projectId'] = this.props.phase.projectId; 
-    entry['description'] = this.props.phase.name + ' ' + changed_vals + ' updated'; 
+    entry['description'] = this.props.phase.name + ' ' + changed_vals; 
     if (values.entry.notes !== "") {
       entry['notes'] = values.entry.notes; 
     } else {

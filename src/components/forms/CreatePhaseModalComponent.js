@@ -22,7 +22,6 @@ class CreatePhaseForm extends Component {
 
   handleSubmit(projectId, values) {
     this.props.createPhase(projectId, values);
-    alert(JSON.stringify(values)); 
     this.props.closePhaseCreateModal(); 
   }
 
