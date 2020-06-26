@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { LocalForm, Control} from 'react-redux-form';
+import { LocalForm, Control, Errors} from 'react-redux-form';
 import {
     Button,
     Container,
@@ -12,18 +12,45 @@ import {
     CardTitle, 
     InputGroup, 
     Input, 
-    InputGroupAddon, 
-    InputGroupText
+    FormGroup, 
+    FormText,
+    Label, 
+    FormFeedback
 } from 'reactstrap'; 
 
-const UserNameInput = (props) => 
-        <InputGroup>
-            <Input {...props} placeholder="Username..." className="form-fields"/>
-        </InputGroup>
+const required = (val) => val && val.length;
+
+const UserNameCheck = (props) =>  
+    <FormGroup>
+        <Label for="exampleEmail">Username</Label>
+        <Input autoComplete="off" {...props} />
+        <Errors
+            model=".username"
+            className="text-danger"
+            show="touched"
+            messages={{
+                required: 'Required.',
+            }}
+        />
+    </FormGroup>
+ 
+ const PasswordCheck = (props) =>  
+    <FormGroup>
+        <Label>Password</Label>
+        <Input type="password" {...props} />
+        <Errors
+            model=".password"
+            className="text-danger"
+            show="touched"
+            messages={{
+                required: 'Required.',
+            }}
+        />
+    </FormGroup>
 
 const PasswordInput = (props) => 
         <InputGroup>
-            <Input {...props} placeholder="Password..." className="form-fields"/>
+            <Input type="password" {...props} placeholder="Password..." className="form-fields"/>
         </InputGroup>
 
 class Login extends Component {
@@ -34,8 +61,8 @@ class Login extends Component {
       return (
         <Container className="container-spacing landing-container landing-colors" fluid={true}>
             <Row className="justify-content-center">
-                <Col md={4} className="mt-3 landing-container">
-                    <Card className="my-2 landing-container landing-colors">
+                <Col md={4} className="landing-container">
+                    <Card className="landing-container landing-colors">
                         <CardBody className="text-left">
                             <CardTitle className="text-center">
                                 <h2 className="display-4">
@@ -46,19 +73,27 @@ class Login extends Component {
                                 Guide your projects with ease. 
                                 <hr></hr>
                             </CardSubtitle>
-                            <CardText className="text-center">
+                            <CardText className="text-left">
                                 <LocalForm
                                     onSubmit={(values) => this.handleSubmit(values)}
                                 >
-                                    <Row className="m-2">
-                                        <Control.text model=".username" component={UserNameInput} />
-                                    </Row>
-                                    <Row className="m-2">
-                                        <Control.text model=".password" component={PasswordInput} />                                    
-                                    </Row>
-                                    <Button className="form-labels" type="submit">
-                                        Login
-                                    </Button>                               
+                                    <Control 
+                                        model=".username" 
+                                        validators={{required
+                                        }}
+                                        component={UserNameCheck}
+                                    />
+                                    <Control 
+                                        model=".password" 
+                                        component={PasswordCheck} 
+                                        validators={{required
+                                        }}
+                                    />  
+                                    <div className="text-center">
+                                        <Button size="lg" className="form-labels" type="submit">
+                                            Login
+                                        </Button>        
+                                    </div>                                                         
                                 </LocalForm>
                             </CardText>
                         </CardBody>

@@ -23,27 +23,27 @@ const Login = () => {
           </Jumbotron>
           </Col>
         </Row>
-        <Row className="p-5">
+        <Row className="p-3">
           <Col className="text-center">
-            <p><h2 className="display-4 pb-5">One Page. </h2></p> 
+            <p><h2 className="display-4 pb-3">One Page. </h2></p> 
             <img src="assets/images/home_page.gif" className="responsive-gif" />
           </Col>
         </Row>
-        <Row className="p-5">
+        <Row className="p-3">
           <Col className="text-center">
-            <p><h2 className="display-4 pb-5">Add Projects. </h2></p> 
+            <p><h2 className="display-4 pb-3">Add Projects. </h2></p> 
             <p> <img src="assets/images/new_proj.gif" className="responsive-gif" ></img></p>
           </Col>
         </Row>
-        <Row className="p-5">
+        <Row className="p-3">
           <Col className="text-center">
-            <p><h2 className="display-4 pb-5">Add Phases. </h2></p> 
+            <p><h2 className="display-4 pb-3">Add Phases. </h2></p> 
             <p> <img src="assets/images/create_phase.gif" className="responsive-gif" ></img></p>
           </Col>
         </Row>
-        <Row className="p-5">
+        <Row className="p-3">
           <Col className="text-center">
-            <p><h2 className="display-4 pb-5">Share. </h2></p> 
+            <p><h2 className="display-4 pb-3">Share. </h2></p> 
             <p> <img src="assets/images/copy_phase.gif" className="responsive-gif" ></img></p>
           </Col>
         </Row>
