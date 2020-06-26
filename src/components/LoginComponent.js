@@ -18,7 +18,7 @@ import {
 
 const UserNameInput = (props) => 
         <InputGroup>
-            <Input {...props} placeholder="Enter your username..." className="form-fields"/>
+            <Input {...props} placeholder="Username..." className="form-fields"/>
         </InputGroup>
 
 const PasswordInput = (props) => 
@@ -43,7 +43,7 @@ class Login extends Component {
                                 </h2>
                             </CardTitle>
                             <CardSubtitle className="mb-2 lead text-center">
-                                Land your projects with success. 
+                                Guide your projects with ease. 
                                 <hr></hr>
                             </CardSubtitle>
                             <CardText className="text-center">

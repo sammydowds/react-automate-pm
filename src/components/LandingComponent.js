@@ -25,7 +25,7 @@ const Login = () => {
         </Row>
         <Row className="p-5">
           <Col className="text-center">
-            <p><h2 className="display-4 pb-5">One Single Page. </h2></p> 
+            <p><h2 className="display-4 pb-5">One Page. </h2></p> 
             <img src="assets/images/home_page.gif" className="responsive-gif" />
           </Col>
         </Row>

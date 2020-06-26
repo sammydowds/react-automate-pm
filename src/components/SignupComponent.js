@@ -16,19 +16,29 @@ import {
     InputGroupText
 } from 'reactstrap'; 
 
+const FirstNameInput = (props) => 
+        <InputGroup>
+            <Input {...props} placeholder="Enter your first name" className="form-fields"/>
+        </InputGroup>
+
+const UserEmailInput = (props) => 
+        <InputGroup>
+            <Input {...props} placeholder="Enter your Email" className="form-fields"/>
+        </InputGroup>
+
 const UserNameInput = (props) => 
         <InputGroup>
-            <Input {...props} placeholder="Enter your username..." className="form-fields"/>
+            <Input {...props} placeholder="Enter your username" className="form-fields"/>
         </InputGroup>
 
 const PasswordInput = (props) => 
         <InputGroup>
-            <Input {...props} placeholder="Password..." className="form-fields"/>
+            <Input {...props} placeholder="Password" className="form-fields"/>
         </InputGroup>
 
 const PasswordReInput = (props) => 
         <InputGroup>
-            <Input {...props} placeholder="Re-enter Password..." className="form-fields"/>
+            <Input {...props} placeholder="Re-enter Password" className="form-fields"/>
         </InputGroup>
 
 class Signup extends Component {
@@ -55,6 +65,12 @@ class Signup extends Component {
                                 <LocalForm
                                     onSubmit={(values) => this.handleSubmit(values)}
                                 >
+                                    <Row className="m-2">
+                                        <Control.text model=".firstname" component={FirstNameInput} />
+                                    </Row>
+                                    <Row className="m-2">
+                                        <Control.text model=".email" component={UserEmailInput} />
+                                    </Row>
                                     <Row className="m-2">
                                         <Control.text model=".username" component={UserNameInput} />
                                     </Row>
