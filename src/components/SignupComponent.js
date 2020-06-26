@@ -18,17 +18,17 @@ import {
 
 const FirstNameInput = (props) => 
         <InputGroup>
-            <Input {...props} placeholder="Enter your first name" className="form-fields"/>
+            <Input {...props} placeholder="First Name" className="form-fields"/>
         </InputGroup>
 
 const UserEmailInput = (props) => 
         <InputGroup>
-            <Input {...props} placeholder="Enter your Email" className="form-fields"/>
+            <Input {...props} placeholder="Email" className="form-fields"/>
         </InputGroup>
 
 const UserNameInput = (props) => 
         <InputGroup>
-            <Input {...props} placeholder="Enter your username" className="form-fields"/>
+            <Input {...props} placeholder="Username" className="form-fields"/>
         </InputGroup>
 
 const PasswordInput = (props) => 
