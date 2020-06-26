@@ -26,7 +26,12 @@ const PasswordInput = (props) =>
             <Input {...props} placeholder="Password..." className="form-fields"/>
         </InputGroup>
 
-class Login extends Component {
+const PasswordReInput = (props) => 
+        <InputGroup>
+            <Input {...props} placeholder="Re-enter Password..." className="form-fields"/>
+        </InputGroup>
+
+class Signup extends Component {
     handleSubmit(values) {
       alert(JSON.stringify(values));
     }
@@ -39,11 +44,11 @@ class Login extends Component {
                         <CardBody className="text-left">
                             <CardTitle className="text-center">
                                 <h2 className="display-4">
-                                    Keep Building. 
+                                    Launch Your Projects. 
                                 </h2>
                             </CardTitle>
                             <CardSubtitle className="mb-2 lead text-center">
-                                Land your projects with success. 
+                                Create Your Own Ground Control. 
                                 <hr></hr>
                             </CardSubtitle>
                             <CardText className="text-center">
@@ -56,8 +61,11 @@ class Login extends Component {
                                     <Row className="m-2">
                                         <Control.text model=".password" component={PasswordInput} />                                    
                                     </Row>
+                                    <Row className="m-2">
+                                        <Control.text model=".repassword" component={PasswordReInput} />
+                                    </Row>
                                     <Button className="form-labels" type="submit">
-                                        Login
+                                        Create Account
                                     </Button>                               
                                 </LocalForm>
                             </CardText>
@@ -70,6 +78,5 @@ class Login extends Component {
     }
   }
 
-  export default Login; 
-  
+  export default Signup; 
   

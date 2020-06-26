@@ -14,12 +14,14 @@ import DashboardCard from './sub/DashboardComponent';
 import PhasesEndingSoon from './sub/PhasesEndingSoonComponent'; 
 import RecentChanges from './sub/RecentChangesComponent';
 import ProjectList from './sub/ProjectListComponent';
-import CompletedProjects from './sub/CompletedProjectsComponent';   
+import CompletedProjects from './sub/CompletedProjectsComponent';  
+import Header from './HeaderComponent';  
 
 
 function renderHome(props) {
   return(
-    <Container className="container-spacing" fluid={true}>
+    <Container className="container-spacing home-container" fluid={true}>
+                <Header />
       {/* <Row>
         <Col>
           <Alert color="danger" className="text-center mt-3" fade={false}>

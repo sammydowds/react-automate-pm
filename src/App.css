@@ -52,13 +52,12 @@
 
 .main-container {
   background-color: #ececec;
-  min-height: 100vh; 
+  min-height: 100vh;
 }
 
 .container-spacing {
   margin-top: 80px;
   padding-top: 0px;
-  height: 100%; 
 }
 
 .project-row {
@@ -198,7 +197,35 @@
 }
 
 .landing-container {
-    color: #ffa41b;
-    background-color: #000839; 
+    min-height: 100vh;
+}
+
+.form-labels {
+  background-color: #ffa41b;
+  color: #000839; 
+  border: 1px solid #000839; 
+}
+
+.form-fields {
+  background-color: white;
+  color: #000839; 
+  border: 1px solid #000839; 
+}
+
+.landing-colors {
+  color: #ffa41b;
+  background-color: #000839; 
+
+}
+
+.home-container {
+  background-color: #ececec;
+  min-height: 100vh;
+}
+
+.responsive-gif {
+  height: auto; 
+  width: 100%; 
+  max-width: 800px; 
 }
 

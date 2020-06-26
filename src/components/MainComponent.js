@@ -3,6 +3,7 @@ import Header from './HeaderComponent';
 import Home from './HomeComponent';
 import Login from './LoginComponent'; 
 import Landing from './LandingComponent'; 
+import Signup from './SignupComponent';
 import { Switch, Route, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { 
@@ -121,14 +122,15 @@ class Main extends Component {
     }
 
     return(
-      <div className="main-container">
-        <Header />
+      <React.Fragment>
+        <Header/>
         <Switch>
           <Route path="/learn" ><Landing /></Route>
           <Route path="/home" component={HomePage} />
           <Route path="/login" ><Login /></Route>
+          <Route path="/signup" ><Signup /></Route>
         </Switch>
-      </div>
+      </React.Fragment>
     );
   }
 
