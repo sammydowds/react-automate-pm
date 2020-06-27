@@ -19,6 +19,8 @@ import {
 
 const required = (val) => val && val.length; 
 const length = (val) => val && val.length > 5 && val.length < 12; 
+const password_check = (pwd1, pwd2) => pwd1 === pwd2; 
+
 
 const UserNameCheck = (props) =>  
     <FormGroup>
@@ -80,7 +82,11 @@ const PasswordReCheck = (props) =>
 
 class Signup extends Component {
     handleSubmit(values) {
-      alert(JSON.stringify(values));
+        if (password_check(values.password, values.repassword)) {
+            alert(JSON.stringify(values));
+        } else {
+            alert("passwords do not match"); 
+        }
     }
     render() {
       return (

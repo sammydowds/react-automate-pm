@@ -13,9 +13,7 @@ import {
     InputGroup, 
     Input, 
     FormGroup, 
-    FormText,
     Label, 
-    FormFeedback
 } from 'reactstrap'; 
 
 const required = (val) => val && val.length;
@@ -48,14 +46,13 @@ const UserNameCheck = (props) =>
         />
     </FormGroup>
 
-const PasswordInput = (props) => 
-        <InputGroup>
-            <Input type="password" {...props} placeholder="Password..." className="form-fields"/>
-        </InputGroup>
-
 class Login extends Component {
+    constructor(props) {
+        super(props); 
+    }
     handleSubmit(values) {
       alert(JSON.stringify(values));
+      this.props.checkCredentials(values); 
     }
     render() {
       return (
@@ -92,8 +89,13 @@ class Login extends Component {
                                     <div className="text-center">
                                         <Button size="lg" className="form-labels" type="submit">
                                             Login
-                                        </Button>        
-                                    </div>                                                         
+                                        </Button>
+                                        <br></br>
+                                        {this.props.error
+                                            ? <div> Failure to Launch - <strong className="text-danger strong">{this.props.error}</strong></div>
+                                            : <div></div>
+                                        }      
+                                    </div>                                                    
                                 </LocalForm>
                             </CardText>
                         </CardBody>

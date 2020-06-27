@@ -6,4 +6,5 @@ export const createPhaseUrl = 'phases/create/';
 export const deletePhaseUrl = 'phases/delete/'; 
 export const updatePhaseUrl = 'phases/update/'; 
 export const createLogEntryUrl = 'log/create/'; 
+export const loginUrl = 'api/token/'; 
 

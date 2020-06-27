@@ -7,15 +7,11 @@ import {
   createPhaseUrl,
   deletePhaseUrl,
   updatePhaseUrl,
-  createLogEntryUrl
+  createLogEntryUrl, 
+  loginUrl
 } from '../shared/baseUrl';
 import { normalize, schema } from 'normalizr';
 
-//Simulating API locally  
-// import { PROJECTS } from '../shared/projects';
-// import { PHASES } from '../shared/phases';  
-// let PROJECTS_DB = PROJECTS; 
-// let PHASES_DB = PHASES; 
 
 //function to normalize an array of objects, returns normalized list of objects 
 const normalizeResponse = (response) => {
@@ -28,6 +24,50 @@ const normalizeResponse = (response) => {
   }
     
 }
+
+// Login User 
+export const checkCredentials = (user) => (dispatch) => {
+  dispatch(userLoading(true)); 
+
+  return fetch(baseUrl + loginUrl, {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if(response.ok) {
+        return response; 
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    }, 
+    error => {
+      var errmess= new Error(error.message);
+      alert(JSON.stringify(errmess)); 
+      throw errmess;
+    })
+    .then(response => response.json())
+    .then(response => dispatch(addUserCredentials(response)))
+    .catch(error => dispatch(userFailed(error.message)));  
+}
+
+export const userLoading = () => ({
+  type: ActionTypes.USER_LOADING
+}); 
+export const addUserCredentials = (user_info) => ({
+  type: ActionTypes.ADD_USER_CREDENTIALS,
+  payload: user_info
+}); 
+export const userFailed = (error) => ({
+  type: ActionTypes.USER_FAILED,
+  payload: error
+}); 
 
 // THUNK
 export const fetchProjects = () => (dispatch) => {
@@ -50,7 +90,6 @@ export const fetchProjects = () => (dispatch) => {
         }
       },
       error => {
-        console.log('Error in the Hood'); 
         var errmess= new Error(error.message);
         throw errmess;
       })

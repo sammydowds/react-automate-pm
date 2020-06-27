@@ -3,6 +3,7 @@ import { Projects } from './projects';
 import { Phases } from './phases';
 import { UserInterface } from './ui'; 
 import { Log } from './log'; 
+import { User } from './user'; 
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
@@ -36,7 +37,8 @@ export const ConfigureStore = () => {
       projects: Projects,
       phases: Phases, 
       userinterface: UserInterface, 
-      log: Log
+      log: Log, 
+      user: User
     }),
     {
       userinterface: default_userinterface

@@ -26,7 +26,8 @@ import {
   closePhaseCreateModal, 
   createLogEntry, 
   deleteProject, 
-  deleteSinglePhase
+  deleteSinglePhase, 
+  checkCredentials
 } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -34,7 +35,8 @@ const mapStateToProps = state => {
     projects: state.projects, 
     phases: state.phases, 
     userinterface: state.userinterface, 
-    log: state.log
+    log: state.log, 
+    user: state.user
   }
 }
 
@@ -58,7 +60,8 @@ const mapDispatchToProps = (dispatch) => ({
   createPhase: (projectId, values) => {dispatch(createPhase(projectId, values))}, 
   createLogEntry: (entry) => {dispatch(createLogEntry(entry))}, 
   deleteProject: (project_id) => {dispatch(deleteProject(project_id))}, 
-  deleteSinglePhase: (phase_id) => {dispatch(deleteSinglePhase(phase_id))}
+  deleteSinglePhase: (phase_id) => {dispatch(deleteSinglePhase(phase_id))}, 
+  checkCredentials: (user_info) => {dispatch(checkCredentials(user_info))}
 });
 
 class Main extends Component {
@@ -127,7 +130,7 @@ class Main extends Component {
         <Switch>
           <Route path="/learn" ><Landing /></Route>
           <Route path="/home" component={HomePage} />
-          <Route path="/login" ><Login /></Route>
+          <Route path="/login" ><Login error={this.props.user.errMess} checkCredentials={this.props.checkCredentials}/></Route>
           <Route path="/signup" ><Signup /></Route>
         </Switch>
       </React.Fragment>
