@@ -28,7 +28,8 @@ import {
   deleteProject, 
   deleteSinglePhase, 
   checkCredentials, 
-  signupUser
+  signupUser, 
+  logOut
 } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -63,7 +64,8 @@ const mapDispatchToProps = (dispatch) => ({
   deleteProject: (project_id) => {dispatch(deleteProject(project_id))}, 
   deleteSinglePhase: (phase_id) => {dispatch(deleteSinglePhase(phase_id))}, 
   checkCredentials: (user_info) => {dispatch(checkCredentials(user_info))}, 
-  signupUser: (new_user) => {dispatch(signupUser(new_user))}
+  signupUser: (new_user) => {dispatch(signupUser(new_user))}, 
+  logOut: () => {dispatch(logOut())}
 });
 
 class Main extends Component {
@@ -126,6 +128,8 @@ class Main extends Component {
           fetchProjects={this.props.fetchProjects}
           fetchPhases={this.props.fetchPhases}
           fetchLog={this.props.fetchLog}
+          logOut={this.props.logOut}
+          user={this.props.user}
           />
       ); 
     }

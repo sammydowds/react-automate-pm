@@ -31,6 +31,15 @@ const default_userinterface = {
   }
 }
 
+const default_user = { user: {
+  accountcreated: false, 
+  loggedout: false, 
+  athenticated: false, 
+  username: null, 
+  token: null
+}
+}
+
 
 export const ConfigureStore = () => {
   const store = createStore(
@@ -43,6 +52,7 @@ export const ConfigureStore = () => {
     }),
     {
       userinterface: default_userinterface, 
+      user: default_user, 
     }, 
     applyMiddleware(thunk, logger)
   );

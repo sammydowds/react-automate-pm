@@ -26,6 +26,7 @@ const LeftMenu = (props) => {
                     <ListGroupItem tag="button" className="text-center" action disabled>All Projects <Badge> {props.numProjects} </Badge></ListGroupItem>
                     <ListGroupItem tag="button" className="text-center" action disabled>Learn</ListGroupItem>
                     <ListGroupItem tag="button" className="text-center" disabled>My Profile</ListGroupItem>
+                    <ListGroupItem tag="button" className="text-center" action onClick={props.logOut}>Log Out</ListGroupItem>
                 </ListGroup>
             </Card>
             <CreateProjectForm 

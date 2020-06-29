@@ -40,6 +40,7 @@ class renderHome extends Component {
                 openProjectCreateModal={this.props.openProjectCreateModal}
                 closeProjectCreateModal={this.props.closeProjectCreateModal}
                 createProject={this.props.createProject}
+                logOut={this.props.logOut}
               />
               <ProjectOff 
                 projects={this.props.projects} 
@@ -111,9 +112,18 @@ class renderHome extends Component {
                 projects={this.props.projects} phases={this.props.phases} 
                 handleClicked={this.props.openDetails}>
               </RecentChanges>
-              <ProjectList handleClicked={this.props.openDetails} phases={this.props.phases} projects={this.props.projects} projectsLoading={this.props.projectsLoading}></ProjectList>
+              <ProjectList 
+                handleClicked={this.props.openDetails} 
+                phases={this.props.phases} 
+                projects={this.props.projects} 
+                projectsLoading={this.props.projectsLoading}>
+              </ProjectList>
             </Col>
           </Row>
+          {this.props.user.user.loggedout
+                ? <Redirect to='/login'/>
+                : <span></span>
+            }
         </Container>
       );
   }

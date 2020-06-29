@@ -25,6 +25,11 @@ const normalizeResponse = (response) => {
   }
     
 }
+//Log out user
+export const logOut = () => (dispatch) => {
+  localStorage.clear(); 
+  dispatch(addUserCredentials({"authenticated": false, "username": null, "token": null, "loggedout": true, "accountcreated": false})); 
+}
 
 // Sign User Up 
 export const signupUser = (user) => (dispatch) => {
