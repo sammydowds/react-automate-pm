@@ -8,7 +8,8 @@ import {
   deletePhaseUrl,
   updatePhaseUrl,
   createLogEntryUrl, 
-  loginUrl
+  loginUrl, 
+  createUserUrl
 } from '../shared/baseUrl';
 import { normalize, schema } from 'normalizr';
 
@@ -25,9 +26,42 @@ const normalizeResponse = (response) => {
     
 }
 
+// Sign User Up 
+export const signupUser = (user) => (dispatch) => {
+  dispatch(userLoading(true)); 
+
+  return fetch(baseUrl + createUserUrl, {
+    method: 'POST',
+    mode: 'cors',
+    body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    credentials: 'same-origin'
+  })
+    .then(response => {
+      if(response.ok) {
+        return response; 
+      } else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    }, 
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
+    })
+    .then(response => response.json())
+    .then(dispatch(addUserCredentials({"accountcreated": true}))
+  )
+    .catch(error => dispatch(userFailed(error.message)));  
+  }
+
 // Login User 
 export const checkCredentials = (user) => (dispatch) => {
   dispatch(userLoading(true)); 
+  let user_info = user; 
 
   return fetch(baseUrl + loginUrl, {
     method: 'POST',
@@ -49,14 +83,19 @@ export const checkCredentials = (user) => (dispatch) => {
     }, 
     error => {
       var errmess= new Error(error.message);
-      alert(JSON.stringify(errmess)); 
       throw errmess;
     })
     .then(response => response.json())
-    .then(response => dispatch(addUserCredentials(response)))
+    .then(data => {
+        localStorage.setItem("token", data.access)
+        dispatch(fetchProjects()); 
+        dispatch(fetchPhases()); 
+        dispatch(fetchLog()); 
+        dispatch(addUserCredentials({"authenticated": true, "username": user_info.username, "token": data.access}))
+      }
+    )
     .catch(error => dispatch(userFailed(error.message)));  
-}
-
+  }
 export const userLoading = () => ({
   type: ActionTypes.USER_LOADING
 }); 
@@ -72,13 +111,13 @@ export const userFailed = (error) => ({
 // THUNK
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading(true));
-    //Simulating locally 
-    // const response_proj = PROJECTS_DB.projects; 
-    // const projs = normalizeResponse(response_proj); 
-    // dispatch(addProjects(projs)); 
     
     //for API 
-    return fetch(baseUrl + 'projects/')
+    return fetch(baseUrl + 'projects/', {
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      }
+    })
       .then(response => {
         if (response.ok) {
           return response;
@@ -105,7 +144,11 @@ export const fetchProjects = () => (dispatch) => {
     dispatch(logLoading(true));
 
     //for API 
-    return fetch(baseUrl + 'log/')
+    return fetch(baseUrl + 'log/', {
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      }
+    })
       .then(response => {
         if (response.ok) {
           return response;
@@ -131,12 +174,13 @@ export const fetchProjects = () => (dispatch) => {
   // THUNK to fetch phases 
 export const fetchPhases = () => (dispatch) => {
   dispatch(phasesLoading(true));
-  //Simulating locally
-  // const response_phases = PHASES_DB.phases; 
-  // const phases_local = normalizeResponse(response_phases); 
-  // dispatch(addPhases(phases_local)); 
+
   //for API 
-  return fetch(baseUrl + 'phases/')
+  return fetch(baseUrl + 'phases/', {
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    }
+  })
     .then(response => {
       if (response.ok) {
         return response;
@@ -161,13 +205,6 @@ export const fetchPhases = () => (dispatch) => {
 
 //Thunks CREATE Phase or Project 
 export const createProject = (values) => (dispatch) => {
-  //simulating locally
-  // const projects_len = PROJECTS_DB.projects.length; 
-  // let projectDetails = Object.assign({}, values);
-  // projectDetails.lastupdated = new Date().toISOString();
-  // projectDetails.id = projects_len; 
-  // PROJECTS_DB.projects.push(projectDetails); 
-  // dispatch(createNewProject(projectDetails)); 
   
   //for API 
   dispatch(projectsUpdating(true)); 
@@ -180,7 +217,8 @@ export const createProject = (values) => (dispatch) => {
     mode: 'cors',
     body: JSON.stringify(projectDetails),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json', 
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     credentials: 'same-origin'
   })
@@ -209,14 +247,6 @@ export const createProject = (values) => (dispatch) => {
 }
 
 export const createPhase = (proj_id, values) => (dispatch) => {
-  //simulating locally
-  // const phases_len = PHASES_DB.phases.length; 
-  // let phasesDetails = Object.assign({}, values); 
-  // phasesDetails.lastupdated = new Date().toISOString();
-  // phasesDetails.id = phases_len; 
-  // phasesDetails.projectId = proj_id; 
-  // PHASES_DB.phases.push(phasesDetails); 
-  // dispatch(createNewPhase(phasesDetails)); 
 
   //for API 
   dispatch(phasesUpdating(true)); 
@@ -228,7 +258,8 @@ export const createPhase = (proj_id, values) => (dispatch) => {
     method: 'POST',
     body: JSON.stringify(phaseDetails),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json', 
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     credentials: 'same-origin'
   })
@@ -268,7 +299,8 @@ export const createLogEntry = (values) => (dispatch) => {
     method: 'POST',
     body: JSON.stringify(entryDetails),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json', 
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     credentials: 'same-origin'
   })
@@ -298,12 +330,6 @@ export const createLogEntry = (values) => (dispatch) => {
 
 // THUNK - Patch to update project details 
 export const updateProject = (proj_id, values) => (dispatch) => {
-  //Simulating locally 
-  // let projectUpdates = Object.assign({}, values); 
-  // projectUpdates.lastupdated = new Date().toISOString();
-  // let proj_changed = Object.assign(PROJECTS_DB.projects[proj_id], projectUpdates); 
-  // PROJECTS_DB.projects[proj_id] = proj_changed; 
-  // dispatch(updateProj(proj_changed)); 
 
   //for API 
   dispatch(projectsUpdating(true)); 
@@ -314,7 +340,8 @@ export const updateProject = (proj_id, values) => (dispatch) => {
     method: 'PATCH',
     body: JSON.stringify(projectUpdates),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json', 
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     credentials: 'same-origin'
   })
@@ -344,12 +371,6 @@ export const updateProject = (proj_id, values) => (dispatch) => {
 
 // THUNK - Patch to update project details 
 export const updatePhase = (phase_id, values) => (dispatch) => {
-  // Simulating Locally 
-  // let phaseUpdates = Object.assign({}, values); 
-  // phaseUpdates.lastupdated = new Date().toISOString();
-  // let phase_changed = Object.assign(PHASES_DB.phases[phase_id], phaseUpdates); 
-  // PHASES_DB.phases[phase_id] = phase_changed; 
-  // dispatch(updatePhaseDetails(phase_changed)); 
   //for API 
   dispatch(phasesUpdating(true)); 
   //save to new object, because values is not extensible for adding timestamp  
@@ -359,7 +380,8 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
     method: 'PATCH',
     body: JSON.stringify(phaseUpdates),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json', 
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     credentials: 'same-origin'
   })
@@ -397,7 +419,8 @@ export const deleteProject = (proj_id) => (dispatch) => {
   return fetch(baseUrl + deleteProjectUrl + proj_id, {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json', 
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     credentials: 'same-origin'
   })
@@ -433,7 +456,8 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
   return fetch(baseUrl + deletePhaseUrl + phase_id, {
     method: 'DELETE',
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json', 
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
     },
     credentials: 'same-origin'
   })

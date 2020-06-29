@@ -42,7 +42,7 @@ function PhasesEndingSoon(props) {
             </CardBody>
         </Card>
         ); 
-    } else {
+    } else if (props.projects.length !== 0) {
         const end_this_week =  props.phases.filter((phase) => moment(phase.end).format("W") === moment().format("W") && phase.complete === false);
         const week_end_table = end_this_week.map((phase) => {
             const project_name = (props.projects.filter((project) => project.id === phase.projectId)[0]).name; 
@@ -77,6 +77,34 @@ function PhasesEndingSoon(props) {
                         <Table size="sm" className="overflow-auto" borderless hover>
                             <tbody>
                                 {week_end_table}
+                            </tbody>
+                        </Table>
+                        </div>
+                    </Col>
+                </Row>
+                </CardText>
+            </CardBody>
+        </Card>
+        ); 
+    } else {
+        return(
+            <Card className="my-2 card-border">
+            <CardBody className="text-left">
+                <CardTitle className="pl-2 normal-text text-center">
+                    <h6 lead>
+                        Ending this Week <Badge className="off-badge">0</Badge>
+                    </h6>
+                    <hr></hr>
+                </CardTitle>
+                <CardSubtitle className="mb-2 lead text-center">
+                </CardSubtitle>
+                <CardText className="text-center">
+                <Row className="my-3 justify-content-center">
+                    <Col className="mx-1">
+                        <div className="stats-table">
+                        <Table size="sm" className="overflow-auto" borderless hover>
+                            <tbody>
+                                None 
                             </tbody>
                         </Table>
                         </div>

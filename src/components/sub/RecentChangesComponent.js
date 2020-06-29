@@ -42,7 +42,7 @@ function RecentChanges(props) {
             </CardBody>
         </Card>
         ); 
-    } else {
+    } else if (props.log.length !== 0) {
         const log_table = props.log.map((entry) => {
             if (props.projects.filter((project) => project.id === entry.projectId)) {
                 const project_match = (props.projects.filter((project) => project.id === entry.projectId))[0];
@@ -98,6 +98,34 @@ function RecentChanges(props) {
             </CardBody>
         </Card>
         ); 
+    } else {
+        return(
+            <Card className="my-2 card-border">
+            <CardBody className="text-left">
+                <CardTitle className="pl-2 text-center">
+                    <h3>
+                        Recent Changes <Badge className="off-badge">0</Badge>
+                    </h3>
+                    <hr></hr>
+                </CardTitle>
+                <CardSubtitle className="mb-2 lead text-center">
+                </CardSubtitle>
+                <CardText className="text-center">
+                <Row className="my-3 justify-content-center">
+                    <Col className="mx-1">
+                        <div className="stats-table">
+                        <Table size="sm" className="overflow-auto" borderless hover>
+                            <tbody>
+                                None
+                            </tbody>
+                        </Table>
+                        </div>
+                    </Col>
+                </Row>
+                </CardText>
+            </CardBody>
+        </Card> 
+        );
     }
    
 }

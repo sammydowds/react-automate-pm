@@ -27,7 +27,8 @@ import {
   createLogEntry, 
   deleteProject, 
   deleteSinglePhase, 
-  checkCredentials
+  checkCredentials, 
+  signupUser
 } from '../redux/ActionCreators';
 
 const mapStateToProps = state => {
@@ -61,7 +62,8 @@ const mapDispatchToProps = (dispatch) => ({
   createLogEntry: (entry) => {dispatch(createLogEntry(entry))}, 
   deleteProject: (project_id) => {dispatch(deleteProject(project_id))}, 
   deleteSinglePhase: (phase_id) => {dispatch(deleteSinglePhase(phase_id))}, 
-  checkCredentials: (user_info) => {dispatch(checkCredentials(user_info))}
+  checkCredentials: (user_info) => {dispatch(checkCredentials(user_info))}, 
+  signupUser: (new_user) => {dispatch(signupUser(new_user))}
 });
 
 class Main extends Component {
@@ -71,10 +73,9 @@ class Main extends Component {
   }
 
   componentDidMount() {
-    console.log('Main component mounted'); 
     this.props.fetchProjects();
-    this.props.fetchPhases();
-    this.props.fetchLog(); 
+    this.props.fetchPhases(); 
+    this.props.fetchLog();  
   }
 
   render () {
@@ -97,6 +98,7 @@ class Main extends Component {
           projectsLoading={this.props.projects.isLoading}
           phasesLoading={this.props.phases.isLoading} 
           updateProject={this.props.updateProject}
+          projectsError={this.props.projects.errMess}
           phases={phases_list}
           updatePhase={this.props.updatePhase}
           createProject={this.props.createProject}
@@ -120,6 +122,10 @@ class Main extends Component {
           log={log_list}
           deleteProject = {this.props.deleteProject}
           deleteSinglePhase = {this.props.deleteSinglePhase}
+          user={this.props.user.user}
+          fetchProjects={this.props.fetchProjects}
+          fetchPhases={this.props.fetchPhases}
+          fetchLog={this.props.fetchLog}
           />
       ); 
     }
@@ -130,8 +136,8 @@ class Main extends Component {
         <Switch>
           <Route path="/learn" ><Landing /></Route>
           <Route path="/home" component={HomePage} />
-          <Route path="/login" ><Login error={this.props.user.errMess} checkCredentials={this.props.checkCredentials}/></Route>
-          <Route path="/signup" ><Signup /></Route>
+          <Route path="/login" ><Login user={this.props.user} error={this.props.user.errMess} checkCredentials={this.props.checkCredentials}/></Route>
+          <Route path="/signup" ><Signup signupUser={this.props.signupUser} error={this.props.user.errMess} user={this.props.user} /></Route>
         </Switch>
       </React.Fragment>
     );

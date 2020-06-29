@@ -11,11 +11,10 @@ import {
     CardSubtitle,
     CardTitle, 
     FormGroup,
-    FormFeedback,
-    FormText,
     Input,
     Label
 } from 'reactstrap'; 
+import { Link } from 'react-router-dom'; 
 
 const required = (val) => val && val.length; 
 const length = (val) => val && val.length > 5 && val.length < 12; 
@@ -81,67 +80,101 @@ const PasswordReCheck = (props) =>
     </FormGroup>
 
 class Signup extends Component {
+
     handleSubmit(values) {
         if (password_check(values.password, values.repassword)) {
-            alert(JSON.stringify(values));
+            this.props.signupUser(values);
         } else {
             alert("passwords do not match"); 
         }
     }
     render() {
-      return (
-        <Container className="container-spacing landing-container landing-colors" fluid={true}>
-            <Row className="justify-content-center">
-                <Col md={4} className="landing-container">
-                    <Card className="landing-container landing-colors">
-                        <CardBody className="text-left">
-                            <CardTitle className="text-center">
-                                <h2 className="display-4">
-                                    Launch Your Projects. 
-                                </h2>
-                            </CardTitle>
-                            <CardSubtitle className="mb-2 lead text-center">
-                                Create Your Own Ground Control. 
-                                <hr></hr>
-                            </CardSubtitle>
-                            <CardText className="text-left">
-                                <LocalForm
-                                    onSubmit={(values) => this.handleSubmit(values)}
-                                >
-                                    <Control 
-                                        model=".firstname" 
-                                        component={FirstName}
-                                        validators={{required}}
-                                    />
-                                    <Control 
-                                        model=".username" 
-                                        component={UserNameCheck} 
-                                        validators={{required, length}}
-                                    />
-                                    <Control 
-                                        model=".password" 
-                                        component={PasswordCheck} 
-                                        validators={{required}}
-                                    />                                    
-                                    <Control 
-                                        model=".repassword" 
-                                        component={PasswordReCheck} 
-                                        validators={{required}}
-                                        
-                                    />
-                                    <div className="text-center">
-                                        <Button size="lg" className="form-labels" type="submit">
-                                            Create Account
-                                        </Button>        
-                                    </div>                               
-                                </LocalForm>
-                            </CardText>
-                        </CardBody>
-                    </Card>
-                </Col>
-            </Row>
-        </Container>
-      )
+        if (this.props.user.user.accountcreated) {
+            return(
+                <Container className="container-spacing landing-container landing-colors" fluid={true}>
+                    <Row className="justify-content-center">
+                        <Col md={4} className="landing-container">
+                            <Card className="landing-container landing-colors">
+                                <CardBody className="text-left">
+                                    <CardTitle className="text-center">
+                                        <h2 className="display-4">
+                                            Account Created! Please log in! 
+                                        </h2>
+                                    </CardTitle>
+                                    <CardSubtitle className="mb-2 lead text-center">
+                                        Create Your Own Ground Control. 
+                                        <hr></hr>
+                                    </CardSubtitle>
+                                    <CardText className="text-center">
+                                        <Link to='/login'><Button size="lg" className="form-labels" block>Log In</Button></Link>
+                                    </CardText>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+            )
+        } else {
+            return (
+                <Container className="container-spacing landing-container landing-colors" fluid={true}>
+                    <Row className="justify-content-center">
+                        <Col md={4} className="landing-container">
+                            <Card className="landing-container landing-colors">
+                                <CardBody className="text-left">
+                                    <CardTitle className="text-center">
+                                        <h2 className="display-4">
+                                            Launch Your Projects. 
+                                        </h2>
+                                    </CardTitle>
+                                    <CardSubtitle className="mb-2 lead text-center">
+                                        Create Your Own Ground Control. 
+                                        <hr></hr>
+                                    </CardSubtitle>
+                                    <CardText className="text-left">
+                                        <LocalForm
+                                            onSubmit={(values) => this.handleSubmit(values)}
+                                        >
+                                            <Control 
+                                                model=".first_name" 
+                                                component={FirstName}
+                                                validators={{required}}
+                                            />
+                                            <Control 
+                                                model=".username" 
+                                                component={UserNameCheck} 
+                                                validators={{required, length}}
+                                            />
+                                            <Control 
+                                                model=".password" 
+                                                component={PasswordCheck} 
+                                                validators={{required}}
+                                            />                                    
+                                            <Control 
+                                                model=".repassword" 
+                                                component={PasswordReCheck} 
+                                                validators={{required}}
+                                                
+                                            />
+                                            <div className="text-center">
+                                                <Button size="lg" className="form-labels" type="submit">
+                                                    Create Account
+                                                </Button>   
+                                                {this.props.error 
+                                                    ? <div> Failure to Launch - <strong className="text-danger strong">{this.props.error}</strong></div>
+                                                    : <div></div>
+
+                                                }     
+                                            </div>                               
+                                        </LocalForm>
+                                    </CardText>
+                                </CardBody>
+                            </Card>
+                        </Col>
+                    </Row>
+                </Container>
+              )
+        }
+      
     }
   }
 

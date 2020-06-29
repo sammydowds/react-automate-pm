@@ -10,11 +10,11 @@ import {
     CardText,
     CardSubtitle,
     CardTitle, 
-    InputGroup, 
     Input, 
     FormGroup, 
     Label, 
 } from 'reactstrap'; 
+import { Redirect } from 'react-router-dom'; 
 
 const required = (val) => val && val.length;
 
@@ -51,7 +51,6 @@ class Login extends Component {
         super(props); 
     }
     handleSubmit(values) {
-      alert(JSON.stringify(values));
       this.props.checkCredentials(values); 
     }
     render() {
@@ -102,6 +101,11 @@ class Login extends Component {
                     </Card>
                 </Col>
             </Row>
+            {this.props.user.user.authenticated
+                ? <Redirect to="/home" />
+                : <span></span>
+
+            }
         </Container>
       )
     }

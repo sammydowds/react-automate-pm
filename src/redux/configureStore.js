@@ -31,6 +31,7 @@ const default_userinterface = {
   }
 }
 
+
 export const ConfigureStore = () => {
   const store = createStore(
     combineReducers({
@@ -41,7 +42,7 @@ export const ConfigureStore = () => {
       user: User
     }),
     {
-      userinterface: default_userinterface
+      userinterface: default_userinterface, 
     }, 
     applyMiddleware(thunk, logger)
   );
