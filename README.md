@@ -8,9 +8,6 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
 
 Currently, development of Version 2 is in process. 
 
-V1 Home Page: 
-![Image of Design](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/Sample_Screen.png)
-
 V2 Home Page: 
 ![Image of Design V2](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_Home.png)
 
