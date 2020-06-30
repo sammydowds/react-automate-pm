@@ -12,8 +12,8 @@ V1 Home Page:
 ![Image of Design](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/Sample_Screen.png)
 
 V2 Home Page: 
-![Image of Design V2](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_Home)
-![Image of Design V2] (https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_Projectlist.png)
+![Image of Design V2](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_Home.png)
+![Image of Design V2] (https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_ProjectGrid.png)
 
 ## Data Structure 
 ### Projects
