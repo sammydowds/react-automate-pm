@@ -18,10 +18,10 @@ function RecentChanges(props) {
         return(
             <Card className="my-2 card-border">
             <CardBody className="text-left">
-                <CardTitle className="pl-2 text-center">
-                    <h3>
-                        Recent Changes
-                    </h3>
+            <CardTitle className="pl-2 text-center normal-text">
+                    <h6 lead>
+                        Recent Changes <Badge className="off-badge">{props.log.length}</Badge>
+                    </h6>
                     <hr></hr>
                 </CardTitle>
                 <CardSubtitle className="mb-2 lead text-center">
@@ -74,10 +74,11 @@ function RecentChanges(props) {
         return(
             <Card className="my-2 card-border">
             <CardBody className="text-left">
-                <CardTitle className="pl-2 text-center">
-                    <h3>
-                        Recent Changes <Badge className="off-badge">{props.log.length}</Badge>
-                    </h3>
+                <CardTitle className="pl-2 text-center normal-text">
+                    <h6 lead>
+                    Recent Changes <Badge className="off-badge">{props.log.length}</Badge>
+
+                    </h6>
                     <hr></hr>
                 </CardTitle>
                 <CardSubtitle className="mb-2 lead text-center">
@@ -102,10 +103,10 @@ function RecentChanges(props) {
         return(
             <Card className="my-2 card-border">
             <CardBody className="text-left">
-                <CardTitle className="pl-2 text-center">
-                    <h3>
-                        Recent Changes <Badge className="off-badge">0</Badge>
-                    </h3>
+                <CardTitle className="pl-2 text-center normal-text">
+                    <h6 lead>
+                    Recent Changes <Badge className="off-badge">{props.log.length}</Badge>  
+                    </h6>
                     <hr></hr>
                 </CardTitle>
                 <CardSubtitle className="mb-2 lead text-center">

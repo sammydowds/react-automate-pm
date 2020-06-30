@@ -50,19 +50,6 @@ class UpdateProjectForm extends Component {
           </Col>
         </Row>
         <Row className="text-center m-2">
-          <Col md={5}>Status of Project:</Col>
-          <Col>
-              <div className="field">
-                  <Control.checkbox
-                  model=".status"
-                  defaultValue={this.props.project.status}
-                  />
-                  &nbsp; 
-                  <strong> Project is On Track</strong>
-              </div>
-            </Col>
-        </Row>
-        <Row className="text-center m-2">
           <Col md={5}>Project Active: </Col>
           <Col>
               <div className="field">

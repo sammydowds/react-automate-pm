@@ -229,3 +229,26 @@
   max-width: 800px; 
 }
 
+.project-card-off {
+  height: 90px; 
+  border: 2px solid #ffa41b; 
+}
+
+.project-card-on {
+  height: 90px;
+  border: 1px solid #000839; 
+
+}
+
+.project-card-title {
+  font-size: 14px; 
+  font-weight: bold; 
+  display: block;
+  overflow-x: auto; 
+}
+
+.project-card-body {
+  display: block; 
+  font-size: 17px;
+  overflow-x: auto;
+}

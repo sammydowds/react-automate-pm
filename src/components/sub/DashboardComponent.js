@@ -11,9 +11,7 @@ import {
  import { Loading } from './LoadingComponent';
 
 function StatisticsProjects(props) {
-    let num_offtrack = (props.projects.filter((project) => project.status === false)).length; 
     let num_projects = props.projects.length; 
-    let percent_project_on = Math.round((num_projects-num_offtrack)/num_projects * 100); 
     let num_wip_phases = (props.phases.filter((phase) => phase.active === true)).length; 
     let num_phases = props.phases.length; 
     let percent_phases_wip = Math.round(num_wip_phases/num_phases * 100); 
@@ -23,10 +21,6 @@ function StatisticsProjects(props) {
                 <Col className="stat-cubes">
                     <h3 className="display-4">{num_projects}</h3>
                     <p>Total Open Projects</p>
-                </Col>
-                <Col md={3} className="stat-cubes">
-                    <h3 className="display-4 text-nowrap">{percent_project_on}%</h3>
-                    <p>Projects On Track</p>
                 </Col>
                 <Col className="stat-cubes">
                     <h3 className=" display-4">{num_phases}</h3>

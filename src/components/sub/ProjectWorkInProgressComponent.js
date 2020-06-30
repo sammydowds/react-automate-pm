@@ -41,10 +41,10 @@ function renderPhases(active_phases) {
 function renderProj(projects, phases, handleClicked) {
   if (projects) {
     const projects_rend = projects.map((project) => {
-      const on_schedule = project.status;
       // filtering for phases related to this project
       const proj_phases = phases.filter((phase) => project.id === phase.projectId); 
       const active_phases = proj_phases.filter((phase) => phase.active);
+      const past_due_phases = proj_phases.filter((pphase) => moment(pphase.end).isBefore(moment())).length; 
       const phases_rend = renderPhases(active_phases); 
       return(
         <span>
@@ -59,13 +59,11 @@ function renderProj(projects, phases, handleClicked) {
                 </span>
 
             </span>
-            &nbsp; 
-              { on_schedule
+              { past_due_phases === 0
                 ? <span className="mx-1">
-                    <Badge color="success">On Track</Badge>
                   </span>
                 : <span className="mx-1">
-                    <Badge className="off-badge">Off Track</Badge>
+                    <Badge className="off-badge">Past Due</Badge>
                   </span>
               } 
               {phases_rend}
@@ -110,7 +108,7 @@ function ProjectWorkInProgress(props) {
       <Row>
         <Col>
           <Card className="my-2 text-center card-border">
-            <CardBody className="text-center">
+            <CardBody className="text-left">
               <CardTitle className="text-center">
                 <h3 lead>
                   Work in Progress

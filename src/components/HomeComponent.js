@@ -6,15 +6,14 @@ import {
   Col
  } from 'reactstrap';
 import ProjectWorkInProgress from './sub/ProjectWorkInProgressComponent'; 
-import ProjectOff from './sub/ProjectOffTrackComponent'; 
 import ProjectDetails from './sub/ProjectDetailsComponent'; 
 import LeftMenu from './sub/LeftMenuComponent'; 
 import DashboardCard from './sub/DashboardComponent';
 import PhasesEndingSoon from './sub/PhasesEndingSoonComponent'; 
 import RecentChanges from './sub/RecentChangesComponent';
-import ProjectList from './sub/ProjectListComponent';
 import CompletedProjects from './sub/CompletedProjectsComponent';  
-import Header from './HeaderComponent';  
+import Header from './HeaderComponent'; 
+import ProjectGrid from './sub/ProjectGridComponent';  
 import { Redirect } from 'react-router-dom'; 
 
 
@@ -42,11 +41,6 @@ class renderHome extends Component {
                 createProject={this.props.createProject}
                 logOut={this.props.logOut}
               />
-              <ProjectOff 
-                projects={this.props.projects} 
-                projectsLoading={this.props.projectsLoading} 
-                handleProjectClicked={this.props.openDetails} 
-                />
               <PhasesEndingSoon 
                 projectsLoading={this.props.projectsLoading} 
                 projects={this.props.projects} 
@@ -54,7 +48,7 @@ class renderHome extends Component {
                 handleClicked={this.props.openDetails}>
               </PhasesEndingSoon>
             </Col>
-            <Col lg="5">
+            <Col lg="7">
               <DashboardCard 
                 projectsLoading={this.props.projectsLoading}
                 projects={this.props.projects} 
@@ -95,29 +89,31 @@ class renderHome extends Component {
                     phases={this.props.phases}
                     phasesLoading={this.props.phasesLoading}
                     />
-                  <CompletedProjects 
+                  <ProjectGrid
                     projects={this.props.projects} 
                     projectsLoading={this.props.projectsLoading} 
                     handleProjectClicked={this.props.openDetails}
                     phases={this.props.phases}
                     phasesLoading={this.props.phasesLoading}
+                    log={this.props.log}
                     />
                   </React.Fragment>
               }
             </Col>
-            <Col lg="3">
+            <Col lg="2">
               <RecentChanges 
                 log={this.props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))} 
                 projectsLoading={this.props.projectsLoading} 
                 projects={this.props.projects} phases={this.props.phases} 
                 handleClicked={this.props.openDetails}>
               </RecentChanges>
-              <ProjectList 
-                handleClicked={this.props.openDetails} 
-                phases={this.props.phases} 
-                projects={this.props.projects} 
-                projectsLoading={this.props.projectsLoading}>
-              </ProjectList>
+              <CompletedProjects 
+                    projects={this.props.projects} 
+                    projectsLoading={this.props.projectsLoading} 
+                    handleProjectClicked={this.props.openDetails}
+                    phases={this.props.phases}
+                    phasesLoading={this.props.phasesLoading}
+                    />
             </Col>
           </Row>
           {this.props.user.user.loggedout

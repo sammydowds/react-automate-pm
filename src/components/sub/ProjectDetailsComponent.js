@@ -222,21 +222,6 @@ class ProjectDetails extends Component {
               <CardTitle className="text-center">
                 <h3 lead>
                 {this.props.project.name}
-                { this.props.project.status
-                  ? <span>
-                      <Badge color="success" className="ml-1">On Track</Badge>
-                    </span>
-                  : <span>
-                      <Badge className="off-badge ml-1">Off Track</Badge>
-                    </span>
-                }
-                { this.props.project.complete
-                  ? <span>
-                      <Badge color="success" className="ml-1">Complete</Badge>
-                    </span>
-                  : <span>
-                    </span>
-                }
                 &nbsp;
                   {(this.props.phases.length === 0)
                     ? <span onClick={() => {this.deleteProjectActions(this.props.project.id)}}>

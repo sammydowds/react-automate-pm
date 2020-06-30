@@ -60,30 +60,6 @@ class CreateProjectForm extends Component {
                     />
                 </Col>
               </Row>
-              <Row className="text-center m-2">
-                <Col md={5}>Status of Project:</Col>
-                <Col>
-                    <div className="field">
-                        <Control.checkbox
-                        model=".status"
-                        />
-                        &nbsp; 
-                        <strong> Project is On Track</strong>
-                    </div>
-                  </Col>
-              </Row>
-              <Row className="text-center m-2">
-                <Col md={5}>Project Active: </Col>
-                <Col>
-                    <div className="field">
-                        <Control.checkbox
-                        model=".complete"
-                        />
-                        &nbsp; 
-                        <strong> Project is Complete</strong>
-                    </div>
-                  </Col>
-              </Row>
               <Row className="text-center">
                 <Col>
                   <Button type="submit">Create</Button>

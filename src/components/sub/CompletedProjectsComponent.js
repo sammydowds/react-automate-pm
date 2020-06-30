@@ -50,10 +50,10 @@ function CompletedProjects(props) {
         <Col>
           <Card className="my-2 text-center card-border">
             <CardBody className="text-left">
-              <CardTitle className="text-center">
-                <h3 lead>
+              <CardTitle className="text-center normal-text">
+                <h6 lead>
                   Completed Projects
-                </h3>
+                </h6>
               </CardTitle>
               <CardSubtitle className="pl-2">
                 <hr></hr>
@@ -71,10 +71,11 @@ function CompletedProjects(props) {
         <Col>
           <Card className="my-2 text-center card-border">
             <CardBody className="text-center">
-              <CardTitle className="text-center">
-                <h3 lead>
-                  Completed Projects 
-                </h3>
+              <CardTitle className="text-center normal-text">
+                <h6 lead>
+                Completed Projects 
+
+                </h6>
               </CardTitle>
               <CardSubtitle>
                 <hr></hr>

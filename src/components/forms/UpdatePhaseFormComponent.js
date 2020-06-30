@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import moment from 'moment';  
 import {  
   Row,
   Col,  
@@ -20,7 +21,17 @@ class UpdatePhaseForm extends Component {
     //collecting changed fields 
     for (let key in values.phase) {
       if (values.phase[key] !== this.props.phase[key] ) {
-        changed_vals.push(' ' + key + ' updated to ' + values.phase[key]); 
+        if (key === 'start' || key === 'end') {
+          let date_diff = moment.duration(moment(values.phase[key]).diff(moment(this.props.phase[key]), 'days')); 
+          if (date_diff <= 0) {
+            changed_vals.push(' ' + key + ' pulled forward by ' + date_diff*(-1) + ' day(s)'); 
+          } else {
+            changed_vals.push(' ' + key + ' delayed by ' + date_diff + ' day(s)'); 
+
+          }
+        } else {
+          changed_vals.push(' ' + key + ' updated to ' + values.phase[key]); 
+        }
       }
     }
     let entry = {}; 
