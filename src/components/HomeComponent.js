@@ -30,7 +30,7 @@ class renderHome extends Component {
       )
     } else {
       return(
-        <Container className="container-spacing home-container" fluid={true}>
+        <Container className="container-spacing home-container" fluid={true}>  
           <Header />
           <Row className="h-100 justify-content-center">
             <Col lg="2">
@@ -54,7 +54,7 @@ class renderHome extends Component {
                 handleClicked={this.props.openDetails}>
               </PhasesEndingSoon>
             </Col>
-            <Col lg="7">
+            <Col lg="5">
               <DashboardCard 
                 projectsLoading={this.props.projectsLoading}
                 projects={this.props.projects} 
