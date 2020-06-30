@@ -85,7 +85,7 @@ class Signup extends Component {
         if (password_check(values.password, values.repassword)) {
             this.props.signupUser(values);
         } else {
-            alert("passwords do not match"); 
+            alert("Passwords must match."); 
         }
     }
     render() {

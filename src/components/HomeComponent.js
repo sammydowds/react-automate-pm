@@ -41,12 +41,13 @@ class renderHome extends Component {
                 createProject={this.props.createProject}
                 logOut={this.props.logOut}
               />
-              <PhasesEndingSoon 
-                projectsLoading={this.props.projectsLoading} 
-                projects={this.props.projects} 
-                phases={this.props.phases} 
-                handleClicked={this.props.openDetails}>
-              </PhasesEndingSoon>
+              <CompletedProjects 
+                    projects={this.props.projects} 
+                    projectsLoading={this.props.projectsLoading} 
+                    handleProjectClicked={this.props.openDetails}
+                    phases={this.props.phases}
+                    phasesLoading={this.props.phasesLoading}
+                    />
             </Col>
             <Col lg="7">
               <DashboardCard 
@@ -100,20 +101,19 @@ class renderHome extends Component {
                   </React.Fragment>
               }
             </Col>
-            <Col lg="2">
+            <Col lg="3">
               <RecentChanges 
                 log={this.props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))} 
                 projectsLoading={this.props.projectsLoading} 
                 projects={this.props.projects} phases={this.props.phases} 
                 handleClicked={this.props.openDetails}>
               </RecentChanges>
-              <CompletedProjects 
-                    projects={this.props.projects} 
-                    projectsLoading={this.props.projectsLoading} 
-                    handleProjectClicked={this.props.openDetails}
-                    phases={this.props.phases}
-                    phasesLoading={this.props.phasesLoading}
-                    />
+              <PhasesEndingSoon 
+                projectsLoading={this.props.projectsLoading} 
+                projects={this.props.projects} 
+                phases={this.props.phases} 
+                handleClicked={this.props.openDetails}>
+              </PhasesEndingSoon>
             </Col>
           </Row>
           {this.props.user.user.loggedout
