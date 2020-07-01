@@ -1,7 +1,7 @@
 Table of Contents
 =======================
 
-* [What is Projectile?](#what-is-openpilot)
+* [What is Projectile?](#what-is-projectile)
 * [Integration with Stock Features](#integration-with-stock-features)
 * [Supported Hardware](#supported-hardware)
 * [Supported Cars](#supported-cars)
