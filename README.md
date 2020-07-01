@@ -35,6 +35,7 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
         "complete": false,
         "lastupdated": "2020-05-29"
     }
+    
     Phases
     {
         "id": 5,
@@ -89,8 +90,8 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
     │   ├── phases.js
     │   ├── projects.js
     │   ├── ui.js
-    │   ├── user.js
-    │   └── users.js
+    │   └── user.js
+    │   
     ├── shared
     │   ├── baseUrl.js
     │   ├── default.svg
