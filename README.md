@@ -59,7 +59,7 @@ V2 Home Page:
     }
 
 ## File Structure 
-```.
+.
 ├── components
 │   ├── forms
 │   │   ├── CreatePhaseModalComponent.js
@@ -105,7 +105,7 @@ V2 Home Page:
 ├── index.js
 ├── logo.svg
 ├── serviceWorker.js
-└── setupTests.js```
+└── setupTests.js 
 
 ## Getting Started
 
