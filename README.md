@@ -65,7 +65,7 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
     │   │   ├── CreateProjectModalComponent.js
     │   │   ├── UpdatePhaseFormComponent.js
     │   │   └── UpdateProjectFormComponent.js
-    │   ├── sub                                        #Directory of sub components for Home   
+    │   ├── sub                                 #Directory of sub components for Home   
     │   │   ├── CompletedProjectsComponent.js           
     │   │   ├── DashboardComponent.js
     │   │   ├── LeftMenuComponent.js
@@ -76,13 +76,13 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
     │   │   ├── ProjectWorkInProgressComponent.js
     │   │   └── RecentChangesComponent.js
     │   ├── HeaderComponent.js                          
-    │   ├── HomeComponent.js                           #Home = Main Presentational Component
+    │   ├── HomeComponent.js                    #Home = Main Presentational Component
     │   ├── LandingComponent.js                       
     │   ├── LoginComponent.js
-    │   ├── MainComponent.js                           #Main = Container component for the App 
+    │   ├── MainComponent.js                    #Main = Container component for the App 
     │   └── SignupComponent.js
     ├── redux
-    │   ├── ActionCreators.js                          #fetches & dispatch for Redux store  
+    │   ├── ActionCreators.js                   #fetches & dispatch for Redux store  
     │   ├── ActionTypes.js
     │   ├── companies.js
     │   ├── configureStore.js
@@ -93,7 +93,7 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
     │   └── user.js
     │   
     ├── shared
-    │   ├── baseUrl.js                                 #REST API base URLS/Endpoints stored here
+    │   ├── baseUrl.js                          #REST API base URLS/Endpoints stored here
     │   ├── default.svg
     │   ├── phases.js
     │   └── projects.js
