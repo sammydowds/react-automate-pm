@@ -1,21 +1,17 @@
+
+![Main Demo](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/main_demo.png)
+
 Table of Contents
 =======================
 
 * [What is Projectile?](#what-is-projectile)
-* [Integration with Stock Features](#integration-with-stock-features)
-* [Supported Hardware](#supported-hardware)
-* [Supported Cars](#supported-cars)
-* [Community Maintained Cars and Features](#community-maintained-cars-and-features)
-* [Installation Instructions](#installation-instructions)
-* [Limitations of openpilot ALC and LDW](#limitations-of-openpilot-alc-and-ldw)
-* [Limitations of openpilot ACC and FCW](#limitations-of-openpilot-acc-and-fcw)
-* [Limitations of openpilot DM](#limitations-of-openpilot-dm)
-* [User Data and comma Account](#user-data-and-comma-account)
-* [Safety and Testing](#safety-and-testing)
-* [Testing on PC](#testing-on-pc)
-* [Community and Contributing](#community-and-contributing)
-* [Directory Structure](#directory-structure)
-* [Licensing](#licensing)
+* [Data Structures](#data-structure)
+* [File Structure](#file-structure)
+* [Getting Started](#getting-started)
+* [Prerequrisites](#prerequisites)
+* [Installation Instructions](#installation)
+* [Running Tests](#running-tests)
+* [Licensing](#license)
 
 ## What is Projectile? 
 
