@@ -27,7 +27,7 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
 ![Image of Design V2](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_Home.png)
 
 ## Data Structure 
-### Projects
+    Projects
     {
         "id": 0,
         "name": "Custom Web App: Fortune 100",
@@ -35,7 +35,7 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
         "complete": false,
         "lastupdated": "2020-05-29"
     }
-### Phases
+    Phases
     {
         "id": 5,
         "name": "Integration",
@@ -47,7 +47,7 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
         "complete": false
     }
 
-### Log
+    Log
     {
         "id": 0,
         "description": "Something was delayed by 1 day.",
