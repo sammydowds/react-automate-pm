@@ -59,6 +59,53 @@ V2 Home Page:
     }
 
 ## File Structure 
+```.
+├── components
+│   ├── forms
+│   │   ├── CreatePhaseModalComponent.js
+│   │   ├── CreateProjectModalComponent.js
+│   │   ├── UpdatePhaseFormComponent.js
+│   │   └── UpdateProjectFormComponent.js
+│   ├── sub
+│   │   ├── CompletedProjectsComponent.js
+│   │   ├── DashboardComponent.js
+│   │   ├── LeftMenuComponent.js
+│   │   ├── LoadingComponent.js
+│   │   ├── PhasesEndingSoonComponent.js
+│   │   ├── ProjectDetailsComponent.js
+│   │   ├── ProjectGridComponent.js
+│   │   ├── ProjectWorkInProgressComponent.js
+│   │   └── RecentChangesComponent.js
+│   ├── HeaderComponent.js
+│   ├── HomeComponent.js
+│   ├── LandingComponent.js
+│   ├── LoginComponent.js
+│   ├── MainComponent.js
+│   └── SignupComponent.js
+├── redux
+│   ├── ActionCreators.js
+│   ├── ActionTypes.js
+│   ├── companies.js
+│   ├── configureStore.js
+│   ├── log.js
+│   ├── phases.js
+│   ├── projects.js
+│   ├── ui.js
+│   ├── user.js
+│   └── users.js
+├── shared
+│   ├── baseUrl.js
+│   ├── default.svg
+│   ├── phases.js
+│   └── projects.js
+├── App.css
+├── App.js
+├── App.test.js
+├── index.css
+├── index.js
+├── logo.svg
+├── serviceWorker.js
+└── setupTests.js```
 
 ## Getting Started
 
