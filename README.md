@@ -23,10 +23,8 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
 
 Currently, development of Version 2 is in process. 
 
-V2 Home Page: 
+#### V2 Home Page: 
 ![Image of Design V2](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_Home.png)
-
-![Image of Design V2 ProjectGrid](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_ProjectGrid.png)
 
 ## Data Structure 
 ### Projects
