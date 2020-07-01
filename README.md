@@ -1,7 +1,7 @@
 Table of Contents
 =======================
 
-* [What is openpilot?](#what-is-openpilot)
+* [What is Projectile?](#what-is-openpilot)
 * [Integration with Stock Features](#integration-with-stock-features)
 * [Supported Hardware](#supported-hardware)
 * [Supported Cars](#supported-cars)
@@ -17,7 +17,7 @@ Table of Contents
 * [Directory Structure](#directory-structure)
 * [Licensing](#licensing)
 
-## Automating Project Management - React App (Front End)
+## What is Projectile? 
 
 A simple tool for managing projects. The core problem being solve is tracking and viewing projects through an online platform. However, a design goal of the project was to keep the UI clean and easy to understand. 
 
