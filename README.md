@@ -15,7 +15,7 @@ Table of Contents
 
 ## What is Projectile? 
 
-A UI to manage and track your projects. Changes are logged (with automated notes), dates are shown relative today, and information is structured in a single page web app. 
+A UI to manage and track your projects. Changes are logged (with automated notes), dates are shown relative to today, and information is structured in a single page web app. 
 
 This is a follow up project to a previous version completed in Django. This React app is designed to separate the front end as its own app, which will ideally be integrated with a Django REST API as the second part of the project. 
 
