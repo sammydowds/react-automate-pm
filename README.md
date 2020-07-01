@@ -1,3 +1,22 @@
+Table of Contents
+=======================
+
+* [What is openpilot?](#what-is-openpilot)
+* [Integration with Stock Features](#integration-with-stock-features)
+* [Supported Hardware](#supported-hardware)
+* [Supported Cars](#supported-cars)
+* [Community Maintained Cars and Features](#community-maintained-cars-and-features)
+* [Installation Instructions](#installation-instructions)
+* [Limitations of openpilot ALC and LDW](#limitations-of-openpilot-alc-and-ldw)
+* [Limitations of openpilot ACC and FCW](#limitations-of-openpilot-acc-and-fcw)
+* [Limitations of openpilot DM](#limitations-of-openpilot-dm)
+* [User Data and comma Account](#user-data-and-comma-account)
+* [Safety and Testing](#safety-and-testing)
+* [Testing on PC](#testing-on-pc)
+* [Community and Contributing](#community-and-contributing)
+* [Directory Structure](#directory-structure)
+* [Licensing](#licensing)
+
 ## Automating Project Management - React App (Front End)
 
 A simple tool for managing projects. The core problem being solve is tracking and viewing projects through an online platform. However, a design goal of the project was to keep the UI clean and easy to understand. 

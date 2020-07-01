@@ -90,7 +90,9 @@ class renderHome extends Component {
                     phases={this.props.phases}
                     phasesLoading={this.props.phasesLoading}
                     />
-                  <ProjectGrid
+                  </React.Fragment>
+              }
+              <ProjectGrid
                     projects={this.props.projects} 
                     projectsLoading={this.props.projectsLoading} 
                     handleProjectClicked={this.props.openDetails}
@@ -98,8 +100,6 @@ class renderHome extends Component {
                     phasesLoading={this.props.phasesLoading}
                     log={this.props.log}
                     />
-                  </React.Fragment>
-              }
             </Col>
             <Col lg="3">
               <RecentChanges 

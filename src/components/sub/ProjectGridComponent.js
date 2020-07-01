@@ -93,13 +93,14 @@ function renderProj(projects, phases, log, handleClicked) {
                     </span>
                     &nbsp; 
                     <span>
-                    <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-square" fill="orange" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
-                    <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
-                  </svg>
-                  &nbsp; 
-                  {past_due_phases}
-                  &nbsp; 
+                      &nbsp; 
+                      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-exclamation-square" fill="orange" xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd" d="M14 1H2a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                        <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                      </svg>
+                      &nbsp; 
+                      {past_due_phases}
+                      &nbsp; 
                       <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-calendar-event" fill="navy" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" d="M1 4v10a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4H1zm1-3a2 2 0 0 0-2 2v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2z"/>
                         <path fill-rule="evenodd" d="M3.5 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5zm9 0a.5.5 0 0 1 .5.5V1a.5.5 0 0 1-1 0V.5a.5.5 0 0 1 .5-.5z"/>
