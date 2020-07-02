@@ -2,7 +2,7 @@
 ![Main Demo](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/main_demo.png)
 
 
-[![projectile tests](https://github.com/sammydowds/react-automate-pm/workflows/projectile%20tests/badge.svg)](https://github.com/sammydowds/react-automate-pm/actions)
+![projectile tests](https://github.com/sammydowds/react-automate-pm/workflows/projectile%20tests/badge.svg?branch=master)
 
 Table of Contents
 =======================
