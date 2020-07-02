@@ -28,7 +28,7 @@ const normalizeResponse = (response) => {
 //Log out user
 export const logOut = () => (dispatch) => {
   localStorage.clear(); 
-  dispatch(addUserCredentials({"authenticated": false, "username": null, "token": null, "loggedout": true, "accountcreated": false, "firstnam": null})); 
+  dispatch(addUserCredentials({"authenticated": false, "username": null, "token": null, "loggedout": true, "accountcreated": false, "firstname": null})); 
 }
 
 // Sign User Up 
