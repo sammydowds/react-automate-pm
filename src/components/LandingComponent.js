@@ -6,7 +6,7 @@ import {
   Jumbotron, 
   Button
 } from 'reactstrap';
-import { Link, BrowserRouter } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; 
 
 const Landing = () => {
   return (
@@ -18,9 +18,8 @@ const Landing = () => {
               <h1 className="display-3">Launch your projects.</h1>
               <p className="lead">Guide your projects to success with an informative and easy to use interface.</p>
               <p>
-                <BrowserRouter>
-                  <Link to='/signup'><Button size="lg" className="form-labels mx-2">Sign Up</Button></Link><Link to='/login'><Button className="mx-2" size="lg">Log In</Button></Link>
-                </BrowserRouter>
+                  <Link to='/signup'><Button size="lg" className="form-labels mx-2">Sign Up</Button></Link>
+                  <Link to='/login'><Button className="mx-2" size="lg">Log In</Button></Link>
               </p>
           </Jumbotron>
           </Col>

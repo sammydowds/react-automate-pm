@@ -135,15 +135,15 @@ class Main extends Component {
     }
 
     return(
-      <React.Fragment>
+      <div>
         <Header/>
         <Switch>
-          <Route path="/learn" ><Landing /></Route>
-          <Route path="/home" component={HomePage} />
-          <Route path="/login" ><Login user={this.props.user} error={this.props.user.errMess} checkCredentials={this.props.checkCredentials}/></Route>
-          <Route path="/signup" ><Signup signupUser={this.props.signupUser} error={this.props.user.errMess} user={this.props.user} /></Route>
+            <Route path="/landing"> <Landing /> </Route>
+            <Route path="/home" component={HomePage} />
+            <Route path="/login" ><Login user={this.props.user} error={this.props.user.errMess} checkCredentials={this.props.checkCredentials}/></Route>
+            <Route path="/signup" ><Signup signupUser={this.props.signupUser} error={this.props.user.errMess} user={this.props.user} /></Route>
         </Switch>
-      </React.Fragment>
+      </div>
     );
   }
 
