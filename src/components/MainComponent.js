@@ -138,7 +138,7 @@ class Main extends Component {
       <div>
         <Header/>
         <Switch>
-            <Route path="/landing"> <Landing /> </Route>
+            <Route exact path="/"> <Landing /> </Route>
             <Route path="/home" component={HomePage} />
             <Route path="/login" ><Login user={this.props.user} error={this.props.user.errMess} checkCredentials={this.props.checkCredentials}/></Route>
             <Route path="/signup" ><Signup signupUser={this.props.signupUser} error={this.props.user.errMess} user={this.props.user} /></Route>
