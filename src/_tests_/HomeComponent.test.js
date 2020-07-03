@@ -135,6 +135,69 @@ const state_small = {
     }
 }
 
+const state_nophases = {
+    projects: {
+        isLoading: false,
+        errMess: false,
+        projects: {
+            26: {
+                complete: false, 
+                id: 26, 
+                lastupdated: "2020-06-30T18:23:01.553000Z", 
+                name: "Django REST API - Projectile", 
+                owner: 71
+            }
+        }
+    }, 
+    phases: {
+        isLoading: false,
+        errMess: false,
+        phases: {
+        }
+    }, 
+    log: {
+        isLoading: false,
+        errMess: false, 
+        log: []
+    }, 
+    userinterface: {
+        projectDetails: {
+            open: true, 
+            projectId: 26
+        }, 
+        phaseUpdateModal: {
+        open: false, 
+        phaseId: null
+        },
+        projectUpdateModal: {
+        open: false, 
+        projectId: null
+        }, 
+        projectCreateModal: {
+        open: false 
+        }, 
+        phaseCreateModal: {
+        open: false 
+        },
+        deleteModal: {
+        open: false
+        }
+    },
+    user: {
+        isLoading: false, 
+        errMess: false,
+        user: {
+            authenticated: false, 
+            username: null, 
+            token: null, 
+            loggedout: true, 
+            accountcreated: false, 
+            firstname: null
+        }
+        
+    }
+}
+
 describe('<Home />', () => {
     it('renders a <Header /> components', () => {
       const wrapper = shallow(
@@ -160,4 +223,45 @@ describe('<Home />', () => {
           );
         expect(wrapper.find(ProjectDetails));
       });
+  });
+
+describe('<Home />', () => {
+    it('renders a <Header /> components', () => {
+      const wrapper = shallow(
+            <Home 
+                projects={state_empty.projects.projects} 
+                log={state_empty.log.log} 
+                projectDetails={state_empty.userinterface.projectDetails}
+                user={state_empty.user}
+            />
+        );
+      expect(wrapper.find(Header));
+    });
+
+    it('renders a <ProjectDetails /> components', () => {
+        const wrapper = shallow(
+              <Home 
+                  projects={Object.values(state_small.projects.projects)} 
+                  phases={Object.values(state_small.phases.phases)}
+                  log={state_small.log.log} 
+                  projectDetails={state_small.userinterface.projectDetails}
+                  user={state_small.user}
+              />
+          );
+        expect(wrapper.find(ProjectDetails));
+      });
+
+    it('renders a <ProjectDetails /> components without phases', () => {
+    const wrapper = shallow(
+            <Home 
+                projects={Object.values(state_nophases.projects.projects)} 
+                phases={Object.values(state_nophases.phases.phases)}
+                log={state_nophases.log.log} 
+                projectDetails={state_nophases.userinterface.projectDetails}
+                user={state_nophases.user}
+            />
+        );
+    expect(wrapper.find(ProjectDetails));
+    });
+
   });
