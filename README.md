@@ -10,7 +10,7 @@
 
 
 Table of Contents
-=======================
+======================
 
 * [What is Projectile?](#what-is-projectile)
 * [Data Structures](#data-structure)
