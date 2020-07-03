@@ -8,10 +8,7 @@ import {
   CardSubtitle, 
   CardTitle, 
   CardText, 
-  Row, 
-  CardHeader, 
-  CardFooter,
-  Button
+  Row
  } from 'reactstrap';
 import { Loading } from './LoadingComponent'; 
 
@@ -40,7 +37,6 @@ function renderPhases(active_phases) {
 function renderProj(projects, phases, log, handleClicked) {
   if (projects) {
     const projects_rend = projects.map((project) => {
-      const on_schedule = project.status;
       // filtering for phases related to this project
       const proj_phases = phases.filter((phase) => project.id === phase.projectId); 
       const proj_log_length = (log.filter((entry) => project.id === entry.projectId)).length; 

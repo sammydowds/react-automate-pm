@@ -33,7 +33,7 @@ export const logOut = () => (dispatch) => {
 
 // Sign User Up 
 export const signupUser = (user) => (dispatch) => {
-  dispatch(userLoading(true)); 
+  dispatch(userLoading()); 
 
   return fetch(baseUrl + createUserUrl, {
     method: 'POST',
@@ -65,7 +65,7 @@ export const signupUser = (user) => (dispatch) => {
 
 // Login User 
 export const checkCredentials = (user) => (dispatch) => {
-  dispatch(userLoading(true)); 
+  dispatch(userLoading()); 
   let user_info = user; 
 
   return fetch(baseUrl + loginUrl, {
@@ -115,7 +115,7 @@ export const userFailed = (error) => ({
 
 // THUNK
 export const fetchProjects = () => (dispatch) => {
-    dispatch(projectsLoading(true));
+    dispatch(projectsLoading());
     
     //for API 
     return fetch(baseUrl + 'projects/', {
@@ -146,7 +146,7 @@ export const fetchProjects = () => (dispatch) => {
   }
 
   export const fetchLog = () => (dispatch) => {
-    dispatch(logLoading(true));
+    dispatch(logLoading());
 
     //for API 
     return fetch(baseUrl + 'log/', {
@@ -178,7 +178,7 @@ export const fetchProjects = () => (dispatch) => {
 
   // THUNK to fetch phases 
 export const fetchPhases = () => (dispatch) => {
-  dispatch(phasesLoading(true));
+  dispatch(phasesLoading());
 
   //for API 
   return fetch(baseUrl + 'phases/', {
@@ -212,7 +212,7 @@ export const fetchPhases = () => (dispatch) => {
 export const createProject = (values) => (dispatch) => {
   
   //for API 
-  dispatch(projectsUpdating(true)); 
+  dispatch(projectsUpdating()); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectDetails = Object.assign({}, values); 
   projectDetails.lastupdated = new Date().toISOString(); 
@@ -254,7 +254,7 @@ export const createProject = (values) => (dispatch) => {
 export const createPhase = (proj_id, values) => (dispatch) => {
 
   //for API 
-  dispatch(phasesUpdating(true)); 
+  dispatch(phasesUpdating()); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseDetails = Object.assign({}, values); 
   phaseDetails.lastupdated = new Date().toISOString(); 
@@ -337,7 +337,7 @@ export const createLogEntry = (values) => (dispatch) => {
 export const updateProject = (proj_id, values) => (dispatch) => {
 
   //for API 
-  dispatch(projectsUpdating(true)); 
+  dispatch(projectsUpdating()); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectUpdates = Object.assign({}, values); 
   projectUpdates.lastupdated = new Date().toISOString();
@@ -377,7 +377,7 @@ export const updateProject = (proj_id, values) => (dispatch) => {
 // THUNK - Patch to update project details 
 export const updatePhase = (phase_id, values) => (dispatch) => {
   //for API 
-  dispatch(phasesUpdating(true)); 
+  dispatch(phasesUpdating()); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseUpdates = Object.assign({}, values);
   phaseUpdates.lastupdated = new Date().toISOString();
@@ -419,7 +419,7 @@ export const deleteProject = (proj_id) => (dispatch) => {
   //Simulating locally 
 
   //for API 
-  dispatch(projectsUpdating(true)); 
+  dispatch(projectsUpdating()); 
   //save to new object, because values is not extensible for adding timestamp  
   return fetch(baseUrl + deleteProjectUrl + proj_id, {
     method: 'DELETE',
@@ -456,7 +456,7 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
   //Simulating locally 
 
   //for API 
-  dispatch(phasesUpdating(true)); 
+  dispatch(phasesUpdating()); 
   //save to new object, because values is not extensible for adding timestamp  
   return fetch(baseUrl + deletePhaseUrl + phase_id, {
     method: 'DELETE',

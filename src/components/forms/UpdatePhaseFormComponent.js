@@ -40,7 +40,7 @@ class UpdatePhaseForm extends Component {
     if (values.entry.notes !== "") {
       entry['notes'] = values.entry.notes; 
     } else {
-      entry['notes'] = 'No note entered'
+      entry['notes'] = 'No note entered'; 
     }
     this.props.updatePhase(phase_id, values.phase); 
     this.props.createLogEntry(entry); 

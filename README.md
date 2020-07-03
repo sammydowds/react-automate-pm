@@ -3,7 +3,6 @@
   <img src="https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/main_demo.png" />
 </p>
 
-
 ![projectile tests](https://github.com/sammydowds/react-automate-pm/workflows/projectile%20tests/badge.svg?branch=master)
 ![projectile build](https://github.com/sammydowds/react-automate-pm/workflows/projectile%20build/badge.svg?branch=master)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/sammydowds/react-automate-pm.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/sammydowds/react-automate-pm/context:javascript)
