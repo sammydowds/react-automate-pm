@@ -8,6 +8,12 @@
 
 ![projectile build](https://github.com/sammydowds/react-automate-pm/workflows/projectile%20build/badge.svg?branch=master)
 
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/sammydowds/react-automate-pm.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/sammydowds/react-automate-pm/context:javascript)
+
+
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/sammydowds/react-automate-pm.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/sammydowds/react-automate-pm/alerts/)
+
+
 Table of Contents
 =======================
 
