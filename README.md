@@ -1,5 +1,4 @@
 
-![Main Demo](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/main_demo.png)
 <p align="center">
   <img src="https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/main_demo.png" />
 </p>
