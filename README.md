@@ -6,6 +6,8 @@
 
 ![projectile tests](https://github.com/sammydowds/react-automate-pm/workflows/projectile%20tests/badge.svg?branch=master)
 
+![projectile build](https://github.com/sammydowds/react-automate-pm/workflows/projectile%20build/badge.svg?branch=master)
+
 Table of Contents
 =======================
 
