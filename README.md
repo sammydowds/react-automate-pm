@@ -24,8 +24,6 @@ A UI to manage and track your projects. Changes are logged (with automated notes
 
 Data is consumed from [Ground Control](https://github.com/sammydowds/django-rest-automate-pm) - a REST API I have developed to pool project data. 
 
-This is a follow up project to a previous version completed in Django. This React app is designed to separate the front end as its own app, which will ideally be integrated with a Django REST API as the second part of the project. 
-
 Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
 
 #### Currently, development of Version 2 is in process. 
