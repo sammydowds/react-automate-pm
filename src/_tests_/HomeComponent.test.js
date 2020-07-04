@@ -25,8 +25,8 @@ describe('testing <Home /> with varying sizes of props', () => {
     it('renders a <ProjectDetails /> components', () => {
         const wrapper = shallow(
               <Home 
-                  projects={Object.values(state_small.projects.projects)} 
-                  phases={Object.values(state_small.phases.phases)}
+                  projects={state_small.projects.projects} 
+                  phases={state_small.phases.phases}
                   log={state_small.log.log} 
                   projectDetails={state_small.userinterface.projectDetails}
                   user={state_small.user}
@@ -38,8 +38,8 @@ describe('testing <Home /> with varying sizes of props', () => {
     it('renders a <ProjectDetails /> components without phases', () => {
     const wrapper = shallow(
             <Home 
-                projects={Object.values(state_nophases.projects.projects)} 
-                phases={Object.values(state_nophases.phases.phases)}
+                projects={state_nophases.projects.projects} 
+                phases={state_nophases.phases.phases}
                 log={state_nophases.log.log} 
                 projectDetails={state_nophases.userinterface.projectDetails}
                 user={state_nophases.user}

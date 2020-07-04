@@ -81,27 +81,15 @@ class Main extends Component {
   }
 
   render () {
-    let projects_list = []; 
-    let phases_list = []; 
-    let log_list = []; 
-    if (this.props.projects.projects.length !== 0) {
-      projects_list = Object.values(this.props.projects.projects); 
-    } 
-    if (this.props.phases.phases.length !== 0) {
-      phases_list = Object.values(this.props.phases.phases); 
-    }
-    if (this.props.log.log.length !== 0) {
-      log_list = Object.values(this.props.log.log).reverse(); 
-    }
     const HomePage = () => {
       return(
         <Home 
-          projects={projects_list} 
+          projects={this.props.projects.projects} 
           projectsLoading={this.props.projects.isLoading}
           phasesLoading={this.props.phases.isLoading} 
           updateProject={this.props.updateProject}
           projectsError={this.props.projects.errMess}
-          phases={phases_list}
+          phases={this.props.phases.phases}
           updatePhase={this.props.updatePhase}
           createProject={this.props.createProject}
           createPhase={this.props.createPhase}
@@ -121,7 +109,7 @@ class Main extends Component {
           openPhaseCreateModal={this.props.openPhaseCreateModal}
           closePhaseCreateModal={this.props.closePhaseCreateModal}
           createLogEntry={this.props.createLogEntry}
-          log={log_list}
+          log={this.props.log.log}
           deleteProject = {this.props.deleteProject}
           deleteSinglePhase = {this.props.deleteSinglePhase}
           user={this.props.user.user}

@@ -11,20 +11,7 @@ import {
   loginUrl, 
   createUserUrl
 } from '../shared/baseUrl';
-import { normalize, schema } from 'normalizr';
 
-
-//function to normalize an array of objects, returns normalized list of objects 
-const normalizeResponse = (response) => {
-  if (response.length !== 0) {
-    const new_schema = new schema.Entity('schema', {attributeId: 'id'});  
-    const norm_data = normalize(response, [new_schema]);
-    return norm_data.entities.schema; 
-  } else {
-    return []; 
-  }
-    
-}
 //Log out user
 export const logOut = () => (dispatch) => {
   localStorage.clear(); 
@@ -139,7 +126,7 @@ export const fetchProjects = () => (dispatch) => {
       })
       .then(response => response.json())
       //normalizing response 
-      .then(notNrmResp => normalizeResponse(notNrmResp))
+      // .then(notNrmResp => normalizeResponse(notNrmResp))
       .then(projects=> dispatch(addProjects(projects))) 
       .catch(error => dispatch(projectsFailed(error.message)));
   
@@ -170,7 +157,7 @@ export const fetchProjects = () => (dispatch) => {
       })
       .then(response => response.json())
       //normalizing response 
-      .then(notNrmResp => normalizeResponse(notNrmResp))
+      // .then(notNrmResp => normalizeResponse(notNrmResp))
       .then(log => dispatch(addLog(log))) 
       .catch(error => dispatch(logFailed(error.message)));
   
@@ -202,7 +189,7 @@ export const fetchPhases = () => (dispatch) => {
     })
     .then(response => response.json())
     // normalizing response 
-    .then(notNrmResp => normalizeResponse(notNrmResp))
+    // .then(notNrmResp => normalizeResponse(notNrmResp))
     .then(phases => dispatch(addPhases(phases)))
     .catch(error => dispatch(phasesFailed(error.message)));
 
@@ -419,7 +406,6 @@ export const deleteProject = (proj_id) => (dispatch) => {
   //Simulating locally 
 
   //for API 
-  dispatch(projectsUpdating()); 
   //save to new object, because values is not extensible for adding timestamp  
   return fetch(baseUrl + deleteProjectUrl + proj_id, {
     method: 'DELETE',
@@ -444,7 +430,10 @@ export const deleteProject = (proj_id) => (dispatch) => {
       throw errmess;
     })
     // Updating the redux store
-    .then(response => dispatch(deleteProj(proj_id)))
+    .then(response => {
+      dispatch(deleteProj(proj_id)); 
+      dispatch(fetchLog()); 
+      })
     .catch(error => {
       console.log('Delete project ', error.message);
       alert('Your deletion could not be posted\nError: ' + error.message);

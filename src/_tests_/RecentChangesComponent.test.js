@@ -1,11 +1,10 @@
 import React from 'react'; 
 import { shallow } from 'enzyme';
 import { render } from '@testing-library/react';
-import Header from '../components/HeaderComponent';
 import RecentChanges from '../components/sub/RecentChangesComponent'; 
 import Enzyme from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import { state_empty, logid_nomatch } from '../testing_data/api_data'; 
+import { state_empty, logid_nomatch, state_small } from '../testing_data/api_data'; 
 
 Enzyme.configure({ adapter: new Adapter() });
 
@@ -23,19 +22,20 @@ describe('testing <RecentChanges /> with varying sizes of props', () => {
       const nullTableLog = getByText('None'); 
       expect(nullTableLog).toBeInTheDocument();
     });
-    test('renders a table with no entries when no projects match log projectId', () => {
-      const { getByText } = render(
-            <RecentChanges 
-                projectsLoading={logid_nomatch.projects.isLoading}
-                projects={logid_nomatch.projects.projects} 
-                log={logid_nomatch.log.log} 
-                projectDetails={logid_nomatch.userinterface.projectDetails}
-                user={logid_nomatch.user}
-                phases={logid_nomatch.phases}
+
+    it('renders multiple row of td for amount of log entries', () => {
+      const wrapper = shallow(
+            <RecentChanges  
+              projectsLoading={state_small.projects.isLoading}
+              projects={state_small.projects.projects} 
+              log={state_small.log.log} 
+              projectDetails={state_small.userinterface.projectDetails}
+              user={state_small.user}
+              phases={state_small.phases}
             />
         );
-      const nullTableLog = getByText('No log entries tied to your projects.'); 
-      expect(nullTableLog).toBeInTheDocument();
+      expect(wrapper.find('tbody').children()).to.have.lengthOf(1);
     });
+
 
   });

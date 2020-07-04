@@ -14,7 +14,7 @@ import {
  import { Loading } from './LoadingComponent';
 
 function RecentChanges(props) {
-    if (props.projectsLoading) {
+    if (props.projectsLoading && props.phases.isLoading && props.log.isLoading) {
         return(
             <Card className="my-2 card-border">
             <CardBody className="text-left">
@@ -45,9 +45,6 @@ function RecentChanges(props) {
     } else if (props.log.length !== 0) {
         const log_table = props.log.map((entry) => {
             let matching_proj = props.projects.filter((project) => project.id === entry.projectId); 
-            //if there is a project that matches the id of the entry, return name
-            if (matching_proj.length[0]) {
-                // need to fix this below, entry can exist and maintain a projectId that no longer exists 
                 const project_name = matching_proj[0].name; 
                 const time_stamp = moment(entry.timestamp).fromNow();  
                 return(
@@ -63,14 +60,6 @@ function RecentChanges(props) {
                         </td>
                     </tr>
                 ); 
-            //returns if there are no projects tied to the log entry - indicating the project has been deleted
-            } else {
-                return(
-                    <tr>
-                        <td className="text-left">No log entries tied to your projects.</td>
-                    </tr> 
-                ); 
-            }
         })
         return(
             <Card className="my-2 card-border">
@@ -89,9 +78,14 @@ function RecentChanges(props) {
                     <Col className="mx-1">
                         <div className="stats-table">
                         <Table size="sm" className="overflow-auto" borderless hover>
-                            <tbody>
-                                {log_table}
-                            </tbody>
+                                {log_table[0] !== undefined
+                                    ? <tbody>{log_table}</tbody>
+                                    : <tbody>
+                                        <tr>
+                                            <td>No log entries tied to your projects.</td>
+                                        </tr>
+                                    </tbody>
+                                }
                         </Table>
                         </div>
                     </Col>
