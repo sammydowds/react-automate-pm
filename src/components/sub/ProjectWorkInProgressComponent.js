@@ -44,7 +44,8 @@ function renderProj(projects, phases, handleClicked) {
       // filtering for phases related to this project
       const proj_phases = phases.filter((phase) => project.id === phase.projectId); 
       const active_phases = proj_phases.filter((phase) => phase.active);
-      const past_due_phases = proj_phases.filter((pphase) => moment(pphase.end).isBefore(moment())).length; 
+      // past due projects are in the past and marked as not complete 
+      const past_due_phases = proj_phases.filter((pphase) => moment(pphase.end).isBefore(moment()) && pphase.complete === false).length; 
       const phases_rend = renderPhases(active_phases); 
       return(
         <span>

@@ -46,7 +46,11 @@ function RecentChanges(props) {
         const log_table = props.log.map((entry) => {
             if (props.projects.filter((project) => project.id === entry.projectId)) {
                 const project_match = (props.projects.filter((project) => project.id === entry.projectId))[0];
-                const project_name = project_match.name; 
+                // need to fix this below, entry can exist and maintain a projectId that no longer exists 
+                let project_name = ""; 
+                if (project_match) {
+                    project_name = project_match.name;
+                } 
                 const time_stamp = moment(entry.timestamp).fromNow();  
                 return(
                     <tr>

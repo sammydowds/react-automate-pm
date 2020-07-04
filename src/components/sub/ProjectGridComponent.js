@@ -41,7 +41,8 @@ function renderProj(projects, phases, log, handleClicked) {
       const proj_phases = phases.filter((phase) => project.id === phase.projectId); 
       const proj_log_length = (log.filter((entry) => project.id === entry.projectId)).length; 
       const phases_this_week = (proj_phases.filter((phase) => moment(phase.end).week() === moment().week()).length); 
-      const past_due_phases = proj_phases.filter((pphase) => moment(pphase.end).isBefore(moment())).length; 
+      // past due phases that are in the past and not marked complete 
+      const past_due_phases = proj_phases.filter((pphase) => moment(pphase.end).isBefore(moment()) && pphase.complete === false).length; 
       const active_phases = proj_phases.filter((phase) => phase.active);
       const phases_rend = renderPhases(active_phases); 
       return(
