@@ -42,7 +42,7 @@ function RecentChanges(props) {
             </CardBody>
         </Card>
         ); 
-    } else if (props.log.length !== 0) {
+    } else if (props.log[0] !== undefined) {
         const log_table = props.log.map((entry) => {
             let matching_proj = props.projects.filter((project) => project.id === entry.projectId); 
                 const project_name = matching_proj[0].name; 

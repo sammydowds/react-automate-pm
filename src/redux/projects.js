@@ -14,28 +14,7 @@ export const Projects = (state = {
 
     case ActionTypes.PROJECTS_FAILED:
       return {...state, isLoading: false, errMess: action.payload, projects: []};
-    
-    case ActionTypes.PROJECTS_UPDATING: 
-      return {...state, isLoading: true, errMess: null, projects: state.projects};
-    
-    case ActionTypes.UPDATE_PROJECT:
-      const project = action.payload; 
-      const new_state = Object.assign({}, state); 
-      new_state.projects[project.id] = project; 
-      return {...state, isLoading: false, errMess: null, projects: new_state.projects}; 
-    
-    case ActionTypes.CREATE_PROJECT:
-      const new_project = action.payload; 
-      const edit_state = Object.assign({}, state); 
-      edit_state.projects[new_project.id] = new_project; 
-      return {...state, isLoading: false, errMess: null, projects: edit_state.projects}; 
-
-    case ActionTypes.DELETE_PROJECT:
-      const delete_project = action.payload; 
-      const deleted_state = Object.assign({}, state);
-      delete deleted_state.projects[delete_project]; 
-      return {...state, isLoading: false, errMess: null, projects: deleted_state.projects}; 
-
+  
     default:
       return state;
   }

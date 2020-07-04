@@ -125,8 +125,6 @@ export const fetchProjects = () => (dispatch) => {
         throw errmess;
       })
       .then(response => response.json())
-      //normalizing response 
-      // .then(notNrmResp => normalizeResponse(notNrmResp))
       .then(projects=> dispatch(addProjects(projects))) 
       .catch(error => dispatch(projectsFailed(error.message)));
   
@@ -156,8 +154,6 @@ export const fetchProjects = () => (dispatch) => {
         throw errmess;
       })
       .then(response => response.json())
-      //normalizing response 
-      // .then(notNrmResp => normalizeResponse(notNrmResp))
       .then(log => dispatch(addLog(log))) 
       .catch(error => dispatch(logFailed(error.message)));
   
@@ -188,8 +184,6 @@ export const fetchPhases = () => (dispatch) => {
       throw errmess;
     })
     .then(response => response.json())
-    // normalizing response 
-    // .then(notNrmResp => normalizeResponse(notNrmResp))
     .then(phases => dispatch(addPhases(phases)))
     .catch(error => dispatch(phasesFailed(error.message)));
 
@@ -199,7 +193,9 @@ export const fetchPhases = () => (dispatch) => {
 export const createProject = (values) => (dispatch) => {
   
   //for API 
-  dispatch(projectsUpdating()); 
+  dispatch(projectsLoading()); 
+  dispatch(phasesLoading()); 
+  dispatch(logLoading()); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectDetails = Object.assign({}, values); 
   projectDetails.lastupdated = new Date().toISOString(); 
@@ -230,7 +226,11 @@ export const createProject = (values) => (dispatch) => {
     })
     .then(response => response.json())
     // Updating the redux store
-    .then(response => dispatch(createNewProject(response)))
+    .then(response => {
+      dispatch(fetchProjects());
+      dispatch(fetchPhases());
+      dispatch(fetchLog());
+    })
     .catch(error => {
       console.log('Update project ', error.message);
       alert('Your phase updates could not be posted\nError: ' + error.message);
@@ -241,7 +241,9 @@ export const createProject = (values) => (dispatch) => {
 export const createPhase = (proj_id, values) => (dispatch) => {
 
   //for API 
-  dispatch(phasesUpdating()); 
+  dispatch(projectsLoading()); 
+  dispatch(phasesLoading()); 
+  dispatch(logLoading()); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseDetails = Object.assign({}, values); 
   phaseDetails.lastupdated = new Date().toISOString(); 
@@ -270,8 +272,11 @@ export const createPhase = (proj_id, values) => (dispatch) => {
       throw errmess;
     })
     .then(response => response.json())
-    // Updating the redux store
-    .then(response => dispatch(createNewPhase(response)))
+    .then(response => {
+      dispatch(fetchProjects());
+      dispatch(fetchPhases());
+      dispatch(fetchLog());
+    })
     .catch(error => {
       console.log('Update project ', error.message);
       alert('Your phase updates could not be posted\nError: ' + error.message);
@@ -284,6 +289,9 @@ export const createLogEntry = (values) => (dispatch) => {
   //simulating locally
 
   //for API 
+  dispatch(projectsLoading()); 
+  dispatch(phasesLoading()); 
+  dispatch(logLoading()); 
   //save to new object, because values is not extensible for adding timestamp 
   let entryDetails = Object.assign({}, values); 
   entryDetails.timestamp = new Date().toISOString();
@@ -311,8 +319,11 @@ export const createLogEntry = (values) => (dispatch) => {
       throw errmess;
     })
     .then(response => response.json())
-    // Updating the redux store
-    .then(response => dispatch(createEntry(response)))
+    .then(response => {
+      dispatch(fetchProjects());
+      dispatch(fetchPhases());
+      dispatch(fetchLog());
+    })
     .catch(error => {
       console.log('Update project ', error.message);
       alert('Your phase updates could not be posted\nError: ' + error.message);
@@ -324,7 +335,9 @@ export const createLogEntry = (values) => (dispatch) => {
 export const updateProject = (proj_id, values) => (dispatch) => {
 
   //for API 
-  dispatch(projectsUpdating()); 
+  dispatch(projectsLoading()); 
+  dispatch(phasesLoading()); 
+  dispatch(logLoading()); 
   //save to new object, because values is not extensible for adding timestamp  
   let projectUpdates = Object.assign({}, values); 
   projectUpdates.lastupdated = new Date().toISOString();
@@ -352,8 +365,11 @@ export const updateProject = (proj_id, values) => (dispatch) => {
       throw errmess;
     })
     .then(response => response.json())
-    // Updating the redux store
-    .then(response => dispatch(updateProj(response)))
+    .then(response => {
+      dispatch(fetchProjects());
+      dispatch(fetchPhases());
+      dispatch(fetchLog());
+    })
     .catch(error => {
       console.log('Update project ', error.message);
       alert('Your phase updates could not be posted\nError: ' + error.message);
@@ -364,7 +380,9 @@ export const updateProject = (proj_id, values) => (dispatch) => {
 // THUNK - Patch to update project details 
 export const updatePhase = (phase_id, values) => (dispatch) => {
   //for API 
-  dispatch(phasesUpdating()); 
+  dispatch(projectsLoading()); 
+  dispatch(phasesLoading()); 
+  dispatch(logLoading()); 
   //save to new object, because values is not extensible for adding timestamp  
   let phaseUpdates = Object.assign({}, values);
   phaseUpdates.lastupdated = new Date().toISOString();
@@ -392,8 +410,11 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
       throw errmess;
     })
     .then(response => response.json())
-    // Updating the redux store
-    .then(response => dispatch(updatePhaseDetails(response)))
+    .then(response => {
+      dispatch(fetchProjects());
+      dispatch(fetchPhases());
+      dispatch(fetchLog());
+    })
     .catch(error => {
       console.log('Update phase ', error.message);
       alert('Your phase updates could not be posted\nError: ' + error.message);
@@ -406,6 +427,9 @@ export const deleteProject = (proj_id) => (dispatch) => {
   //Simulating locally 
 
   //for API 
+  dispatch(projectsLoading()); 
+  dispatch(logLoading()); 
+  dispatch(phasesLoading()); 
   //save to new object, because values is not extensible for adding timestamp  
   return fetch(baseUrl + deleteProjectUrl + proj_id, {
     method: 'DELETE',
@@ -431,8 +455,9 @@ export const deleteProject = (proj_id) => (dispatch) => {
     })
     // Updating the redux store
     .then(response => {
-      dispatch(deleteProj(proj_id)); 
+      dispatch(fetchProjects()); 
       dispatch(fetchLog()); 
+      dispatch(fetchPhases()); 
       })
     .catch(error => {
       console.log('Delete project ', error.message);
@@ -445,7 +470,9 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
   //Simulating locally 
 
   //for API 
-  dispatch(phasesUpdating()); 
+  dispatch(projectsLoading()); 
+  dispatch(phasesLoading()); 
+  dispatch(logLoading()); 
   //save to new object, because values is not extensible for adding timestamp  
   return fetch(baseUrl + deletePhaseUrl + phase_id, {
     method: 'DELETE',
@@ -469,8 +496,11 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
       var errmess= new Error(error.message);
       throw errmess;
     })
-    // Updating the redux store
-    .then(proj_id => dispatch(deletePhase(phase_id)))
+    .then(response => {
+      dispatch(fetchProjects());
+      dispatch(fetchPhases());
+      dispatch(fetchLog());
+    })
     .catch(error => {
       console.log('Delete phase ', error.message);
       alert('Your deletion could not be posted\nError: ' + error.message);
