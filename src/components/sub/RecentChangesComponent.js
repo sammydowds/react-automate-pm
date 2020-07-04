@@ -45,21 +45,24 @@ function RecentChanges(props) {
     } else if (props.log[0] !== undefined) {
         const log_table = props.log.map((entry) => {
             let matching_proj = props.projects.filter((project) => project.id === entry.projectId); 
-                const project_name = matching_proj[0].name; 
-                const time_stamp = moment(entry.timestamp).fromNow();  
-                return(
-                    <tr>
-                        <td className="text-left">
-                            <span className="project-link" onClick={() => {props.handleClicked(entry.projectId);}}>
-                                {project_name}
-                            </span>
-                            : {entry.description} 
-                            <br>
-                            </br>
-                            <small>{time_stamp}</small>
-                        </td>
-                    </tr>
-                ); 
+                // bug here - need to delete log entries associated with deleted projects at project deletion 
+                if (matching_proj[0] !== undefined) {
+                    const project_name = matching_proj[0].name; 
+                    const time_stamp = moment(entry.timestamp).fromNow();  
+                    return(
+                        <tr>
+                            <td className="text-left">
+                                <span className="project-link" onClick={() => {props.handleClicked(entry.projectId);}}>
+                                    {project_name}
+                                </span>
+                                : {entry.description} 
+                                <br>
+                                </br>
+                                <small>{time_stamp}</small>
+                            </td>
+                        </tr>
+                    ); 
+                }
         })
         return(
             <Card className="my-2 card-border">

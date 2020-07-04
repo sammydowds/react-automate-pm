@@ -23,7 +23,7 @@ describe('testing <RecentChanges /> with varying sizes of props', () => {
       expect(nullTableLog).toBeInTheDocument();
     });
 
-    it('renders multiple row of td for amount of log entries', () => {
+    it('renders multiple row of tr for amount of log entries', () => {
       const wrapper = shallow(
             <RecentChanges  
               projectsLoading={state_small.projects.isLoading}
@@ -34,7 +34,7 @@ describe('testing <RecentChanges /> with varying sizes of props', () => {
               phases={state_small.phases}
             />
         );
-      expect(wrapper.find('tbody').children()).to.have.lengthOf(1);
+      expect(wrapper.find('tr')).toHaveLength(1);
     });
 
 
