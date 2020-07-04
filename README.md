@@ -15,9 +15,6 @@ Table of Contents
 * [What is Projectile?](#what-is-projectile)
 * [Data Structures](#data-structure)
 * [File Structure](#file-structure)
-* [Getting Started](#getting-started)
-* [Prerequrisites](#prerequisites)
-* [Installation Instructions](#installation)
 * [Running Tests](#running-tests)
 * [Licensing](#license)
 
@@ -114,25 +111,14 @@ Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/
     ├── serviceWorker.js
     └── setupTests.js 
 
-## Getting Started
-
-*In Progress*
-
-### Prerequisites
-
-*In Progress*
-
-### Installing
-
-In the process of finishing design - will be updated once completed.
-
 ## Running the tests
 
-*Plan is to utilize Jest and React Testing Library for Testing*
+npm test 
 
 ## Built With
 
 * [React](https://reactjs.org/docs/getting-started.html) - The web framework used
+* [Redux](https://redux.js.org/) - state management (M)
 * [reactstrap](https://reactstrap.github.io/) - Styling
 
 ## Authors
