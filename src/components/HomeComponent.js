@@ -105,7 +105,8 @@ class renderHome extends Component {
               <RecentChanges 
                 log={this.props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))} 
                 projectsLoading={this.props.projectsLoading} 
-                projects={this.props.projects} phases={this.props.phases} 
+                projects={this.props.projects} 
+                phases={this.props.phases} 
                 handleClicked={this.props.openDetails}>
               </RecentChanges>
               <PhasesEndingSoon 

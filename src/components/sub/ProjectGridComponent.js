@@ -132,7 +132,7 @@ function renderProj(projects, phases, log, handleClicked) {
   }
 }
 
-function ProjectWorkInProgress(props) {
+function ProjectGrid(props) {
   if (props.projectsLoading) {
     return(
       <Row>
@@ -164,5 +164,5 @@ function ProjectWorkInProgress(props) {
 }
 
 
-export default ProjectWorkInProgress; 
+export default ProjectGrid; 
 

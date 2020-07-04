@@ -44,13 +44,11 @@ function RecentChanges(props) {
         ); 
     } else if (props.log.length !== 0) {
         const log_table = props.log.map((entry) => {
-            if (props.projects.filter((project) => project.id === entry.projectId)) {
-                const project_match = (props.projects.filter((project) => project.id === entry.projectId))[0];
+            let matching_proj = props.projects.filter((project) => project.id === entry.projectId); 
+            //if there is a project that matches the id of the entry, return name
+            if (matching_proj.length[0]) {
                 // need to fix this below, entry can exist and maintain a projectId that no longer exists 
-                let project_name = ""; 
-                if (project_match) {
-                    project_name = project_match.name;
-                } 
+                const project_name = matching_proj[0].name; 
                 const time_stamp = moment(entry.timestamp).fromNow();  
                 return(
                     <tr>
@@ -65,12 +63,11 @@ function RecentChanges(props) {
                         </td>
                     </tr>
                 ); 
+            //returns if there are no projects tied to the log entry - indicating the project has been deleted
             } else {
                 return(
                     <tr>
-                        <td className="text-left">
-                            No log entries.
-                        </td>
+                        <td className="text-left">No log entries tied to your projects.</td>
                     </tr> 
                 ); 
             }
@@ -79,7 +76,7 @@ function RecentChanges(props) {
             <Card className="my-2 card-border">
             <CardBody className="text-left">
                 <CardTitle className="pl-2 text-center normal-text">
-                    <h6 lead>
+                    <h6 lead="true">
                     Recent Changes <Badge className="off-badge">{props.log.length}</Badge>
 
                     </h6>
@@ -104,29 +101,33 @@ function RecentChanges(props) {
         </Card>
         ); 
     } else {
+        // Returns when there are no logs 
         return(
             <Card className="my-2 card-border">
             <CardBody className="text-left">
                 <CardTitle className="pl-2 text-center normal-text">
-                    <h6 lead>
+                    <h6 lead="true">
                     Recent Changes <Badge className="off-badge">{props.log.length}</Badge>  
                     </h6>
                     <hr></hr>
                 </CardTitle>
                 <CardSubtitle className="mb-2 lead text-center">
                 </CardSubtitle>
+                {/* Structural issues here with <p> */}
                 <CardText className="text-center">
-                <Row className="my-3 justify-content-center">
-                    <Col className="mx-1">
-                        <div className="stats-table">
-                        <Table size="sm" className="overflow-auto" borderless hover>
-                            <tbody>
-                                None
-                            </tbody>
-                        </Table>
-                        </div>
-                    </Col>
-                </Row>
+                    <Row className="my-3 justify-content-center">
+                        <Col className="mx-1">
+                            <div className="stats-table">
+                                <Table size="sm" className="overflow-auto" borderless hover>
+                                    <tbody>
+                                        <tr>
+                                        <td>None</td>
+                                        </tr>
+                                    </tbody>
+                                </Table>
+                            </div>
+                        </Col>
+                    </Row>
                 </CardText>
             </CardBody>
         </Card> 

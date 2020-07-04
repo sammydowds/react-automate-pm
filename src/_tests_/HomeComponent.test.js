@@ -9,34 +9,7 @@ import { state_empty, state_small, state_nophases } from '../testing_data/api_da
 
 Enzyme.configure({ adapter: new Adapter() });
 
-describe('<Home />', () => {
-    it('renders a <Header /> components', () => {
-      const wrapper = shallow(
-            <Home 
-                projects={state_empty.projects.projects} 
-                log={state_empty.log.log} 
-                projectDetails={state_empty.userinterface.projectDetails}
-                user={state_empty.user}
-            />
-        );
-      expect(wrapper.find(Header));
-    });
-
-    it('renders a <ProjectDetails /> components', () => {
-        const wrapper = shallow(
-              <Home 
-                  projects={Object.values(state_small.projects.projects)} 
-                  phases={Object.values(state_small.phases.phases)}
-                  log={state_small.log.log} 
-                  projectDetails={state_small.userinterface.projectDetails}
-                  user={state_small.user}
-              />
-          );
-        expect(wrapper.find(ProjectDetails));
-      });
-  });
-
-describe('<Home />', () => {
+describe('testing <Home /> with varying sizes of props', () => {
     it('renders a <Header /> components', () => {
       const wrapper = shallow(
             <Home 
