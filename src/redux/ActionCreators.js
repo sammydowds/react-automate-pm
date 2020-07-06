@@ -83,7 +83,7 @@ export const checkCredentials = (user) => (dispatch) => {
         dispatch(fetchProjects()); 
         dispatch(fetchPhases()); 
         dispatch(fetchLog()); 
-        dispatch(addUserCredentials({"authenticated": true, "username": user_info.username, "token": data.access}))
+        dispatch(addUserCredentials({"authenticated": true, "username": user_info.username, "token": data.access})); 
       }
     )
     .catch(error => dispatch(userFailed(error.message)));  
@@ -113,6 +113,12 @@ export const fetchProjects = () => (dispatch) => {
       .then(response => {
         if (response.ok) {
           return response;
+
+        } else if (response.status === 401) {
+          var error = new Error('You have been logged out');
+          error.response = response;
+          dispatch(logOut()); 
+          throw error;
         }
         else {
           var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -142,6 +148,12 @@ export const fetchProjects = () => (dispatch) => {
       .then(response => {
         if (response.ok) {
           return response;
+
+        } else if (response.status === 401) {
+          var error = new Error('You have been logged out');
+          error.response = response;
+          dispatch(logOut()); 
+          throw error;
         }
         else {
           var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -172,6 +184,12 @@ export const fetchPhases = () => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
+        
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
       }
       else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -213,8 +231,12 @@ export const createProject = (values) => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
-      }
-      else {
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
+      } else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
         error.response = response;
         throw error;
@@ -260,6 +282,12 @@ export const createPhase = (proj_id, values) => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
+
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
       }
       else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -280,7 +308,9 @@ export const createPhase = (proj_id, values) => (dispatch) => {
     .catch(error => {
       console.log('Update project ', error.message);
       alert('Your phase updates could not be posted\nError: ' + error.message);
+      dispatch(projectsFailed(error.message)); 
     });
+
 
 }
 
@@ -307,6 +337,11 @@ export const createLogEntry = (values) => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
       }
       else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -353,6 +388,12 @@ export const updateProject = (proj_id, values) => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
+
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
       }
       else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -398,6 +439,11 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
       }
       else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -442,6 +488,11 @@ export const deleteProject = (proj_id) => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
       }
       else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -485,6 +536,11 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
       }
       else {
         var error = new Error('Error ' + response.status + ': ' + response.statusText);

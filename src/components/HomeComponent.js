@@ -18,16 +18,8 @@ import { Redirect } from 'react-router-dom';
 
 
 class renderHome extends Component {
-  constructor(props){
-    super(props); 
-  }
 
   render() {
-    if (this.props.projectsError) {
-      return(
-        <Redirect to='/login' />
-      )
-    } else {
       return(
         <Container className="container-spacing home-container" fluid={true}>  
           <Header />
@@ -117,16 +109,15 @@ class renderHome extends Component {
               </PhasesEndingSoon>
             </Col>
           </Row>
-          {this.props.user.user.loggedout
-                ? <Redirect to='/login'/>
-                : <span></span>
+          {this.props.user.user.authenticated
+                ? <span></span>
+                : <Redirect to='/login'/>
             }
         </Container>
       );
   }
 }
-  
-}
+
 
 
 export default renderHome; 

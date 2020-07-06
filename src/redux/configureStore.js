@@ -34,7 +34,7 @@ const default_userinterface = {
 const default_user = { user: {
   accountcreated: false, 
   loggedout: false, 
-  athenticated: false, 
+  authenticated: false, 
   username: null, 
   token: null
 }
