@@ -72,15 +72,14 @@ function CompletedProjects(props) {
           <Card className="my-2 text-center card-border">
             <CardBody className="text-center">
               <CardTitle className="text-center normal-text">
-                <h6 lead>
-                Completed Projects 
-
+                <h6 lead="true">
+                Completed Projects
                 </h6>
               </CardTitle>
               <CardSubtitle>
                 <hr></hr>
               </CardSubtitle>
-              <CardText className="pt-1 pl-1 font-weight-bold">{renderProj(completed_proj, props.handleProjectClicked)}</CardText>
+              <CardText id="projects" className="pt-1 pl-1 font-weight-bold">{renderProj(completed_proj, props.handleProjectClicked)}</CardText>
             </CardBody>
           </Card>
         </Col>

@@ -12,6 +12,18 @@ import {
   createUserUrl
 } from '../shared/baseUrl';
 
+// user actions ------------------------------------------------------------
+export const userLoading = () => ({
+  type: ActionTypes.USER_LOADING
+}); 
+export const addUserCredentials = (user_info) => ({
+  type: ActionTypes.ADD_USER_CREDENTIALS,
+  payload: user_info
+}); 
+export const userFailed = (error) => ({
+  type: ActionTypes.USER_FAILED,
+  payload: error
+}); 
 //Log out user
 export const logOut = () => (dispatch) => {
   localStorage.clear(); 
@@ -47,7 +59,7 @@ export const signupUser = (user) => (dispatch) => {
     .then(dispatch(addUserCredentials({"accountcreated": true}))
   )
     .catch(error => dispatch(userFailed(error.message)));  
-  }
+}
 // Login User 
 export const checkCredentials = (user) => (dispatch) => {
   dispatch(userLoading()); 
@@ -88,21 +100,10 @@ export const checkCredentials = (user) => (dispatch) => {
       }
     )
     .catch(error => dispatch(userFailed(error.message)));  
-  }
-// user actions 
-export const userLoading = () => ({
-  type: ActionTypes.USER_LOADING
-}); 
-export const addUserCredentials = (user_info) => ({
-  type: ActionTypes.ADD_USER_CREDENTIALS,
-  payload: user_info
-}); 
-export const userFailed = (error) => ({
-  type: ActionTypes.USER_FAILED,
-  payload: error
-}); 
+}
 
-// Fetches API 
+// API thunks ----------------------------------------------------------------
+//Fetches 
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading());
     
@@ -205,7 +206,6 @@ export const fetchPhases = () => (dispatch) => {
     .catch(error => dispatch(phasesFailed(error.message)));
 
 }
-
 //Create objects API 
 export const createProject = (values) => (dispatch) => {
   
@@ -361,7 +361,6 @@ export const createLogEntry = (values) => (dispatch) => {
     });
 
 }
-
 // Updating objects API
 export const updateProject = (proj_id, values) => (dispatch) => {
   //for API 
@@ -460,7 +459,6 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
     });
 
 }
-
 // Delete objects API 
 export const deleteProject = (proj_id) => (dispatch) => {
   //Simulating locally 
@@ -554,7 +552,7 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
     });
 }
 
-// Project actions 
+// Project actions -----------------------------------------------------------
 export const projectsLoading = () => ({
   type: ActionTypes.PROJECTS_LOADING
 });
@@ -585,7 +583,7 @@ export const updateProj = (project) => ({
   payload: project
 });
 
-// Log actions 
+// Log actions -----------------------------------------------------------------
 export const logLoading = () => ({
   type: ActionTypes.LOG_LOADING
 });
@@ -603,7 +601,7 @@ export const createEntry = (entry) => ({
   payload: entry
 })
 
-//create single phase
+//Phase actions ---------------------------------------------------------------
 export const phasesLoading = () => ({
   type: ActionTypes.PHASES_LOADING
 });
@@ -632,7 +630,7 @@ export const updatePhaseDetails = (phase) => ({
   payload: phase
 });
 
-//UI actions 
+//UI actions -------------------------------------------------------------------
 export const initializeUserInterface = () => (dispatch) => {
   const uiinitvals = {
   projectDetails: {

@@ -10,7 +10,7 @@ import {
  } from 'reactstrap';
  import { Loading } from './LoadingComponent';
 
-function StatisticsProjects(props) {
+export function StatisticsProjects(props) {
     let num_projects = props.projects.length; 
     let num_wip_phases = (props.phases.filter((phase) => phase.active === true)).length; 
     let num_phases = props.phases.length; 
@@ -19,7 +19,7 @@ function StatisticsProjects(props) {
         <React.Fragment>
              <Row className="my-3 justify-content-center">
                 <Col className="stat-cubes">
-                    <h3 className="display-4">{num_projects}</h3>
+                    <h3 id="projcount" className="display-4">{num_projects}</h3>
                     <p>Total Open Projects</p>
                 </Col>
                 <Col className="stat-cubes">

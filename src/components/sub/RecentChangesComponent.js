@@ -51,7 +51,7 @@ function RecentChanges(props) {
                     const time_stamp = moment(entry.timestamp).fromNow();  
                     return(
                         <tr>
-                            <td className="text-left">
+                            <td id={entry.id} className="text-left">
                                 <span className="project-link" onClick={() => {props.handleClicked(entry.projectId);}}>
                                     {project_name}
                                 </span>
@@ -118,7 +118,7 @@ function RecentChanges(props) {
                                 <Table size="sm" className="overflow-auto" borderless hover>
                                     <tbody>
                                         <tr>
-                                        <td>None</td>
+                                            <td>None</td>
                                         </tr>
                                     </tbody>
                                 </Table>

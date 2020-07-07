@@ -34,12 +34,12 @@ class renderHome extends Component {
                 logOut={this.props.logOut}
               />
               <CompletedProjects 
-                    projects={this.props.projects} 
-                    projectsLoading={this.props.projectsLoading} 
-                    handleProjectClicked={this.props.openDetails}
-                    phases={this.props.phases}
-                    phasesLoading={this.props.phasesLoading}
-                    />
+                projects={this.props.projects} 
+                projectsLoading={this.props.projectsLoading} 
+                handleProjectClicked={this.props.openDetails}
+                phases={this.props.phases}
+                phasesLoading={this.props.phasesLoading}
+              />
             </Col>
             <Col lg="7">
               <DashboardCard 
