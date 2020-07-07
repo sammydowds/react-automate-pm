@@ -32,12 +32,11 @@ const default_userinterface = {
 }
 
 const default_user = { user: {
-  accountcreated: false, 
-  loggedout: false, 
   authenticated: false, 
   username: null, 
-  token: null
-}
+  token: null, 
+  accountcreated: false
+  }
 }
 
 

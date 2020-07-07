@@ -15,9 +15,8 @@ import {
 //Log out user
 export const logOut = () => (dispatch) => {
   localStorage.clear(); 
-  dispatch(addUserCredentials({"authenticated": false, "username": null, "token": null, "loggedout": true, "accountcreated": false, "firstname": null})); 
+  dispatch(addUserCredentials({"authenticated": false, "username": null, "token": null, "accountcreated": false})); 
 }
-
 // Sign User Up 
 export const signupUser = (user) => (dispatch) => {
   dispatch(userLoading()); 
@@ -49,7 +48,6 @@ export const signupUser = (user) => (dispatch) => {
   )
     .catch(error => dispatch(userFailed(error.message)));  
   }
-
 // Login User 
 export const checkCredentials = (user) => (dispatch) => {
   dispatch(userLoading()); 
@@ -79,15 +77,19 @@ export const checkCredentials = (user) => (dispatch) => {
     })
     .then(response => response.json())
     .then(data => {
-        localStorage.setItem("token", data.access)
+        //storing token to localstorage 
+        localStorage.setItem("token", data.access); 
+        //adding user information 
+        dispatch(addUserCredentials({"authenticated": true, "username": user_info.username, "token": data.access}));
+        //fetching projects and phases  
         dispatch(fetchProjects()); 
         dispatch(fetchPhases()); 
         dispatch(fetchLog()); 
-        dispatch(addUserCredentials({"authenticated": true, "username": user_info.username, "token": data.access})); 
       }
     )
     .catch(error => dispatch(userFailed(error.message)));  
   }
+// user actions 
 export const userLoading = () => ({
   type: ActionTypes.USER_LOADING
 }); 
@@ -100,7 +102,7 @@ export const userFailed = (error) => ({
   payload: error
 }); 
 
-// THUNK
+// Fetches API 
 export const fetchProjects = () => (dispatch) => {
     dispatch(projectsLoading());
     
@@ -134,44 +136,41 @@ export const fetchProjects = () => (dispatch) => {
       .then(projects=> dispatch(addProjects(projects))) 
       .catch(error => dispatch(projectsFailed(error.message)));
   
-  }
+}
+export const fetchLog = () => (dispatch) => {
+  dispatch(logLoading());
 
-  export const fetchLog = () => (dispatch) => {
-    dispatch(logLoading());
+  //for API 
+  return fetch(baseUrl + 'log/', {
+    headers: {
+      "Authorization": `Bearer ${localStorage.getItem("token")}`
+    }
+  })
+    .then(response => {
+      if (response.ok) {
+        return response;
 
-    //for API 
-    return fetch(baseUrl + 'log/', {
-      headers: {
-        "Authorization": `Bearer ${localStorage.getItem("token")}`
+      } else if (response.status === 401) {
+        var error = new Error('You have been logged out');
+        error.response = response;
+        dispatch(logOut()); 
+        throw error;
       }
+      else {
+        var error = new Error('Error ' + response.status + ': ' + response.statusText);
+        error.response = response;
+        throw error;
+      }
+    },
+    error => {
+      var errmess= new Error(error.message);
+      throw errmess;
     })
-      .then(response => {
-        if (response.ok) {
-          return response;
+    .then(response => response.json())
+    .then(log => dispatch(addLog(log))) 
+    .catch(error => dispatch(logFailed(error.message)));
 
-        } else if (response.status === 401) {
-          var error = new Error('You have been logged out');
-          error.response = response;
-          dispatch(logOut()); 
-          throw error;
-        }
-        else {
-          var error = new Error('Error ' + response.status + ': ' + response.statusText);
-          error.response = response;
-          throw error;
-        }
-      },
-      error => {
-        var errmess= new Error(error.message);
-        throw errmess;
-      })
-      .then(response => response.json())
-      .then(log => dispatch(addLog(log))) 
-      .catch(error => dispatch(logFailed(error.message)));
-  
-  }
-
-  // THUNK to fetch phases 
+}
 export const fetchPhases = () => (dispatch) => {
   dispatch(phasesLoading());
 
@@ -184,7 +183,7 @@ export const fetchPhases = () => (dispatch) => {
     .then(response => {
       if (response.ok) {
         return response;
-        
+
       } else if (response.status === 401) {
         var error = new Error('You have been logged out');
         error.response = response;
@@ -207,7 +206,7 @@ export const fetchPhases = () => (dispatch) => {
 
 }
 
-//Thunks CREATE Phase or Project 
+//Create objects API 
 export const createProject = (values) => (dispatch) => {
   
   //for API 
@@ -259,7 +258,6 @@ export const createProject = (values) => (dispatch) => {
     });
 
 }
-
 export const createPhase = (proj_id, values) => (dispatch) => {
 
   //for API 
@@ -313,8 +311,6 @@ export const createPhase = (proj_id, values) => (dispatch) => {
 
 
 }
-
-//creating Log entry 
 export const createLogEntry = (values) => (dispatch) => {
   //simulating locally
 
@@ -366,9 +362,8 @@ export const createLogEntry = (values) => (dispatch) => {
 
 }
 
-// THUNK - Patch to update project details 
+// Updating objects API
 export const updateProject = (proj_id, values) => (dispatch) => {
-
   //for API 
   dispatch(projectsLoading()); 
   dispatch(phasesLoading()); 
@@ -417,8 +412,6 @@ export const updateProject = (proj_id, values) => (dispatch) => {
     });
 
 }
-
-// THUNK - Patch to update project details 
 export const updatePhase = (phase_id, values) => (dispatch) => {
   //for API 
   dispatch(projectsLoading()); 
@@ -468,7 +461,7 @@ export const updatePhase = (phase_id, values) => (dispatch) => {
 
 }
 
-// THUNK - Delete a project 
+// Delete objects API 
 export const deleteProject = (proj_id) => (dispatch) => {
   //Simulating locally 
 
@@ -515,8 +508,6 @@ export const deleteProject = (proj_id) => (dispatch) => {
       alert('Your deletion could not be posted\nError: ' + error.message);
     });
 }
-
-//THUNK delete phase 
 export const deleteSinglePhase = (phase_id) => (dispatch) => {
   //Simulating locally 
 
@@ -563,35 +554,17 @@ export const deleteSinglePhase = (phase_id) => (dispatch) => {
     });
 }
 
-// More Actions
+// Project actions 
 export const projectsLoading = () => ({
   type: ActionTypes.PROJECTS_LOADING
 });
-
 export const projectsUpdating = () => ({
   type: ActionTypes.PROJECTS_UPDATING
 }); 
-
 export const projectsFailed = (errmess) => ({
   type: ActionTypes.PROJECTS_FAILED,
   payload: errmess
 });
-
-// Log main actions 
-export const logLoading = () => ({
-  type: ActionTypes.LOG_LOADING
-});
-
-export const logFailed = (errmess) => ({
-  type: ActionTypes.LOG_FAILED,
-  payload: errmess
-});
-
-export const addLog = (log) => ({
-  type: ActionTypes.ADD_LOG,
-  payload: log
-});
-
 export const addProjects = (projects) => ({
   type: ActionTypes.ADD_PROJECTS,
   payload: projects
@@ -606,55 +579,60 @@ export const deleteProj = (proj_id) => ({
   type: ActionTypes.DELETE_PROJECT, 
   payload: proj_id
 }); 
-//create single phase
-export const createNewPhase = (phase) => ({
-  type: ActionTypes.CREATE_PHASE,
-  payload: phase
-});
-
-export const phasesUpdating = () => ({
-  type: ActionTypes.PHASES_UPDATING
-}); 
-
-export const deletePhase = (phase_id) => ({
-  type: ActionTypes.DELETE_PHASE, 
-  payload: phase_id
-})
 //update single project
 export const updateProj = (project) => ({
   type: ActionTypes.UPDATE_PROJECT,
   payload: project
 });
 
+// Log actions 
+export const logLoading = () => ({
+  type: ActionTypes.LOG_LOADING
+});
+export const logFailed = (errmess) => ({
+  type: ActionTypes.LOG_FAILED,
+  payload: errmess
+});
+export const addLog = (log) => ({
+  type: ActionTypes.ADD_LOG,
+  payload: log
+});
+//Create log entry  
+export const createEntry = (entry) => ({
+  type: ActionTypes.CREATE_LOG_ENTRY, 
+  payload: entry
+})
+
+//create single phase
+export const phasesLoading = () => ({
+  type: ActionTypes.PHASES_LOADING
+});
+export const phasesFailed = (errmess) => ({
+  type: ActionTypes.PHASES_FAILED,
+  payload: errmess
+});
+export const addPhases = (phases) => ({
+  type: ActionTypes.ADD_PHASES,
+  payload: phases
+});
+export const createNewPhase = (phase) => ({
+  type: ActionTypes.CREATE_PHASE,
+  payload: phase
+});
+export const phasesUpdating = () => ({
+  type: ActionTypes.PHASES_UPDATING
+}); 
+export const deletePhase = (phase_id) => ({
+  type: ActionTypes.DELETE_PHASE, 
+  payload: phase_id
+}); 
 //update single phase
 export const updatePhaseDetails = (phase) => ({
   type: ActionTypes.UPDATE_PHASE,
   payload: phase
 });
 
-// More Actions for phases 
-export const phasesLoading = () => ({
-  type: ActionTypes.PHASES_LOADING
-});
-
-export const phasesFailed = (errmess) => ({
-  type: ActionTypes.PHASES_FAILED,
-  payload: errmess
-});
-
-export const addPhases = (phases) => ({
-  type: ActionTypes.ADD_PHASES,
-  payload: phases
-});
-
-//logging change made 
-export const createEntry = (entry) => ({
-  type: ActionTypes.CREATE_LOG_ENTRY, 
-  payload: entry
-})
-
 //UI actions 
-//could combineReducers here probably 
 export const initializeUserInterface = () => (dispatch) => {
   const uiinitvals = {
   projectDetails: {
@@ -675,7 +653,6 @@ export const initializeUserInterface = () => (dispatch) => {
     payload: uiinitvals
   }); 
 }
-
 export const openDetails = (projectId) => (dispatch) => {
   const details_project = {
     open: true, 
@@ -686,7 +663,6 @@ export const openDetails = (projectId) => (dispatch) => {
     payload: details_project
   }); 
 }
-
 export const closeDetails = () => (dispatch) => {
   const details_project = {
       open: false, 
@@ -697,7 +673,6 @@ export const closeDetails = () => (dispatch) => {
     payload: details_project
   }); 
 }
-
 export const openPhaseUpdateModal = (phaseId) => (dispatch) => {
   const details_phase = {
     open: true, 
@@ -708,7 +683,6 @@ export const openPhaseUpdateModal = (phaseId) => (dispatch) => {
     payload: details_phase
   }); 
 }
-
 export const closePhaseUpdateModal = () => (dispatch) => {
   const details_phase = {
     open: false, 
@@ -719,7 +693,6 @@ export const closePhaseUpdateModal = () => (dispatch) => {
     payload: details_phase
   }); 
 }
-
 export const openProjectUpdateModal = (projectId) => (dispatch) => {
   const details_phase = {
     open: true, 
@@ -730,7 +703,6 @@ export const openProjectUpdateModal = (projectId) => (dispatch) => {
     payload: details_phase
   }); 
 }
-
 export const closeProjectUpdateModal = () => (dispatch) => {
   const details_phase = {
     open: false, 
@@ -741,7 +713,6 @@ export const closeProjectUpdateModal = () => (dispatch) => {
     payload: details_phase
   }); 
 }
-
 export const openProjectCreateModal = () => (dispatch) => {
   const details_phase = {
     open: true 
@@ -751,7 +722,6 @@ export const openProjectCreateModal = () => (dispatch) => {
     payload: details_phase
   }); 
 }
-
 export const closeProjectCreateModal = () => (dispatch) => {
   const details_phase = {
     open: false
@@ -761,7 +731,6 @@ export const closeProjectCreateModal = () => (dispatch) => {
     payload: details_phase
   }); 
 }
-
 export const openPhaseCreateModal = () => (dispatch) => {
   const details_phase = {
     open: true 
@@ -771,7 +740,6 @@ export const openPhaseCreateModal = () => (dispatch) => {
     payload: details_phase
   }); 
 }
-
 export const closePhaseCreateModal = () => (dispatch) => {
   const details_phase = {
     open: false
