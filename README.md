@@ -26,7 +26,7 @@ Data is consumed from [Ground Control](https://github.com/sammydowds/django-rest
 
 *Live Demo of Version 1: https://sammydowds.github.io/react-automate-pm/*
 
-#### Currently, development of Version 2 is in process. 
+*Live site of Version 2 (note: server not deployed for login/signup): https://launchyourprojects.herokuapp.com/* 
 
 #### V2 Home Page: 
 ![Image of Design V2](https://github.com/sammydowds/react-automate-pm/blob/master/public/assets/images/V2_Projectile_Home.png)
