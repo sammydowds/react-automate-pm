@@ -58,11 +58,10 @@ export const signupUser = (user) => (dispatch) => {
     .then(response => response.json())
     .then(response => {
         if (response.status===201) {
-          dispatch(addUserCredentials({"accountcreated": true}); 
+          dispatch(addUserCredentials({"accountcreated": true})); 
         }
       }
     )
-  )
     .catch(error => dispatch(userFailed(error.message)));  
 }
 // Login User 
