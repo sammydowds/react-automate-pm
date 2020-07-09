@@ -56,7 +56,12 @@ export const signupUser = (user) => (dispatch) => {
       throw errmess;
     })
     .then(response => response.json())
-    .then(dispatch(addUserCredentials({"accountcreated": true}))
+    .then(response => {
+        if (response.status===201) {
+          dispatch(addUserCredentials({"accountcreated": true}); 
+        }
+      }
+    )
   )
     .catch(error => dispatch(userFailed(error.message)));  
 }
