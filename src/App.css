@@ -1,0 +1,288 @@
+#root {
+  min-height: 100vh;
+}
+
+.App {
+  text-align: center;
+  height: 100%;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.phase-card {
+  border-radius: 2px;
+}
+.project-card {
+  border-radius: 2px;
+  height: 100vh;
+}
+
+.main-container {
+  background-color: #ececec;
+  min-height: 100vh;
+}
+
+.container-spacing {
+  margin-top: 80px;
+  padding-top: 0px;
+}
+
+.project-row {
+  padding: 10px;
+}
+
+.project-table {
+  font-family: sans-serif, 'Courier New', Courier, monospace;
+}
+
+.off-schedule {
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: red;
+}
+
+.on-schedule {
+  font-size: 13px;
+  font-weight: bold;
+  text-decoration: underline;
+  color: green;
+}
+
+.active-phases {
+  font-size: 16px; 
+}
+
+.active-phases-date {
+  font-size: 12px; 
+  font-style: italic; 
+}
+
+.header {
+  background-color: #b2d6a2;
+}
+
+.th-table-border {
+  border-bottom: 1px dotted grey; 
+}
+
+.easy-read-proj {
+  font-size: 17px;
+}
+
+.project-link {
+  text-decoration: none;
+  border-bottom: 1px solid black; 
+}
+
+.project-link:hover {
+  color: grey; 
+  text-decoration: none; 
+  border-bottom: 1px dashed grey; 
+  cursor: pointer; 
+}
+
+.main-col {
+  position:fixed; 
+}
+
+.card-radius {
+  border-radius: 0;
+}
+
+.card-radius:hover {
+  border-radius: 0;
+  border-bottom: 5px solid white;
+  border-left: 5px solid white; 
+  border-top-left-radius: 5px 10px; 
+  border-bottom-right-radius: 10px 5px;
+  transform: scale(1.01);
+}
+
+.rotate {
+  animation: rotation 8s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.normal-text {
+  color: grey; 
+}
+
+.card-border {
+  border: 1px dashed lightgrey; 
+}
+
+.navbar-style {
+  background-color: #000839;
+  color: #ffa41b; 
+}
+
+.badge-subtext { 
+  font-size: 15px;
+  color: #ffa41b; 
+}
+
+.off-badge {
+  background-color: #ffa41b;
+  color: #000839; 
+}
+
+.date-details {
+  font-size: 12px;
+  font-weight: bold; 
+}
+
+.stats-table {
+  max-height: 200px;
+  display: block; 
+  font-size: 15px;
+  overflow: auto;
+}
+
+.stats-table-body {
+  width: 100%; 
+  height: 100%;
+}
+
+.log-table {
+  height: 125px;
+  display: block; 
+  font-size: 15px;
+  overflow: auto;
+}
+
+.stat-cubes {
+  color: rgb(83, 83, 83); 
+}
+
+.landing-container {
+    min-height: 100vh;
+}
+
+.form-labels {
+  background-color: #ffa41b;
+  color: #000839; 
+  border: 1px solid #000839; 
+}
+
+.form-fields {
+  background-color: white;
+  color: #000839; 
+  border: 1px solid #000839; 
+}
+
+.landing-colors {
+  color: #ffa41b;
+  background-color: #000839; 
+
+}
+
+.home-container {
+  background-color: #ececec;
+  min-height: 100vh;
+}
+
+.responsive-gif {
+  height: auto; 
+  width: 100%; 
+  max-width: 800px; 
+}
+
+.project-card-off {
+  height: 90px; 
+  border: 2px solid #ffa41b; 
+}
+
+.project-card-on {
+  height: 90px;
+  border: 1px solid #000839; 
+
+}
+
+.project-card-title {
+  font-size: 14px; 
+  font-weight: bold; 
+  display: block;
+  overflow-x: auto; 
+}
+
+.project-card-body {
+  display: block; 
+  font-size: 17px;
+  overflow-x: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 100px 100px 100px 100px;
+  grid-row-gap: 10px;
+  grid-column-gap: 10px;
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  text-align: center;
+  font-family: sans-serif;
+  height: 100px; 
+  cursor: pointer; 
+}
+
+.grid-number {
+  font-size: 30px;
+  text-align: center;
+  font-family: Arial, Verdana, sans-serif; 
+}
+
+.grid-description {
+  font-size: 10px;
+  text-align: center;
+  font-family: Arial, Verdana, sans-serif;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis; 
+  height: 100%; 
+  margin: 10px 10px 5px; 
+  font-weight: 700; 
+}
