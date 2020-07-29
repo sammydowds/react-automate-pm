@@ -43,7 +43,7 @@ function PhasesEndingSoon(props) {
         </Card>
         ); 
     } else if (props.projects.length !== 0) {
-        const end_this_week =  props.phases.filter((phase) => moment(phase.end).format("W") === moment().format("W") && phase.complete === false);
+        const end_this_week =  props.phases.filter((phase) => moment(phase.end).format("W") === moment().format("W") && moment(phase.end).format("Y") === moment().format("Y") && phase.complete === false);
         const week_end_table = end_this_week.map((phase) => {
             const project_name = (props.projects.filter((project) => project.id === phase.projectId)[0]).name; 
             const phase_end = moment(phase.end).format("dddd"); 

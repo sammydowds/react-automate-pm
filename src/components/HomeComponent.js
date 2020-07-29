@@ -8,6 +8,7 @@ import {
 import ProjectWorkInProgress from './sub/ProjectWorkInProgressComponent'; 
 import ProjectDetails from './sub/ProjectDetailsComponent'; 
 import LeftMenu from './sub/LeftMenuComponent'; 
+import WelcomeCard from './sub/WelcomeCardComponent'; 
 import DashboardCard from './sub/DashboardComponent';
 import PhasesEndingSoon from './sub/PhasesEndingSoonComponent'; 
 import RecentChanges from './sub/RecentChangesComponent';
@@ -15,6 +16,7 @@ import CompletedProjects from './sub/CompletedProjectsComponent';
 import Header from './HeaderComponent'; 
 import ProjectGrid from './sub/ProjectGridComponent';  
 import { Redirect } from 'react-router-dom'; 
+import DateHeatMap from './sub/DateHeatMapComponent';
 
 
 class renderHome extends Component {
@@ -41,13 +43,38 @@ class renderHome extends Component {
                 phasesLoading={this.props.phasesLoading}
               />
             </Col>
-            <Col lg="5">
+            <Col className="overflow-auto" lg="5">
+              <WelcomeCard 
+                phases={this.props.phases} 
+                phasesLoading={this.props.phasesLoading}
+                log={this.props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(48, "hours")))}
+              />
               <DashboardCard 
                 projectsLoading={this.props.projectsLoading}
                 projects={this.props.projects} 
                 phases={this.props.phases} 
                 log={this.props.log.filter((entry) => (moment(entry.timestamp, "YYYY-MM-DD") > moment().subtract(5, "days")))}>
               </DashboardCard>
+
+              <DateHeatMap 
+                projects={this.props.projects} 
+                projectsLoading = {this.props.projectsLoading} 
+                phases={this.props.phases} 
+                phasesLoading={this.props.phasesLoading}
+                target='end'
+                color={[265, 165, 0]}
+                headline='Deadlines - next 14 days'
+              />
+
+              <DateHeatMap 
+                projects={this.props.projects} 
+                projectsLoading = {this.props.projectsLoading} 
+                phases={this.props.phases} 
+                phasesLoading={this.props.phasesLoading}
+                target='start'
+                color={[0, 150, 0]}
+                headline='Launch Dates - next 14 days'
+              />  
     
               {this.props.projectDetails.open
                 ? 

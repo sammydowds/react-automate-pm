@@ -174,7 +174,7 @@ function ProjectWorkInProgress(props) {
                 </p>
 
                 <p className='text-center'>
-                  <h4>Heat Shield</h4>
+                  <h4>Deadline Heat Shield</h4>
                   <hr></hr>
                 </p>
                 <p className='d-inline-block'>
