@@ -69,7 +69,7 @@ class renderHome extends Component {
                       openPhaseCreateModal={this.props.openPhaseCreateModal}
                       closePhaseCreateModal={this.props.closePhaseCreateModal}
                       createLogEntry={this.props.createLogEntry}
-                      log={this.props.log.log.filter((entry) => (entry.projectId === this.props.projectDetails.projectId))}
+                      log={this.props.log.filter((entry) => (entry.projectId === this.props.projectDetails.projectId))}
                       deleteProject={this.props.deleteProject}
                       deleteSinglePhase={this.props.deleteSinglePhase}
                     />
