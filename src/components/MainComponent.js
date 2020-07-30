@@ -82,6 +82,7 @@ class Main extends Component {
 
   render () {
     const HomePage = () => {
+
       return(
         <Home 
           projects={this.props.projects.projects} 
